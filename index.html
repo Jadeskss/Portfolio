@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jade | Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Jade.Create</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+      </button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="hero" class="section fade-in">
+      <div class="hero-container">
+        <div class="profile-container">
+          <div class="profile-picture-wrapper">
+            <!-- Replace with your actual image path -->
+            <img src="assets/images/profile.PNG" alt="Your Name" class="profile-picture">
+          </div>
+        </div>
+        <div class="hero-content">
+          <h1>Hello, I'm <span class="highlight">Jade</span></h1>
+          <p class="lead">Creative Developer specializing in <span class="typing-text">Frontend, UI Design, and Digital Media</span></p>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn">View My Work</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section fade-in">
+      <h2 class="section-title">About Me</h2>
+      <p>I'm a multidisciplinary creative professional with expertise in web development, graphic design, and video production. My technical programming skills combined with my eye for design allow me to create visually stunning and functionally robust digital experiences.</p>
+    </section>
+
+    <section id="skills" class="section fade-in">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="skills-container">
+        <!-- Programming Skills -->
+        <div class="skill-category">
+          <h3 class="skill-category-title">Programming</h3>
+          <div class="skill-group">
+            <div class="skill-item">
+              <i class="fab fa-html5 skill-icon"></i>
+              <span>HTML5</span>
+            </div>
+            <div class="skill-item">
+              <i class="fab fa-css3-alt skill-icon"></i>
+              <span>CSS3</span>
+            </div>
+            <div class="skill-item">
+              <i class="fab fa-js skill-icon"></i>
+              <span>JavaScript</span>
+            </div>
+            <div class="skill-item">
+              <i class="fab fa-python skill-icon"></i>
+              <span>Python</span>
+            </div>
+            <div class="skill-item">
+              <i class="fab fa-git-alt skill-icon"></i>
+              <span>Git</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Graphic Design Skills -->
+        <div class="skill-category">
+          <h3 class="skill-category-title">Graphic Design</h3>
+          <div class="skill-group">
+            <div class="skill-item">
+              <div class="skill-icon-img">
+                <img src="assets/images/ps.png" alt="Photoshop" class="software-icon">
+              </div>
+              <span>Photoshop</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-img">
+                <img src="assets/images/ai.png" alt="Illustrator" class="software-icon">
+              </div>
+              <span>Illustrator</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-img">
+                <img src="assets/images/fig.png" alt="Figma" class="software-icon">
+              </div>
+              <span>Figma</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-img">
+                <img src="assets/images/canva.png" alt="Figma" class="software-icon">
+              </div>
+              <span>Canva</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Video Editing Skills -->
+        <div class="skill-category">
+          <h3 class="skill-category-title">Video Editing</h3>
+          <div class="skill-group">
+            <div class="skill-item">
+              <div class="skill-icon-img">
+                <img src="assets/images/pr.png" alt="Premiere Pro" class="software-icon">
+              </div>
+              <span>Premiere Pro</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-img">
+                <img src="assets/images/ae.png" alt="After Effects" class="software-icon">
+              </div>
+              <span>After Effects</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-img">
+                <img src="assets/images/lr.png" alt="DaVinci Resolve" class="software-icon">
+              </div>
+              <span>Lightroom</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon-img">
+                <img src="assets/images/cap.png" alt="Audition" class="software-icon">
+              </div>
+              <span>Capcut</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section fade-in">
+      <h2 class="section-title">My Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="assets/images/pro1.png" alt="Project 1" class="project-image">
+          <div class="project-content">
+            <h3>SKBE Website</h3>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">JS</span>
+              <span class="project-tag">API</span>
+            </div>
+            <p>A Simple website for Sangguniang Kabataan Batchelor East.</p>
+            <a href="https://jadeskss.github.io/officialskbe/" class="btn">View Project</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="assets/images/pro2.png" alt="Project 2" class="project-image">
+          <div class="project-content">
+            <h3>Ai Love You | ShortFilm</h3>
+            <div class="project-tags">
+              <span class="project-tag">Premier Pro</span>
+              <span class="project-tag">After Effects</span>
+              <span class="project-tag">Canva</span>
+            </div>
+            <p>A school ShortFilm related to AI.</p>
+            <a href="#" class="btn">View Project</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="assets/images/pro3.png" alt="Project 3" class="project-image">
+          <div class="project-content">
+            <h3>ShoeNiverse | Prototype</h3>
+            <div class="project-tags">
+              <span class="project-tag">Figma</span>
+            </div>
+            <p>Shoe app Prototype</p>
+            <a href="https://www.figma.com/proto/1vz79ZOfbXuI7oHU7Kl5q7/fco-ko?page-id=0%3A1&node-id=111-398&p=f&viewport=1407%2C-1205%2C0.53&t=xcFJ05UGGfJF7dxA-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=60%3A396&show-proto-sidebar=1" class="btn">View Project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section fade-in">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <p>Feel free to reach out to me for collaborations, questions, or just to say hello!</p>
+          <div class="contact-methods">
+            <div class="contact-method">
+              <i class="fas fa-envelope"></i>
+              <span>Jademdriaga6@gmail.com</span>
+            </div>
+            <div class="contact-method">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Pangasinan</span>
+            </div>
+          </div>
+        </div>
+        <form id="contactForm" class="contact-form">
+          <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="Your email address" required>
+          </div>
+          <div class="form-group">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" id="subject" name="subject" class="form-input" placeholder="Subject of your message" required>
+          </div>
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" name="message" class="form-input form-textarea" placeholder="Your message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn" id="submit-btn">
+            <span>Send Message</span>
+            <i class="fas fa-paper-plane"></i>
+          </button>
+          <div id="form-status" class="form-status"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p>&copy; 2025 Jade Madriaga. All Rights Reserved.</p>
+    </div>
+  </footer>
+  <!-- Replace the existing EmailJS script at the end of your body with this improved version -->
+<script src="https://cdn.emailjs.com/sdk/2.6.4/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("uzL2p9Mjna5Ahmf8O");
+  })();
+</script>
+<script src="js/contact.js"></script>
+<script src="js/darkMode.js"></script>
+<script src="js/animations.js"></script>
+<script>
+  // Add fade-in animation as elements come into view
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.1});
+    
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
+  });
+</script>
+</body>
+</html>
