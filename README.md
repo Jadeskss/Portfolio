@@ -1,40 +1,20 @@
-# Portfolio Website
+Jade Madriaga | Portfolio
+Welcome to my portfolio! I'm a multidisciplinary creative professional specializing in frontend development, UI design, and digital media production. I create visually stunning and functionally robust digital experiences across multiple platforms.
 
-Welcome to the Portfolio Website project! This project showcases my work and skills as a web developer. It features a modern design with a dark mode option, ensuring a comfortable viewing experience for all users.
+Professional Skills
+Web Development: I build responsive, interactive websites using modern HTML, CSS, and JavaScript frameworks
+UI/UX Design: I create intuitive user interfaces with a strong focus on user experience and accessibility
+Digital Media Production: I produce engaging video content and professional-grade graphic designs
+Creative Problem Solving: I bridge the gap between technical requirements and creative vision
+Technical Expertise
+Frontend: HTML, CSS, JavaScript, React
+Design Tools: Figma, Adobe Creative Suite (Photoshop, Illustrator)
+Media Production: Lightroom, Capcut, Video Editing
+Deployment: GitHub Pages, Netlify, Vercel
+My Approach
+I believe in creating digital experiences that are not only visually appealing but also user-friendly and accessible. Whether I'm coding websites, designing interfaces, or producing media content, I bring the same level of passion and attention to detail to every project.
 
-## Features
+Let's Connect
+I'm always interested in challenging projects and new collaborations. Feel free to reach out through my portfolio's contact form or connect with me on GitHub and social media.
 
-- **Responsive Design**: The portfolio is designed to look great on devices of all sizes, from mobile phones to large desktop screens.
-- **Dark Mode**: Users can toggle between light and dark modes, with their preference saved in local storage for future visits.
-- **Smooth Animations**: The site includes various animations to enhance user interaction and engagement.
-- **Multi-Page Structure**: The portfolio consists of multiple pages, including:
-  - **Home**: The landing page with an overview of my work.
-  - **About**: Information about my background and skills.
-  - **Projects**: A showcase of my completed projects with descriptions and links.
-  - **Contact**: A form for visitors to reach out.
-
-## Technologies Used
-
-- **HTML**: For the structure of the web pages.
-- **CSS**: For styling, including light and dark mode styles.
-- **JavaScript**: For interactivity, including dark mode toggling and animations.
-
-## Setup Instructions
-
-1. Clone the repository to your local machine:
-   ```
-   git clone <repository-url>
-   ```
-2. Navigate to the project directory:
-   ```
-   cd portfolio-website
-   ```
-3. Open `index.html` in your web browser to view the portfolio.
-
-## Future Improvements
-
-- Add more projects to the portfolio.
-- Implement additional features such as a blog or testimonials section.
-- Optimize performance and accessibility.
-
-Thank you for checking out my portfolio! Feel free to reach out through the contact page for any inquiries.
+Thank you for visiting my portfolio! I look forward to potentially working together on your next digital project.
