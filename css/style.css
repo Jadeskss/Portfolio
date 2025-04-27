@@ -215,26 +215,77 @@ nav a:hover::after {
     gap: 2rem;
 }
 
-.project-card {
-    border-radius: 0.75rem;
-    overflow: hidden;
-    box-shadow: 0 4px 15px var(--shadow-color);
-    transition: transform 0.3s;
-    background-color: var(--surface-color);
+.project-image {
+  width: 100%;
+  height: 220px; /* Fixed height for consistency */
+  object-fit: cover; /* Maintain aspect ratio but fill the container */
+  object-position: center; /* Center the image within the container */
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  display: block; /* Remove any default spacing */
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
+/* Project card consistent structure */
+.project-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: var(--surface-color);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+/* Project content with flexible height */
+.project-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* Add this to create consistent spacing */
+  justify-content: space-between;
+}
+
+/* Project description */
+.project-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* Button container to ensure consistent positioning */
+.project-button-container {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+/* Style the View Project button */
+.project-content .btn {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+/* Ensure consistent spacing */
+.project-content h3 {
+  margin-bottom: 0.75rem;
+}
+
+/* Center align project buttons on mobile */
+@media (max-width: 768px) {
+  .project-content .btn {
+    align-self: center;
+  }
+}
+
+/* Project card equal height */
+.project-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-image {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-}
-
-.project-content {
-    padding: 1.5rem;
+  flex-shrink: 0;
 }
 
 .project-tags {
@@ -401,6 +452,43 @@ nav a:hover::after {
   background-color: rgba(252, 165, 165, 0.2);
   color: #b91c1c;
   border: 1px solid rgba(252, 165, 165, 0.4);
+}
+
+/* Alert info styling */
+.alert-info {
+  background-color: rgba(56, 189, 248, 0.1);
+  color: #0284c7;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alert-warning {
+  background-color: rgba(250, 204, 21, 0.1);
+  color: #ca8a04;
+  border: 1px solid rgba(250, 204, 21, 0.2);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dark-mode .alert-info {
+  background-color: rgba(56, 189, 248, 0.05);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.15);
+}
+
+.dark-mode .alert-warning {
+  background-color: rgba(250, 204, 21, 0.05);
+  color: #facc15;
+  border-color: rgba(250, 204, 21, 0.15);
 }
 
 /* Add responsive styles for the contact section */
@@ -626,5 +714,448 @@ nav a:hover::after {
 }
 
 .dark-mode .form-input::placeholder {
+  color: var(--text-muted-dark);
+}
+
+/* Certificate section styling */
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.certificate-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-color);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  border-top: 4px solid var(--primary-color);
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px var(--shadow-color);
+}
+
+.certificate-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.certificate-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.certificate-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.certificate-issuer {
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.certificate-date {
+  color: var(--text-muted);
+}
+
+.certificate-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Arrow button styling for certificates */
+.certificate-btn {
+  background-color: transparent; /* Remove background color */
+  color: var(--primary-color); /* Inherit color from theme */
+  border: none;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-left: auto; /* Push to right side */
+  align-self: flex-end;
+  transition: transform 0.3s, color 0.3s;
+  box-shadow: none; /* Remove any shadow */
+  height: auto; /* Auto height */
+  width: auto; /* Auto width */
+}
+
+.certificate-btn:hover {
+  background-color: transparent; /* Keep transparent on hover */
+  transform: translateX(5px); /* Slide right effect */
+  color: var(--primary-color-dark); /* Darker color on hover */
+}
+
+.certificate-btn i {
+  font-size: 1.2rem; /* Same size as project buttons */
+}
+
+/* Dark mode style */
+.dark-mode .certificate-btn {
+  color: var(--primary-color-dark);
+}
+
+.dark-mode .certificate-btn:hover {
+  color: white;
+}
+
+/* Chat Button & Modal Styling */
+.chat-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #4f94ff, #38bdf8);
+  color: white;
+  border-radius: 30px;
+  padding: 14px 26px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(56, 189, 248, 0.25);
+  z-index: 99;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: none;
+  font-weight: 500;
+}
+
+.chat-button:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.35);
+}
+
+.chat-button i {
+  font-size: 1.2rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Chat Modal */
+.chat-modal {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  background-color: var(--bg-color);
+  border-radius: 16px;
+  width: 380px;
+  max-width: calc(100% - 60px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px) scale(0.95);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+/* Light mode background for chat modal */
+.chat-modal {
+  background: linear-gradient(145deg, #ffffff, #f8fafc); /* Light gradient background */
+}
+
+.chat-modal-header {
+  background: linear-gradient(to right, var(--primary-color), #38bdf8);
+}
+
+.chat-modal-header h3 {
+  color: white;
+}
+
+.chat-modal-body {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.chat-close {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.chat-close:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.chat-modal.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.chat-modal-header {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--surface-color);
+}
+
+.chat-modal-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.chat-close {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.chat-close:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--primary-color);
+}
+
+.chat-modal-body {
+  padding: 24px 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.chat-modal .form-group {
+  margin-bottom: 18px;
+}
+
+.chat-modal .form-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.chat-modal .form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.chat-modal .form-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+  outline: none;
+}
+
+.chat-modal .form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+#chat-submit-btn {
+  width: 100%;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #4f94ff, #38bdf8);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+#chat-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+}
+
+#chat-submit-btn:active {
+  transform: translateY(0);
+}
+
+.form-status {
+  margin-top: 16px;
+  font-size: 0.9rem;
+}
+
+.alert {
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 12px;
+}
+
+.alert-success {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.alert-error {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Dark mode adjustments */
+.dark-mode .chat-modal {
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border-color: rgba(51, 65, 85, 0.7);
+}
+
+.dark-mode .chat-modal-content::before {
+  background-image: radial-gradient(rgba(56, 189, 248, 0.08) 2px, transparent 2px);
+}
+
+.dark-mode .chat-modal-body {
+  background-color: rgba(15, 23, 42, 0.8);
+}
+
+.dark-mode .chat-close {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dark-mode .chat-close:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+/* Improved form fields */
+.chat-modal .form-input {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+}
+
+.dark-mode .chat-modal .form-input {
+  background-color: #334155;
+  border-color: #475569;
+  color: #f8fafc;
+}
+
+/* Location styling */
+.location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.location-icon {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+/* Dark mode support */
+.dark-mode .location {
+  color: var(--text-muted-dark);
+}
+
+.dark-mode .location-icon {
+  color: var(--primary-color-dark);
+}
+
+/* Messenger option styling */
+.contact-options {
+  margin-bottom: 20px;
+}
+
+.option-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 15px 0;
+}
+
+.option-divider::before,
+.option-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.option-divider span {
+  padding: 0 10px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.messenger-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.messenger-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #0084ff;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+}
+
+.messenger-btn:hover {
+  background: #0070db;
+  transform: translateY(-2px);
+}
+
+.messenger-btn i {
+  font-size: 1.2rem;
+}
+
+.messenger-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+/* Dark mode support */
+.dark-mode .option-divider::before,
+.dark-mode .option-divider::after {
+  border-bottom: 1px solid var(--border-color-dark);
+}
+
+.dark-mode .option-divider span,
+.dark-mode .messenger-note {
   color: var(--text-muted-dark);
 }

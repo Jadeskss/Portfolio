@@ -32,3 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
         darkModeToggle.addEventListener("click", toggleDarkMode);
     }
 });
+
+document.getElementById('contactLink').addEventListener('click', function(e) {
+  e.preventDefault();
+  chatModal.classList.add('active');
+});

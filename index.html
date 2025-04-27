@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jade | Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="assets/images/icon.PNG">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/animations.css">
@@ -17,8 +18,9 @@
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
+        <a href="#certificates">Certificates</a>
         <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="#" id="contactLink">Contact</a> <!-- Updated to trigger chat -->
       </div>
       <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle Dark Mode">
         <i class="fas fa-moon"></i>
@@ -38,9 +40,13 @@
         <div class="hero-content">
           <h1>Hello, I'm <span class="highlight">Jade</span></h1>
           <p class="lead">Creative Developer specializing in <span class="typing-text">Frontend, UI Design, and Digital Media</span></p>
+          <div class="location">
+            <i class="fas fa-map-marker-alt location-icon"></i>
+            <span>Pangasinan, Philippines</span>
+          </div>
           <div class="hero-buttons">
             <a href="#projects" class="btn">View My Work</a>
-            <a href="#contact" class="btn btn-outline">Contact Me</a>
+            <a href="#" id="heroContactBtn" class="btn btn-outline">Contact Me</a>
           </div>
         </div>
       </div>
@@ -48,7 +54,7 @@
 
     <section id="about" class="section fade-in">
       <h2 class="section-title">About Me</h2>
-      <p>I'm a multidisciplinary creative professional with expertise in web development, graphic design, and video production. My technical programming skills combined with my eye for design allow me to create visually stunning and functionally robust digital experiences.</p>
+      <p>I'm a multidisciplinary creative student with expertise in web development, graphic design, and video production. My technical programming skills combined with my eye for design allow me to create visually stunning and functionally robust digital experiences.</p>
     </section>
 
     <section id="skills" class="section fade-in">
@@ -160,7 +166,8 @@
               <span class="project-tag">API</span>
             </div>
             <p>A Simple website for Sangguniang Kabataan Batchelor East.</p>
-            <a href="https://jadeskss.github.io/officialskbe/" class="btn">View Project</a>
+            <!-- Updated Project 1 Button -->
+            <a href="https://jadeskss.github.io/officialskbe/" class="btn project-btn"><i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
         <div class="project-card">
@@ -173,7 +180,8 @@
               <span class="project-tag">Canva</span>
             </div>
             <p>A school ShortFilm related to AI.</p>
-            <a href="#" class="btn">View Project</a>
+            <!-- Updated Project 2 Button -->
+            <a href="#" class="btn project-btn"><i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
         <div class="project-card">
@@ -184,61 +192,134 @@
               <span class="project-tag">Figma</span>
             </div>
             <p>Shoe app Prototype</p>
-            <a href="https://www.figma.com/proto/1vz79ZOfbXuI7oHU7Kl5q7/fco-ko?page-id=0%3A1&node-id=111-398&p=f&viewport=1407%2C-1205%2C0.53&t=xcFJ05UGGfJF7dxA-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=60%3A396&show-proto-sidebar=1" class="btn">View Project</a>
+            <!-- Updated Project 3 Button -->
+            <a href="https://www.figma.com/proto/1vz79ZOfbXuI7oHU7Kl5q7/fco-ko?page-id=0%3A1&node-id=111-398&p=f&viewport=1407%2C-1205%2C0.53&t=xcFJ05UGGfJF7dxA-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=60%3A396&show-proto-sidebar=1" class="btn project-btn"><i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section fade-in">
-      <h2 class="section-title">Get In Touch</h2>
-      <div class="contact-container">
-        <div class="contact-info">
-          <p>Feel free to reach out to me for collaborations, questions, or just to say hello!</p>
-          <div class="contact-methods">
-            <div class="contact-method">
-              <i class="fas fa-envelope"></i>
-              <span>Jademdriaga6@gmail.com</span>
+    <section id="certificates" class="section fade-in">
+      <h2 class="section-title">Certifications</h2>
+      <div class="certificates-grid">
+        <!-- Certificate 1 -->
+        <div class="certificate-card">
+          <div class="certificate-content">
+            <h3>Web Development Fundamentals</h3>
+            <div class="certificate-info">
+              <span class="certificate-issuer">freeCodeCamp</span>
+              <span class="certificate-date">2024</span>
             </div>
-            <div class="contact-method">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>Pangasinan</span>
+            <div class="certificate-tags">
+              <span class="project-tag">HTML5</span>
+              <span class="project-tag">CSS3</span>
+              <span class="project-tag">JavaScript</span>
             </div>
+            <!-- Changed button to just arrow icon -->
+            <a href="#" class="btn certificate-btn"><i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
-        <form id="contactForm" class="contact-form">
-          <div class="form-group">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+        
+        <!-- Certificate 2 -->
+        <div class="certificate-card">
+          <div class="certificate-content">
+            <h3>Adobe Certified Professional</h3>
+            <div class="certificate-info">
+              <span class="certificate-issuer">Adobe</span>
+              <span class="certificate-date">2023</span>
+            </div>
+            <div class="certificate-tags">
+              <span class="project-tag">Photoshop</span>
+              <span class="project-tag">Illustrator</span>
+              <span class="project-tag">Design</span>
+            </div>
+            <!-- Changed button to just arrow icon -->
+            <a href="#" class="btn certificate-btn"><i class="fas fa-arrow-right"></i></a>
           </div>
-          <div class="form-group">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" name="email" class="form-input" placeholder="Your email address" required>
+        </div>
+        
+        <!-- Certificate 3 -->
+        <div class="certificate-card">
+          <div class="certificate-content">
+            <h3>Video Editing Masterclass</h3>
+            <div class="certificate-info">
+              <span class="certificate-issuer">Udemy</span>
+              <span class="certificate-date">2023</span>
+            </div>
+            <div class="certificate-tags">
+              <span class="project-tag">Premier Pro</span>
+              <span class="project-tag">After Effects</span>
+              <span class="project-tag">Color Grading</span>
+            </div>
+            <!-- Changed button to just arrow icon -->
+            <a href="#" class="btn certificate-btn"><i class="fas fa-arrow-right"></i></a>
           </div>
-          <div class="form-group">
-            <label for="subject" class="form-label">Subject</label>
-            <input type="text" id="subject" name="subject" class="form-input" placeholder="Subject of your message" required>
-          </div>
-          <div class="form-group">
-            <label for="message" class="form-label">Message</label>
-            <textarea id="message" name="message" class="form-input form-textarea" placeholder="Your message" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="btn" id="submit-btn">
-            <span>Send Message</span>
-            <i class="fas fa-paper-plane"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chat Button -->
+    <div class="chat-button" id="chatButton">
+      <i class="fas fa-comment-dots"></i>
+      <span>Chat with Jade</span>
+    </div>
+
+    <!-- Chat Modal -->
+    <div class="chat-modal" id="chatModal">
+      <div class="chat-modal-content">
+        <div class="chat-modal-header">
+          <h3>Get In Touch</h3>
+          <button class="chat-close" id="chatClose">
+            <i class="fas fa-times"></i>
           </button>
-          <div id="form-status" class="form-status"></div>
-        </form>
+        </div>
+        <div class="chat-modal-body">
+          <!-- Contact Options -->
+          <div class="contact-options">
+            <div class="messenger-option">
+              <a href="https://m.me/jJade.Tzyyy" target="_blank" class="messenger-btn">
+                <i class="fab fa-facebook-messenger"></i>
+                <span>Message on Facebook</span>
+              </a>
+              <p class="messenger-note">For faster response, message me directly on Facebook</p>
+            </div>
+            
+            <div class="option-divider">
+              <span>Or send an email</span>
+            </div>
+          </div>
+          
+          <!-- Email Form -->
+          <form id="chatForm" class="contact-form">
+            <div class="form-group">
+              <label for="chat-name" class="form-label">Name</label>
+              <input type="text" id="chat-name" name="name" class="form-input" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="chat-email" class="form-label">Email</label>
+              <input type="email" id="chat-email" name="email" class="form-input" placeholder="Your email address" required>
+            </div>
+            <div class="form-group">
+              <label for="chat-subject" class="form-label">Subject</label>
+              <input type="text" id="chat-subject" name="subject" class="form-input" placeholder="Subject of your message" required>
+            </div>
+            <div class="form-group">
+              <label for="chat-message" class="form-label">Message</label>
+              <textarea id="chat-message" name="message" class="form-input form-textarea" placeholder="Your message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn" id="chat-submit-btn">
+              <span>Send Message</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+            <div id="chat-form-status" class="form-status"></div>
+          </form>
+        </div>
       </div>
-    </section>
-  </main>
-
+    </div>
   <footer class="footer">
     <div class="container">
       <div class="social-links">
         <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
       </div>
       <p>&copy; 2025 Jade Madriaga. All Rights Reserved.</p>
@@ -251,7 +332,7 @@
     emailjs.init("uzL2p9Mjna5Ahmf8O");
   })();
 </script>
-<script src="js/contact.js"></script>
+<script src="js/chat.js"></script>
 <script src="js/darkMode.js"></script>
 <script src="js/animations.js"></script>
 <script>
@@ -271,5 +352,7 @@
     });
   });
 </script>
+
+
 </body>
 </html>
