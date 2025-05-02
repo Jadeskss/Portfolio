@@ -194,7 +194,7 @@ nav a:hover::after {
 
 /* Footer */
 .footer {
-    background-color: var(--surface-color);
+    
     border-top: 1px solid var(--border-color);
     padding: 2rem 0;
     text-align: center;
@@ -734,8 +734,38 @@ nav a:hover::after {
   transition: transform 0.3s, box-shadow 0.3s;
   overflow: hidden;
   border-top: 4px solid var(--primary-color);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  position: relative;
 }
 
+/* Add hover indicator */
+.certificate-card::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  bottom: 15px;
+  right: 15px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 1;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="white"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px;
+}
+
+.certificate-card:hover::after {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* Enhance the existing hover effect */
 .certificate-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px var(--shadow-color);
@@ -779,41 +809,7 @@ nav a:hover::after {
 }
 
 /* Arrow button styling for certificates */
-.certificate-btn {
-  background-color: transparent; /* Remove background color */
-  color: var(--primary-color); /* Inherit color from theme */
-  border: none;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1rem;
-  margin-left: auto; /* Push to right side */
-  align-self: flex-end;
-  transition: transform 0.3s, color 0.3s;
-  box-shadow: none; /* Remove any shadow */
-  height: auto; /* Auto height */
-  width: auto; /* Auto width */
-}
 
-.certificate-btn:hover {
-  background-color: transparent; /* Keep transparent on hover */
-  transform: translateX(5px); /* Slide right effect */
-  color: var(--primary-color-dark); /* Darker color on hover */
-}
-
-.certificate-btn i {
-  font-size: 1.2rem; /* Same size as project buttons */
-}
-
-/* Dark mode style */
-.dark-mode .certificate-btn {
-  color: var(--primary-color-dark);
-}
-
-.dark-mode .certificate-btn:hover {
-  color: white;
-}
 
 /* Chat Button & Modal Styling */
 .chat-button {

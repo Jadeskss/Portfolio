@@ -46,7 +46,7 @@
           </div>
           <div class="hero-buttons">
             <a href="#projects" class="btn">View My Work</a>
-            <a href="#" id="heroContactBtn" class="btn btn-outline">Contact Me</a>
+            <a href="#" id="heroContactBtn" class="btn btn-outline">Send Email</a>
           </div>
         </div>
       </div>
@@ -202,8 +202,10 @@
     <section id="certificates" class="section fade-in">
       <h2 class="section-title">Certifications</h2>
       <div class="certificates-grid">
+
         <!-- Certificate 1 -->
-        <div class="certificate-card">
+        <!-- Certificate Card (fully clickable) -->
+        <a href="#" class="certificate-card">
           <div class="certificate-content">
             <h3>Web Development Fundamentals</h3>
             <div class="certificate-info">
@@ -215,33 +217,12 @@
               <span class="project-tag">CSS3</span>
               <span class="project-tag">JavaScript</span>
             </div>
-            <!-- Changed button to just arrow icon -->
-            <a href="#" class="btn certificate-btn"><i class="fas fa-arrow-right"></i></a>
           </div>
-        </div>
+        </a>
         
-        <!-- Certificate 2 -->
-        <div class="certificate-card">
+        <a href="#" class="certificate-card">
           <div class="certificate-content">
-            <h3>Adobe Certified Professional</h3>
-            <div class="certificate-info">
-              <span class="certificate-issuer">Adobe</span>
-              <span class="certificate-date">2023</span>
-            </div>
-            <div class="certificate-tags">
-              <span class="project-tag">Photoshop</span>
-              <span class="project-tag">Illustrator</span>
-              <span class="project-tag">Design</span>
-            </div>
-            <!-- Changed button to just arrow icon -->
-            <a href="#" class="btn certificate-btn"><i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-        
-        <!-- Certificate 3 -->
-        <div class="certificate-card">
-          <div class="certificate-content">
-            <h3>Video Editing Masterclass</h3>
+            <h3>Basic Video Editing</h3>
             <div class="certificate-info">
               <span class="certificate-issuer">Udemy</span>
               <span class="certificate-date">2023</span>
@@ -249,10 +230,27 @@
             <div class="certificate-tags">
               <span class="project-tag">Premier Pro</span>
               <span class="project-tag">After Effects</span>
-              <span class="project-tag">Color Grading</span>
+              <span class="project-tag">MochaAe</span>
             </div>
-            <!-- Changed button to just arrow icon -->
-            <a href="#" class="btn certificate-btn"><i class="fas fa-arrow-right"></i></a>
+          </div>
+        </a>
+
+        <a href="#" class="certificate-card">
+          <div class="certificate-content">
+            <h3>Computer System Servicing NCII</h3>
+            <div class="certificate-info">
+              <span class="certificate-issuer">Tesda</span>
+              <span class="certificate-date">2023</span>
+            </div>
+            <div class="certificate-tags">
+              <span class="project-tag">Server</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">Windows</span>
+            </div>
+          </div>
+        </a>
+        
+        
           </div>
         </div>
       </div>
@@ -326,15 +324,17 @@
     </div>
   </footer>
   <!-- Replace the existing EmailJS script at the end of your body with this improved version -->
-<script src="https://cdn.emailjs.com/sdk/2.6.4/email.min.js"></script>
+
 <script>
   (function() {
     emailjs.init("uzL2p9Mjna5Ahmf8O");
   })();
 </script>
+<script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.6.4/email.min.js"></script>
 <script src="js/chat.js"></script>
 <script src="js/darkMode.js"></script>
 <script src="js/animations.js"></script>
+<script src="js/navScroll.js"></script>
 <script>
   // Add fade-in animation as elements come into view
   document.addEventListener('DOMContentLoaded', () => {
