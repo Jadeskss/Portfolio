@@ -109,14 +109,34 @@ function initScrollReveal() {
         sectionObserver.observe(section);
     });
     
-    // Staggered animation for skill items
+    // Enhanced staggered animation for skill items with distance-based delay
     const skillObserver = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
-            skillItems.forEach((item, index) => {
+            const skillCategories = document.querySelectorAll('.skills-category-section');
+            
+            skillCategories.forEach((category, categoryIndex) => {
+                // First animate the category header
                 setTimeout(() => {
-                    item.classList.add('skill-reveal');
-                }, 100 * index);
+                    const header = category.querySelector('.category-header');
+                    header.style.opacity = '0';
+                    header.style.transform = 'translateY(-20px)';
+                    header.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    
+                    setTimeout(() => {
+                        header.style.opacity = '1';
+                        header.style.transform = 'translateY(0)';
+                    }, 50);
+                }, 300 * categoryIndex);
+                
+                // Then animate each skill item with a staggered delay
+                const items = category.querySelectorAll('.skill-item');
+                items.forEach((item, itemIndex) => {
+                    setTimeout(() => {
+                        item.classList.add('skill-reveal');
+                    }, (300 * categoryIndex) + (100 * itemIndex) + 300);
+                });
             });
+            
             skillObserver.unobserve(entries[0].target);
         }
     }, observerOptions);

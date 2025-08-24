@@ -1,0 +1,173 @@
+/* Responsive styles for skills section */
+
+/* Tablet Breakpoint */
+@media (max-width: 991px) {
+  .skills-category-section {
+    padding: 2rem;
+  }
+  
+  .category-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .category-icon i {
+    font-size: 1.25rem;
+  }
+  
+  .skills-category-title {
+    font-size: 1.4rem;
+  }
+  
+  .skills-track {
+    gap: 3rem;
+  }
+  
+  .skill-group {
+    gap: 3rem;
+  }
+  
+  .skill-icon-wrapper,
+  .skill-icon-img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .skill-icon {
+    font-size: 2rem;
+  }
+}
+
+/* Mobile Landscape Breakpoint */
+@media (max-width: 767px) {
+  .skills-categories-container {
+    gap: 3rem;
+  }
+  
+  .skills-category-section {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .category-header {
+    margin-bottom: 0;
+  }
+  
+  .skills-track {
+    gap: 2rem;
+    animation: slideLoop 20s linear infinite;
+  }
+  
+  .skill-group {
+    gap: 2rem;
+  }
+  
+  .skill-item {
+    min-width: 70px;
+  }
+  
+  .skill-icon-wrapper,
+  .skill-icon-img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .skill-icon {
+    font-size: 1.75rem;
+  }
+  
+  .skill-item span {
+    font-size: 0.8rem;
+  }
+}
+
+/* Mobile Portrait Breakpoint */
+@media (max-width: 575px) {
+  .skills-categories-container {
+    padding: 0 0.5rem;
+    gap: 2rem;
+  }
+  
+  .skills-category-section {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+  
+  .category-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .skills-category-title {
+    font-size: 1.2rem;
+  }
+  
+  .skills-category-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+  }
+  
+  .skills-track {
+    gap: 1.5rem;
+  }
+  
+  .skill-group {
+    gap: 1.5rem;
+  }
+  
+  .skill-icon-wrapper,
+  .skill-icon-img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .skill-icon {
+    font-size: 1.5rem;
+  }
+  
+  .software-icon {
+    max-width: 75%;
+    max-height: 75%;
+  }
+}
+
+/* Very Small Mobile Screens */
+@media (max-width: 399px) {
+  .skills-category-section {
+    padding: 1rem;
+  }
+  
+  .category-icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .category-icon i {
+    font-size: 1rem;
+  }
+  
+  .skills-track {
+    gap: 1rem;
+  }
+  
+  .skill-group {
+    gap: 1rem;
+  }
+  
+  .skill-icon-wrapper,
+  .skill-icon-img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .skill-icon {
+    font-size: 1.25rem;
+  }
+  
+  /* Optional: Hide text labels on very small screens */
+  .skill-item span {
+    font-size: 0.7rem;
+  }
+}

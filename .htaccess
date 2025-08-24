@@ -51,3 +51,19 @@ Options -Indexes
 
 # Disable server signature
 ServerSignature Off
+
+# URL Rewriting to hide .html extensions
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # Remove .html extension
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.*)$ $1.html [NC,L]
+  
+  # Redirect /index to /
+  RewriteRule ^index/?$ / [R=301,L]
+</IfModule>
+
+# Custom 404 error page
+ErrorDocument 404 /404.html
