@@ -1,0 +1,18 @@
+/* Theme CSS - Combines dark mode and animation styles */
+@import url('dark-mode.css');
+@import url('dark-mode-animations.css');
+
+/* Additional theme-related styles */
+.theme-transition {
+  transition: background-color 0.5s cubic-bezier(0.23, 1, 0.320, 1),
+              color 0.5s cubic-bezier(0.23, 1, 0.320, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.theme-transition * {
+  transition: background-color 0.5s cubic-bezier(0.23, 1, 0.320, 1),
+              color 0.5s cubic-bezier(0.23, 1, 0.320, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}

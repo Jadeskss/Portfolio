@@ -4,11 +4,16 @@
     --primary-color-rgb: 37, 99, 235;
     --secondary-color: #0284c7;
     --secondary-color-rgb: 2, 132, 199;
+    --accent-color: #10b981;
+    --accent-color-rgb: 16, 185, 129;
     --background-color: #f8fafc;
     --surface-color: #ffffff;
     --text-primary: #1e293b;
     --text-secondary: #475569;
+    --text-tertiary: #64748b;
+    --text-muted: #94a3b8;
     --border-color: #e2e8f0;
+    --border-color-rgb: 226, 232, 240;
     --shadow-color: rgba(0, 0, 0, 0.1);
     --transition-speed: 0.3s;
 }
@@ -19,11 +24,19 @@
   --primary-color-rgb: 79, 148, 255;
   --secondary-color: #38bdf8;
   --secondary-color-rgb: 56, 189, 248;
+  --accent-color: #34d399;
+  --accent-color-rgb: 52, 211, 153;
   --background-color: #0f172a;
   --surface-color: #1e293b;
   --text-primary: #f1f5f9;
   --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-muted: #64748b;
+  --text-muted-dark: #94a3b8;
+  --primary-color-dark: #60a5fa;
+  --accent-color-dark: #34d399;
   --border-color: #334155;
+  --border-color-rgb: 51, 65, 85;
   --shadow-color: rgba(0, 0, 0, 0.4);
 }
 
@@ -1085,6 +1098,30 @@ nav a:hover::after {
 
 .dark-mode .location-icon {
   color: var(--primary-color-dark);
+}
+
+/* University styling */
+.university {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.university-icon {
+  color: var(--accent-color);
+  font-size: 1.1rem;
+}
+
+/* Dark mode support for university */
+.dark-mode .university {
+  color: var(--text-muted-dark);
+}
+
+.dark-mode .university-icon {
+  color: var(--accent-color-dark);
 }
 
 /* Messenger option styling */

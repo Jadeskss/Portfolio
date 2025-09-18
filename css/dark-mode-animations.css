@@ -1,0 +1,69 @@
+/* Dark Mode Animation Styles */
+
+/* Theme transition class - controls smooth transition between light and dark mode */
+.theme-transition {
+  transition: background-color 0.5s ease,
+              color 0.5s ease,
+              border-color 0.5s ease,
+              box-shadow 0.5s ease;
+}
+
+/* Rotate animation for dark mode toggle icon */
+@keyframes rotateAnimation {
+  0% {
+    transform: rotate(0deg) scale(0.8);
+    opacity: 0.3;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.rotate-animation {
+  animation: rotateAnimation 0.5s ease forwards;
+}
+
+/* Enhanced dark mode toggle button */
+.dark-mode-toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  outline: none;
+  overflow: hidden;
+}
+
+.dark-mode-toggle:hover {
+  transform: translateY(-2px);
+  background-color: rgba(var(--primary-color-rgb), 0.1);
+}
+
+.dark-mode-toggle:active {
+  transform: translateY(1px);
+}
+
+/* Special styling for the dark mode toggle icons */
+.dark-mode-toggle i {
+  transition: all 0.3s ease;
+}
+
+.dark-mode .dark-mode-toggle {
+  color: var(--primary-color);
+}
+
+.dark-mode .dark-mode-toggle:hover {
+  background-color: rgba(var(--primary-color-rgb), 0.2);
+}

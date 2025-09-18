@@ -11,17 +11,59 @@
   <link rel="stylesheet" href="css/projects-certificates.css">
   <link rel="stylesheet" href="css/certificates-enhanced.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="js/darkMode.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/navScroll.js"></script>
   <script src="js/projects.js"></script>
+  <script src="js/main.js"></script>
+  <!-- Simple debug script -->
+  <script>
+    // Backup inline dark mode function
+    function simpleDarkModeToggle() {
+      console.log('🚨 INLINE FUNCTION CALLED!');
+      
+      const body = document.body;
+      const btn = document.getElementById('darkModeToggle');
+      
+      if (body.classList.contains('dark-mode')) {
+        body.classList.remove('dark-mode');
+        btn.innerHTML = '<i class="fas fa-moon"></i>';
+        localStorage.setItem('theme', 'light');
+        console.log('☀️ Inline: Switched to light');
+      } else {
+        body.classList.add('dark-mode');
+        btn.innerHTML = '<i class="fas fa-sun"></i>';
+        localStorage.setItem('theme', 'dark');
+        console.log('🌙 Inline: Switched to dark');
+      }
+    }
+    
+    window.addEventListener('load', function() {
+      console.log('🔍 Debug: Page loaded, testing dark mode button...');
+      
+      const btn = document.getElementById('darkModeToggle');
+      if (btn) {
+        console.log('✅ Debug: Button found!');
+        btn.style.outline = '2px solid lime'; // Visual indicator
+        
+        btn.addEventListener('click', function() {
+          console.log('🎯 Debug: Button clicked!');
+          console.log('Body classes:', document.body.className);
+        });
+      } else {
+        console.error('❌ Debug: Button NOT found!');
+      }
+    });
+  </script>
+
 </head>
 <body>
   <header>
     <nav>
-      <div class="logo">Jade.Create</div>
+      <div class="logo">Jade.Dev</div>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
@@ -29,7 +71,7 @@
         <a href="#projects">Projects</a>
         <a href="#" id="contactLink">Contact</a> <!-- Updated to trigger chat -->
       </div>
-      <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle Dark Mode">
+      <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle Dark Mode" onclick="simpleDarkModeToggle()">
         <i class="fas fa-moon"></i>
       </button>
     </nav>
@@ -50,6 +92,10 @@
           <div class="location">
             <i class="fas fa-map-marker-alt location-icon"></i>
             <span>Pangasinan, Philippines</span>
+          </div>
+          <div class="university">
+            <i class="fas fa-graduation-cap university-icon"></i>
+            <span>Panpacific University</span>
           </div>
           <div class="hero-buttons">
             <a href="#projects" class="btn">View My Work</a>

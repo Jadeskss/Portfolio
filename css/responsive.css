@@ -246,6 +246,25 @@
 
 /* Contact form responsive adjustments */
 @media (max-width: 768px) {
+  /* Hide Projects and Certifications sections on mobile */
+  #projects,
+  #certificates {
+    display: none !important;
+  }
+  
+  /* Hide navigation links to Projects and Certificates on mobile */
+  nav a[href="#projects"],
+  nav a[href="#certificates"],
+  .nav-links a[href="#projects"],
+  .nav-links a[href="#certificates"] {
+    display: none !important;
+  }
+  
+  /* Hide any buttons that link to these sections */
+  a[href="#projects"].btn {
+    display: none !important;
+  }
+  
   .contact-container {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -381,6 +400,11 @@
     margin-top: 0.25rem;
     margin-bottom: 1.25rem;
   }
+  
+  .university {
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -389,6 +413,14 @@
   }
   
   .location-icon {
+    font-size: 1rem;
+  }
+  
+  .university {
+    font-size: 0.85rem;
+  }
+  
+  .university-icon {
     font-size: 1rem;
   }
 }
