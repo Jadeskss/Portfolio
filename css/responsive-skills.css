@@ -19,12 +19,8 @@
     font-size: 1.4rem;
   }
   
-  .skills-track {
-    gap: 3rem;
-  }
-  
-  .skill-group {
-    gap: 3rem;
+  .skills-grid {
+    gap: 1.5rem;
   }
   
   .skill-icon-wrapper,
@@ -41,7 +37,7 @@
 /* Mobile Landscape Breakpoint */
 @media (max-width: 767px) {
   .skills-categories-container {
-    gap: 3rem;
+    gap: 2rem;
   }
   
   .skills-category-section {
@@ -53,13 +49,9 @@
     margin-bottom: 0;
   }
   
-  .skills-track {
-    gap: 2rem;
-    animation: slideLoop 20s linear infinite;
-  }
-  
-  .skill-group {
-    gap: 2rem;
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1.5rem;
   }
   
   .skill-item {
@@ -85,7 +77,7 @@
 @media (max-width: 575px) {
   .skills-categories-container {
     padding: 0 0.5rem;
-    gap: 2rem;
+    gap: 1.5rem;
   }
   
   .skills-category-section {
@@ -109,12 +101,9 @@
     width: 40px;
   }
   
-  .skills-track {
-    gap: 1.5rem;
-  }
-  
-  .skill-group {
-    gap: 1.5rem;
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1rem;
   }
   
   .skill-icon-wrapper,
@@ -148,12 +137,9 @@
     font-size: 1rem;
   }
   
-  .skills-track {
-    gap: 1rem;
-  }
-  
-  .skill-group {
-    gap: 1rem;
+.skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
   }
   
   .skill-icon-wrapper,

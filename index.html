@@ -8,57 +8,14 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/responsive-skills.css">
-  <link rel="stylesheet" href="css/projects-certificates.css">
-  <link rel="stylesheet" href="css/certificates-enhanced.css">
   <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="js/darkMode.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/navScroll.js"></script>
   <script src="js/projects.js"></script>
   <script src="js/main.js"></script>
-  <!-- Simple debug script -->
-  <script>
-    // Backup inline dark mode function
-    function simpleDarkModeToggle() {
-      console.log('🚨 INLINE FUNCTION CALLED!');
-      
-      const body = document.body;
-      const btn = document.getElementById('darkModeToggle');
-      
-      if (body.classList.contains('dark-mode')) {
-        body.classList.remove('dark-mode');
-        btn.innerHTML = '<i class="fas fa-moon"></i>';
-        localStorage.setItem('theme', 'light');
-        console.log('☀️ Inline: Switched to light');
-      } else {
-        body.classList.add('dark-mode');
-        btn.innerHTML = '<i class="fas fa-sun"></i>';
-        localStorage.setItem('theme', 'dark');
-        console.log('🌙 Inline: Switched to dark');
-      }
-    }
-    
-    window.addEventListener('load', function() {
-      console.log('🔍 Debug: Page loaded, testing dark mode button...');
-      
-      const btn = document.getElementById('darkModeToggle');
-      if (btn) {
-        console.log('✅ Debug: Button found!');
-        btn.style.outline = '2px solid lime'; // Visual indicator
-        
-        btn.addEventListener('click', function() {
-          console.log('🎯 Debug: Button clicked!');
-          console.log('Body classes:', document.body.className);
-        });
-      } else {
-        console.error('❌ Debug: Button NOT found!');
-      }
-    });
-  </script>
-
 </head>
 <body>
   <header>
@@ -66,12 +23,13 @@
       <div class="logo">Jade.Dev</div>
       <div class="nav-links">
         <a href="#about">About</a>
+        <a href="#education">Education</a>
         <a href="#skills">Skills</a>
         <a href="#certificates">Certificates</a>
         <a href="#projects">Projects</a>
-        <a href="#" id="contactLink">Contact</a> <!-- Updated to trigger chat -->
+        <a href="#contact">Contact</a>
       </div>
-      <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle Dark Mode" onclick="simpleDarkModeToggle()">
+      <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle Dark Mode">
         <i class="fas fa-moon"></i>
       </button>
     </nav>
@@ -82,7 +40,6 @@
       <div class="hero-container">
         <div class="profile-container">
           <div class="profile-picture-wrapper">
-            <!-- Replace with your actual image path -->
             <img src="assets/images/profile.PNG" alt="Your Name" class="profile-picture">
           </div>
         </div>
@@ -99,7 +56,7 @@
           </div>
           <div class="hero-buttons">
             <a href="#projects" class="btn">View My Work</a>
-            <a href="#" id="heroContactBtn" class="btn btn-outline">Send Email</a>
+            <a href="#contact" class="btn btn-outline">Get in Touch</a>
           </div>
         </div>
       </div>
@@ -107,9 +64,33 @@
 
     <section id="about" class="section fade-in">
       <h2 class="section-title">About Me</h2>
-      <p>I'm a multidisciplinary creative student with expertise in web development, graphic design, and video production. My technical programming skills combined with my eye for design allow me to create visually stunning and functionally robust digital experiences.</p>
+      <p>I’m a creative and detail-oriented individual who enjoys coding, video editing, and designing posters and websites. I’m passionate about creating visually appealing and functional digital content and continuously improving my technical and creative skills.</p>
     </section>
-
+    <section id="education" class="section fade-in">
+      <h2 class="section-title">Education</h2>
+      <div class="education-container">
+        <div class="education-item">
+          <div class="education-header">
+            <div class="education-title">
+              <h3>Information and Communications Technology ICT</h3>
+              <p class="education-institution">Navidad National High School</p>
+              <p class="education-honor">• With High Honors</p>
+            </div>
+            <div class="education-date">May 2022 - May 2023</div>
+          </div>
+        </div>
+        
+        <div class="education-item">
+          <div class="education-header">
+            <div class="education-title">
+              <h3>Bachelor of Science in Information Technology</h3>
+              <p class="education-institution">Panpacific University</p>
+            </div>
+            <div class="education-date">September 2024 - Present</div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section id="skills" class="section fade-in">
       <h2 class="section-title">Skills & Expertise</h2>
       
@@ -124,90 +105,42 @@
               </div>
               <h3 class="skills-category-title">Programming</h3>
             </div>
-            <div class="skills-logos-container">
-              <div class="skills-track">
-                <div class="skill-category">
-                  <div class="skill-group">
-                    <div class="skill-item" data-skill="html5">
-                      <div class="skill-icon-wrapper">
-                        <i class="fab fa-html5 skill-icon"></i>
-                      </div>
-                      <span>HTML5</span>
-                    </div>
-                    <div class="skill-item" data-skill="css3">
-                      <div class="skill-icon-wrapper">
-                        <i class="fab fa-css3-alt skill-icon"></i>
-                      </div>
-                      <span>CSS3</span>
-                    </div>
-                    <div class="skill-item" data-skill="javascript">
-                      <div class="skill-icon-wrapper">
-                        <i class="fab fa-js skill-icon"></i>
-                      </div>
-                      <span>JavaScript</span>
-                    </div>
-                    <div class="skill-item" data-skill="python">
-                      <div class="skill-icon-wrapper">
-                        <i class="fab fa-python skill-icon"></i>
-                      </div>
-                      <span>Python</span>
-                    </div>
-                    <div class="skill-item" data-skill="git">
-                      <div class="skill-icon-wrapper">
-                        <i class="fab fa-git-alt skill-icon"></i>
-                      </div>
-                      <span>Git</span>
-                    </div>
-                    <div class="skill-item" data-skill="react">
-                      <div class="skill-icon-wrapper">
-                        <i class="fab fa-react skill-icon"></i>
-                      </div>
-                      <span>React</span>
-                    </div>
-                  </div>
+            <div class="skills-grid">
+              <div class="skill-item" data-skill="html5">
+                <div class="skill-icon-wrapper">
+                  <i class="fab fa-html5 skill-icon"></i>
                 </div>
-                
-                <!-- Duplicate for seamless loop -->
-                <div class="skill-category">
-                  <div class="skill-group">
-                    <div class="skill-item" data-skill="html5">
-                      <div class="skill-icon-wrapper">
-                        <i class="fab fa-html5 skill-icon"></i>
-                      </div>
-                      <span>HTML5</span>
-                    </div>
-                    <div class="skill-item" data-skill="css3">
-                      <div class="skill-icon-wrapper">
-                        <i class="fab fa-css3-alt skill-icon"></i>
-                      </div>
-                      <span>CSS3</span>
-                    </div>
-                    <div class="skill-item" data-skill="javascript">
-                      <div class="skill-icon-wrapper">
-                        <i class="fab fa-js skill-icon"></i>
-                      </div>
-                      <span>JavaScript</span>
-                    </div>
-                    <div class="skill-item" data-skill="python">
-                      <div class="skill-icon-wrapper">
-                        <i class="fab fa-python skill-icon"></i>
-                      </div>
-                      <span>Python</span>
-                    </div>
-                    <div class="skill-item" data-skill="git">
-                      <div class="skill-icon-wrapper">
-                        <i class="fab fa-git-alt skill-icon"></i>
-                      </div>
-                      <span>Git</span>
-                    </div>
-                    <div class="skill-item" data-skill="react">
-                      <div class="skill-icon-wrapper">
-                        <i class="fab fa-react skill-icon"></i>
-                      </div>
-                      <span>React</span>
-                    </div>
-                  </div>
+                <span>HTML5</span>
+              </div>
+              <div class="skill-item" data-skill="css3">
+                <div class="skill-icon-wrapper">
+                  <i class="fab fa-css3-alt skill-icon"></i>
                 </div>
+                <span>CSS3</span>
+              </div>
+              <div class="skill-item" data-skill="javascript">
+                <div class="skill-icon-wrapper">
+                  <i class="fab fa-js skill-icon"></i>
+                </div>
+                <span>JavaScript</span>
+              </div>
+              <div class="skill-item" data-skill="python">
+                <div class="skill-icon-wrapper">
+                  <i class="fab fa-python skill-icon"></i>
+                </div>
+                <span>Python</span>
+              </div>
+              <div class="skill-item" data-skill="git">
+                <div class="skill-icon-wrapper">
+                  <i class="fab fa-git-alt skill-icon"></i>
+                </div>
+                <span>Git</span>
+              </div>
+              <div class="skill-item" data-skill="react">
+                <div class="skill-icon-wrapper">
+                  <i class="fab fa-react skill-icon"></i>
+                </div>
+                <span>React</span>
               </div>
             </div>
           </div>
@@ -220,66 +153,30 @@
               </div>
               <h3 class="skills-category-title">Graphic Design</h3>
             </div>
-            <div class="skills-logos-container">
-              <div class="skills-track">
-                <div class="skill-category">
-                  <div class="skill-group">
-                    <div class="skill-item" data-skill="photoshop">
-                      <div class="skill-icon-img">
-                        <img src="assets/images/ps.png" alt="Photoshop" class="software-icon">
-                      </div>
-                      <span>Photoshop</span>
-                    </div>
-                    <div class="skill-item" data-skill="illustrator">
-                      <div class="skill-icon-img">
-                        <img src="assets/images/ai.png" alt="Illustrator" class="software-icon">
-                      </div>
-                      <span>Illustrator</span>
-                    </div>
-                    <div class="skill-item" data-skill="figma">
-                      <div class="skill-icon-img">
-                        <img src="assets/images/Figma.svg" alt="Figma" class="software-icon">
-                      </div>
-                      <span>Figma</span>
-                    </div>
-                    <div class="skill-item" data-skill="canva">
-                      <div class="skill-icon-img">
-                        <img src="assets/images/canva.png" alt="Canva" class="software-icon">
-                      </div>
-                      <span>Canva</span>
-                    </div>
-                  </div>
+            <div class="skills-grid">
+              <div class="skill-item" data-skill="photoshop">
+                <div class="skill-icon-img">
+                  <img src="assets/images/ps.png" alt="Photoshop" class="software-icon">
                 </div>
-                
-                <!-- Duplicate for seamless loop -->
-                <div class="skill-category">
-                  <div class="skill-group">
-                    <div class="skill-item" data-skill="photoshop">
-                      <div class="skill-icon-img">
-                        <img src="assets/images/ps.png" alt="Photoshop" class="software-icon">
-                      </div>
-                      <span>Photoshop</span>
-                    </div>
-                    <div class="skill-item" data-skill="illustrator">
-                      <div class="skill-icon-img">
-                        <img src="assets/images/ai.png" alt="Illustrator" class="software-icon">
-                      </div>
-                      <span>Illustrator</span>
-                    </div>
-                    <div class="skill-item" data-skill="figma">
-                      <div class="skill-icon-img">
-                        <img src="assets/images/Figma.svg" alt="Figma" class="software-icon">
-                      </div>
-                      <span>Figma</span>
-                    </div>
-                    <div class="skill-item" data-skill="canva">
-                      <div class="skill-icon-img">
-                        <img src="assets/images/canva.png" alt="Canva" class="software-icon">
-                      </div>
-                      <span>Canva</span>
-                    </div>
-                  </div>
+                <span>Photoshop</span>
+              </div>
+              <div class="skill-item" data-skill="illustrator">
+                <div class="skill-icon-img">
+                  <img src="assets/images/ai.png" alt="Illustrator" class="software-icon">
                 </div>
+                <span>Illustrator</span>
+              </div>
+              <div class="skill-item" data-skill="figma">
+                <div class="skill-icon-img">
+                  <img src="assets/images/Figma.svg" alt="Figma" class="software-icon">
+                </div>
+                <span>Figma</span>
+              </div>
+              <div class="skill-item" data-skill="canva">
+                <div class="skill-icon-img">
+                  <img src="assets/images/canva.png" alt="Canva" class="software-icon">
+                </div>
+                <span>Canva</span>
               </div>
             </div>
           </div>
@@ -292,66 +189,30 @@
               </div>
               <h3 class="skills-category-title">Video Editing</h3>
             </div>
-            <div class="skills-logos-container">
-              <div class="skills-track">
-                <div class="skill-category">
-                  <div class="skill-group">
-                    <div class="skill-item" data-skill="premiere">
-                      <div class="skill-icon-img">
-                        <img src="assets/images/pr.png" alt="Premiere Pro" class="software-icon">
-                      </div>
-                      <span>Premiere Pro</span>
-                    </div>
-                    <div class="skill-item" data-skill="aftereffects">
-                      <div class="skill-icon-img">
-                        <img src="assets/images/ae.png" alt="After Effects" class="software-icon">
-                      </div>
-                      <span>After Effects</span>
-                    </div>
-                    <div class="skill-item" data-skill="lightroom">
-                      <div class="skill-icon-img">
-                        <img src="assets/images/lr.png" alt="Lightroom" class="software-icon">
-                      </div>
-                      <span>Lightroom</span>
-                    </div>
-                    <div class="skill-item" data-skill="capcut">
-                      <div class="skill-icon-img">
-                        <img src="assets/images/cap.png" alt="Capcut" class="software-icon">
-                      </div>
-                      <span>Capcut</span>
-                    </div>
-                  </div>
+            <div class="skills-grid">
+              <div class="skill-item" data-skill="premiere">
+                <div class="skill-icon-img">
+                  <img src="assets/images/pr.png" alt="Premiere Pro" class="software-icon">
                 </div>
-                
-                <!-- Duplicate for seamless loop -->
-                <div class="skill-category">
-                  <div class="skill-group">
-                    <div class="skill-item" data-skill="premiere">
-                      <div class="skill-icon-img">
-                        <img src="assets/images/pr.png" alt="Premiere Pro" class="software-icon">
-                      </div>
-                      <span>Premiere Pro</span>
-                    </div>
-                    <div class="skill-item" data-skill="aftereffects">
-                      <div class="skill-icon-img">
-                        <img src="assets/images/ae.png" alt="After Effects" class="software-icon">
-                      </div>
-                      <span>After Effects</span>
-                    </div>
-                    <div class="skill-item" data-skill="lightroom">
-                      <div class="skill-icon-img">
-                        <img src="assets/images/lr.png" alt="Lightroom" class="software-icon">
-                      </div>
-                      <span>Lightroom</span>
-                    </div>
-                    <div class="skill-item" data-skill="capcut">
-                      <div class="skill-icon-img">
-                        <img src="assets/images/cap.png" alt="Capcut" class="software-icon">
-                      </div>
-                      <span>Capcut</span>
-                    </div>
-                  </div>
+                <span>Premiere Pro</span>
+              </div>
+              <div class="skill-item" data-skill="aftereffects">
+                <div class="skill-icon-img">
+                  <img src="assets/images/ae.png" alt="After Effects" class="software-icon">
                 </div>
+                <span>After Effects</span>
+              </div>
+              <div class="skill-item" data-skill="lightroom">
+                <div class="skill-icon-img">
+                  <img src="assets/images/lr.png" alt="Lightroom" class="software-icon">
+                </div>
+                <span>Lightroom</span>
+              </div>
+              <div class="skill-item" data-skill="capcut">
+                <div class="skill-icon-img">
+                  <img src="assets/images/cap.png" alt="Capcut" class="software-icon">
+                </div>
+                <span>Capcut</span>
               </div>
             </div>
           </div>
@@ -361,307 +222,179 @@
     </section>
 
     <section id="projects" class="section fade-in">
-      <div class="section-header">
+      <div class="projects-header">
         <h2 class="section-title">My Projects</h2>
-        <div class="section-filters">
+        <div class="projects-filters">
           <button class="filter-btn active" data-filter="all">All</button>
           <button class="filter-btn" data-filter="web">Web</button>
           <button class="filter-btn" data-filter="design">Design</button>
           <button class="filter-btn" data-filter="video">Video</button>
         </div>
       </div>
+      
       <div class="projects-grid">
+        <!-- Project 1: SKBE Website -->
         <div class="project-card" data-category="web">
-          <div class="project-card-inner">
-            <div class="project-card-front">
-              <img src="assets/images/pro1.png" alt="SKBE Website" class="project-image">
-              <div class="project-overlay">
-                <div class="project-overlay-content">
-                  <h3>SKBE Website</h3>
-                  <div class="project-actions">
-                    <a href="https://jadeskss.github.io/officialskbe/" class="project-link" aria-label="View Project">
-                      <i class="fas fa-external-link-alt"></i>
-                    </a>
-                    <button class="project-info-toggle" aria-label="Project Information">
-                      <i class="fas fa-info-circle"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
+          <div class="project-image-container">
+            <img src="assets/images/pro1.png" alt="SKBE Website" class="project-image">
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">SKBE Website</h3>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">JS</span>
+              <span class="project-tag">API</span>
             </div>
-            <div class="project-card-back">
-              <div class="project-content">
-                <h3>SKBE Website</h3>
-                <div class="project-tags">
-                  <span class="project-tag">React</span>
-                  <span class="project-tag">CSS</span>
-                  <span class="project-tag">HTML</span>
-                  <span class="project-tag">JS</span>
-                  <span class="project-tag">API</span>
-                </div>
-                <p>A Simple website for Sangguniang Kabataan Batchelor East.</p>
-                <div class="project-actions">
-                  <a href="https://jadeskss.github.io/officialskbe/" class="btn project-btn">View Project <i class="fas fa-arrow-right"></i></a>
-                </div>
-              </div>
-            </div>
+            <p class="project-description">A Simple website for Sangguniang Kabataan Batchelor East.</p>
+            <a href="https://jadeskss.github.io/officialskbe/" class="project-button" target="_blank">
+              View Project
+              <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
 
+        <!-- Project 2: AI Love You Short Film -->
         <div class="project-card" data-category="video">
-          <div class="project-card-inner">
-            <div class="project-card-front">
-              <img src="assets/images/pro2.png" alt="AI Love You Short Film" class="project-image">
-              <div class="project-overlay">
-                <div class="project-overlay-content">
-                  <h3>AI Love You | ShortFilm</h3>
-                  <div class="project-actions">
-                    <a href="#" class="project-link" aria-label="View Project">
-                      <i class="fas fa-play"></i>
-                    </a>
-                    <button class="project-info-toggle" aria-label="Project Information">
-                      <i class="fas fa-info-circle"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
+          <div class="project-image-container">
+            <img src="assets/images/pro2.png" alt="AI Love You Short Film" class="project-image">
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">Ai Love You | ShortFilm</h3>
+            <div class="project-tags">
+              <span class="project-tag">Premier Pro</span>
+              <span class="project-tag">After Effects</span>
+              <span class="project-tag">Canva</span>
             </div>
-            <div class="project-card-back">
-              <div class="project-content">
-                <h3>Ai Love You | ShortFilm</h3>
-                <div class="project-tags">
-                  <span class="project-tag">Premier Pro</span>
-                  <span class="project-tag">After Effects</span>
-                  <span class="project-tag">Canva</span>
-                </div>
-                <p>A school ShortFilm related to AI.</p>
-                <div class="project-actions">
-                  <a href="#" class="btn project-btn">Watch Film <i class="fas fa-play"></i></a>
-                </div>
-              </div>
-            </div>
+            <p class="project-description">A school ShortFilm related to AI.</p>
+            <a href="#" class="project-button">
+              Watch Film
+              <i class="fas fa-play"></i>
+            </a>
           </div>
         </div>
 
+        <!-- Project 3: ShoeNiverse Prototype -->
         <div class="project-card" data-category="design">
-          <div class="project-card-inner">
-            <div class="project-card-front">
-              <img src="assets/images/pro3.png" alt="ShoeNiverse Prototype" class="project-image">
-              <div class="project-overlay">
-                <div class="project-overlay-content">
-                  <h3>ShoeNiverse | Prototype</h3>
-                  <div class="project-actions">
-                    <a href="https://www.figma.com/proto/1vz79ZOfbXuI7oHU7Kl5q7/fco-ko?page-id=0%3A1&node-id=111-398&p=f&viewport=1407%2C-1205%2C0.53&t=xcFJ05UGGfJF7dxA-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=60%3A396&show-proto-sidebar=1" class="project-link" aria-label="View Project">
-                      <i class="fab fa-figma"></i>
-                    </a>
-                    <button class="project-info-toggle" aria-label="Project Information">
-                      <i class="fas fa-info-circle"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
+          <div class="project-image-container">
+            <img src="assets/images/pro3.png" alt="ShoeNiverse Prototype" class="project-image">
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">ShoeNiverse | Prototype</h3>
+            <div class="project-tags">
+              <span class="project-tag">Figma</span>
             </div>
-            <div class="project-card-back">
-              <div class="project-content">
-                <h3>ShoeNiverse | Prototype</h3>
-                <div class="project-tags">
-                  <span class="project-tag">Figma</span>
-                </div>
-                <p>Shoe app Prototype.</p>
-                <div class="project-actions">
-                  <a href="https://www.figma.com/proto/1vz79ZOfbXuI7oHU7Kl5q7/fco-ko?page-id=0%3A1&node-id=111-398&p=f&viewport=1407%2C-1205%2C0.53&t=xcFJ05UGGfJF7dxA-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=60%3A396&show-proto-sidebar=1" class="btn project-btn">View Prototype <i class="fab fa-figma"></i></a>
-                </div>
-              </div>
-            </div>
+            <p class="project-description">Shoe app Prototype.</p>
+            <a href="https://www.figma.com/proto/1vz79ZOfbXuI7oHU7Kl5q7/fco-ko?page-id=0%3A1&node-id=111-398&p=f&viewport=1407%2C-1205%2C0.53&t=xcFJ05UGGfJF7dxA-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=60%3A396&show-proto-sidebar=1" class="project-button" target="_blank">
+              View Prototype
+              <i class="fab fa-figma"></i>
+            </a>
           </div>
         </div>
-
-        <!-- Placeholder for additional projects -->
-        <!-- You can add more projects here as needed -->
       </div>
     </section>
 
     <section id="certificates" class="section fade-in">
-      <div class="section-header">
-        <h2 class="section-title">Certifications</h2>
-        <div class="section-filters">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="web">Web</button>
-          <button class="filter-btn" data-filter="design">Design</button>
-          <button class="filter-btn" data-filter="technical">Technical</button>
-        </div>
-      </div>
-      <div class="certificates-grid">
+      <h2 class="section-title">Certifications</h2>
+      <div class="education-container">
         <!-- Certificate 1 -->
-        <div class="certificate-card" data-category="web">
-          <div class="certificate-badge">
-            <i class="fas fa-award"></i>
+        <div class="education-item">
+          <div class="education-header">
+            <div class="education-title">
+              <h3>Web Development Fundamentals</h3>
+              <p class="education-institution">freeCodeCamp</p>
+              <div class="certificate-tags">
+                <span class="cert-tag">HTML5</span>
+                <span class="cert-tag">CSS3</span>
+                <span class="cert-tag">JavaScript</span>
+              </div>
+            </div>
+            <div class="education-date">2024</div>
           </div>
-          <div class="certificate-content">
-            <div class="certificate-logo">
-              <i class="fab fa-free-code-camp"></i>
-            </div>
-            <h3>Web Development Fundamentals</h3>
-            <div class="certificate-info">
-              <span class="certificate-issuer">freeCodeCamp</span>
-              <span class="certificate-date">2024</span>
-            </div>
-            <div class="certificate-tags">
-              <span class="project-tag">HTML5</span>
-              <span class="project-tag">CSS3</span>
-              <span class="project-tag">JavaScript</span>
-            </div>
-            <a href="#" class="certificate-link">
-              <i class="fas fa-external-link-alt"></i>
-              <span>View Certificate</span>
-            </a>
-          </div>
+          <a href="#" class="certificate-view-btn">
+            <i class="fas fa-external-link-alt"></i>
+            View Certificate
+          </a>
         </div>
         
         <!-- Certificate 2 -->
-        <div class="certificate-card" data-category="design">
-          <div class="certificate-badge">
-            <i class="fas fa-award"></i>
+        <div class="education-item">
+          <div class="education-header">
+            <div class="education-title">
+              <h3>Basic Video Editing</h3>
+              <p class="education-institution">Udemy</p>
+              <div class="certificate-tags">
+                <span class="cert-tag">Premier Pro</span>
+                <span class="cert-tag">After Effects</span>
+                <span class="cert-tag">MochaAe</span>
+              </div>
+            </div>
+            <div class="education-date">2023</div>
           </div>
-          <div class="certificate-content">
-            <div class="certificate-logo">
-              <i class="fab fa-udemy"></i>
-            </div>
-            <h3>Basic Video Editing</h3>
-            <div class="certificate-info">
-              <span class="certificate-issuer">Udemy</span>
-              <span class="certificate-date">2023</span>
-            </div>
-            <div class="certificate-tags">
-              <span class="project-tag">Premier Pro</span>
-              <span class="project-tag">After Effects</span>
-              <span class="project-tag">MochaAe</span>
-            </div>
-            <a href="#" class="certificate-link">
-              <i class="fas fa-external-link-alt"></i>
-              <span>View Certificate</span>
-            </a>
-          </div>
+          <a href="#" class="certificate-view-btn">
+            <i class="fas fa-external-link-alt"></i>
+            View Certificate
+          </a>
         </div>
 
         <!-- Certificate 3 -->
-        <div class="certificate-card" data-category="technical">
-          <div class="certificate-badge">
-            <i class="fas fa-award"></i>
-          </div>
-          <div class="certificate-content">
-            <div class="certificate-logo">
-              <i class="fas fa-cogs"></i>
+        <div class="education-item">
+          <div class="education-header">
+            <div class="education-title">
+              <h3>Computer System Servicing NCII</h3>
+              <p class="education-institution">Tesda</p>
+              <div class="certificate-tags">
+                <span class="cert-tag">Server</span>
+                <span class="cert-tag">CSS</span>
+                <span class="cert-tag">Windows</span>
+                <span class="cert-tag">Networking</span>
+              </div>
             </div>
-            <h3>Computer System Servicing NCII</h3>
-            <div class="certificate-info">
-              <span class="certificate-issuer">Tesda</span>
-              <span class="certificate-date">2023</span>
-            </div>
-            <div class="certificate-tags">
-              <span class="project-tag">Server</span>
-              <span class="project-tag">CSS</span>
-              <span class="project-tag">Windows</span>
-              <span class="project-tag">Networking</span>
-            </div>
-            <a href="#" class="certificate-link">
-              <i class="fas fa-external-link-alt"></i>
-              <span>View Certificate</span>
-            </a>
+            <div class="education-date">2023</div>
           </div>
-        </div>
-        
-        
-          </div>
+          <a href="#" class="certificate-view-btn">
+            <i class="fas fa-external-link-alt"></i>
+            View Certificate
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Chat Button -->
-    <div class="chat-button" id="chatButton">
-      <i class="fas fa-comment-dots"></i>
-      <span>Chat with Jade</span>
-    </div>
-
-    <!-- Chat Modal -->
-    <div class="chat-modal" id="chatModal">
-      <div class="chat-modal-content">
-        <div class="chat-modal-header">
-          <h3>Get In Touch</h3>
-          <button class="chat-close" id="chatClose">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-        <div class="chat-modal-body">
-          <!-- Contact Options -->
-          <div class="contact-options">
-            <div class="messenger-option">
-              <a href="https://m.me/jJade.Tzyyy" target="_blank" class="messenger-btn">
-                <i class="fab fa-facebook-messenger"></i>
-                <span>Message on Facebook</span>
-              </a>
-              <p class="messenger-note">For faster response, message me directly on Facebook</p>
-            </div>
-            
-            <div class="option-divider">
-              <span>Or send an email</span>
-            </div>
-          </div>
-          
-          <!-- Email Form -->
-          <form id="chatForm" class="contact-form">
-            <div class="form-group">
-              <label for="chat-name" class="form-label">Name</label>
-              <input type="text" id="chat-name" name="name" class="form-input" placeholder="Your name" required>
-            </div>
-            <div class="form-group">
-              <label for="chat-email" class="form-label">Email</label>
-              <input type="email" id="chat-email" name="email" class="form-input" placeholder="Your email address" required>
-            </div>
-            <div class="form-group">
-              <label for="chat-subject" class="form-label">Subject</label>
-              <input type="text" id="chat-subject" name="subject" class="form-input" placeholder="Subject of your message" required>
-            </div>
-            <div class="form-group">
-              <label for="chat-message" class="form-label">Message</label>
-              <textarea id="chat-message" name="message" class="form-input form-textarea" placeholder="Your message" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="btn" id="chat-submit-btn">
-              <span>Send Message</span>
-              <i class="fas fa-paper-plane"></i>
-            </button>
-            <div id="chat-form-status" class="form-status"></div>
-          </form>
+    <section id="contact" class="section fade-in">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-container">
+        <p class="contact-description">Feel free to reach out for collaborations, projects, or just to say hello!</p>
+        <div class="contact-methods">
+          <a href="mailto:your.email@example.com" class="contact-method">
+            <i class="fas fa-envelope"></i>
+            <span>Email Me</span>
+          </a>
+          <a href="https://github.com/yourusername" target="_blank" class="contact-method">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.instagram.com/yourusername" target="_blank" class="contact-method">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+          </a>
+          <a href="https://m.me/jJade.Tzyyy" target="_blank" class="contact-method">
+            <i class="fab fa-facebook-messenger"></i>
+            <span>Messenger</span>
+          </a>
         </div>
       </div>
-    </div>
+    </section>
+
   <footer class="footer">
     <div class="container">
       <div class="social-links">
         <a href="#" class="social-link"><i class="fab fa-github"></i></a>
         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
       </div>
-      <p>&copy; 2025 Jade Madriaga. All Rights Reserved.</p>
+      <p>&copy; 2026 Jade Madriaga. All Rights Reserved.</p>
     </div>
   </footer>
-
-<!-- First load the EmailJS library -->
-<script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.6.4/email.min.js"></script>
-
-<!-- Then load your scripts that use EmailJS -->
-<script src="js/chat.js"></script>
-<script src="js/darkMode.js"></script>
-<script src="js/animations.js"></script>
-<script src="js/navScroll.js"></script>
-
-<!-- Remove this duplicate initialization since it's already in chat.js -->
-<!-- 
-<script>
-  (function() {
-    emailjs.init("uzL2p9Mjna5Ahmf8O");
-  })();
-</script>
--->
 
 <script>
   // Add fade-in animation as elements come into view

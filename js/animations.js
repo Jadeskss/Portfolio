@@ -87,7 +87,6 @@ function typeAnimation(element, text, speed = 50) {
 // Scroll reveal animations
 function initScrollReveal() {
     const sections = document.querySelectorAll('.section');
-    const skillItems = document.querySelectorAll('.skill-item');
     const projectCards = document.querySelectorAll('.project-card');
     
     const observerOptions = {
@@ -108,44 +107,6 @@ function initScrollReveal() {
         section.classList.add('section-hidden');
         sectionObserver.observe(section);
     });
-    
-    // Enhanced staggered animation for skill items with distance-based delay
-    const skillObserver = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-            const skillCategories = document.querySelectorAll('.skills-category-section');
-            
-            skillCategories.forEach((category, categoryIndex) => {
-                // First animate the category header
-                setTimeout(() => {
-                    const header = category.querySelector('.category-header');
-                    header.style.opacity = '0';
-                    header.style.transform = 'translateY(-20px)';
-                    header.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                    
-                    setTimeout(() => {
-                        header.style.opacity = '1';
-                        header.style.transform = 'translateY(0)';
-                    }, 50);
-                }, 300 * categoryIndex);
-                
-                // Then animate each skill item with a staggered delay
-                const items = category.querySelectorAll('.skill-item');
-                items.forEach((item, itemIndex) => {
-                    setTimeout(() => {
-                        item.classList.add('skill-reveal');
-                    }, (300 * categoryIndex) + (100 * itemIndex) + 300);
-                });
-            });
-            
-            skillObserver.unobserve(entries[0].target);
-        }
-    }, observerOptions);
-    
-    if (skillItems.length > 0) {
-        const skillSection = document.querySelector('#skills');
-        skillItems.forEach(item => item.classList.add('skill-hidden'));
-        skillObserver.observe(skillSection);
-    }
     
     // Staggered animation for project cards
     const projectObserver = new IntersectionObserver((entries) => {

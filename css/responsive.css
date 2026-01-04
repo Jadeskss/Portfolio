@@ -96,6 +96,31 @@
     padding: 1rem 0;
   }
   
+  /* Education responsive */
+  .education-container {
+    padding-left: 35px;
+  }
+  
+  .education-container::before {
+    left: 15px;
+  }
+  
+  .education-item::before {
+    left: -27px;
+    width: 12px;
+    height: 12px;
+    top: 28px;
+  }
+  
+  .education-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .education-date {
+    align-self: flex-start;
+  }
+  
   .nav-links.active {
     transform: translateY(0);
   }
@@ -114,6 +139,16 @@
   
   .section {
     padding: 1.5rem;
+  }
+  
+  /* Projects filters */
+  .projects-filters {
+    gap: 0.75rem;
+  }
+  
+  .filter-btn {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.95rem;
   }
   
   /* Projects grid */
@@ -163,6 +198,71 @@
     height: 150px;
   }
   
+  /* Education responsive for small screens */
+  .education-container {
+    padding-left: 40px;
+  }
+  
+  .education-container::before {
+    left: 18px;
+  }
+  
+  .education-item::before {
+    left: -28px;
+    width: 12px;
+    height: 12px;
+    top: 26px;
+  }
+  
+  .education-item {
+    padding: 1.5rem;
+  }
+  
+  .education-title h3 {
+    font-size: 1.1rem;
+  }
+  
+  .education-date {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.75rem;
+  }
+  
+  /* Contact section responsive */
+  .contact-methods {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .contact-method {
+    padding: 1.5rem 1rem;
+  }
+  
+  .contact-method i {
+    font-size: 1.75rem;
+  }
+  
+  /* Projects filters for mobile */
+  .filter-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .projects-grid {
+    gap: 1.25rem;
+  }
+  
+  .project-image-container {
+    height: 200px;
+  }
+  
+  .project-info {
+    padding: 1.25rem;
+  }
+  
+  .project-title {
+    font-size: 1.3rem;
+  }
+  
   .skill-group {
     grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
@@ -200,6 +300,38 @@
   .section {
     padding: 1.25rem;
     margin: 1.5rem 0;
+  }
+  
+  /* Projects filters for very small screens */
+  .filter-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+  
+  .projects-filters {
+    gap: 0.5rem;
+  }
+  
+  .project-image-container {
+    height: 180px;
+  }
+  
+  .project-info {
+    padding: 1rem;
+  }
+  
+  .project-title {
+    font-size: 1.2rem;
+  }
+  
+  .project-tag {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .project-button {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.95rem;
   }
   
   .skill-item {
@@ -246,25 +378,6 @@
 
 /* Contact form responsive adjustments */
 @media (max-width: 768px) {
-  /* Hide Projects and Certifications sections on mobile */
-  #projects,
-  #certificates {
-    display: none !important;
-  }
-  
-  /* Hide navigation links to Projects and Certificates on mobile */
-  nav a[href="#projects"],
-  nav a[href="#certificates"],
-  .nav-links a[href="#projects"],
-  .nav-links a[href="#certificates"] {
-    display: none !important;
-  }
-  
-  /* Hide any buttons that link to these sections */
-  a[href="#projects"].btn {
-    display: none !important;
-  }
-  
   .contact-container {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -422,53 +535,5 @@
   
   .university-icon {
     font-size: 1rem;
-  }
-}
-
-/* Hide chat button text on small devices */
-@media (max-width: 575px) {
-  .chat-button span {
-    display: none;
-  }
-  
-  /* Adjust padding for icon-only button */
-  .chat-button {
-    padding: 12px;
-    aspect-ratio: 1/1;
-    justify-content: center;
-  }
-  
-  /* Make icon slightly larger for better touch target */
-  .chat-button i {
-    font-size: 1.3rem;
-  }
-}
-
-/* Even smaller devices */
-@media (max-width: 399px) {
-  .chat-button {
-    padding: 10px;
-    bottom: 15px;
-    right: 15px;
-  }
-}
-
-/* Responsive styling for messenger option */
-@media (max-width: 480px) {
-  .messenger-btn {
-    padding: 8px 16px;
-    font-size: 0.9rem;
-  }
-  
-  .messenger-btn i {
-    font-size: 1.1rem;
-  }
-  
-  .option-divider span {
-    font-size: 0.8rem;
-  }
-  
-  .messenger-note {
-    font-size: 0.75rem;
   }
 }

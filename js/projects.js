@@ -1,13 +1,7 @@
-// Projects and Certificates Filter Functionality
+// Projects Filter Functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize project filters
-    initFilters('#projects .filter-btn', '.project-card');
-    
-    // Initialize certificate filters
-    initFilters('#certificates .filter-btn', '.certificate-card');
-    
-    // Add flip functionality
-    initProjectCardFlip();
+    initFilters('.filter-btn', '.project-card');
 });
 
 // Filter initialization function
@@ -49,35 +43,6 @@ function initFilters(filterSelector, itemSelector) {
                     }
                 }
             });
-        });
-    });
-}
-
-// Project card flip functionality
-function initProjectCardFlip() {
-    const infoToggleBtns = document.querySelectorAll('.project-info-toggle');
-    
-    infoToggleBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const card = this.closest('.project-card');
-            const cardInner = card.querySelector('.project-card-inner');
-            
-            cardInner.style.transform = 
-                cardInner.style.transform === 'rotateY(180deg)' ? 
-                'rotateY(0deg)' : 'rotateY(180deg)';
-        });
-    });
-    
-    // Allow clicking on back side to flip back
-    document.querySelectorAll('.project-card-back').forEach(back => {
-        back.addEventListener('click', function(e) {
-            if (e.target === this || e.target.classList.contains('project-content')) {
-                const cardInner = this.parentElement;
-                cardInner.style.transform = 'rotateY(0deg)';
-            }
         });
     });
 }
