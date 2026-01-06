@@ -1,0 +1,32 @@
+{
+  "certificates": [
+    {
+      "id": 1,
+      "title": "Web Development Fundamentals",
+      "issuer": "freeCodeCamp",
+      "date": "2024",
+      "tags": ["HTML5", "CSS3", "JavaScript"],
+      "link": "#",
+      "description": "Completed comprehensive web development course covering HTML, CSS, and JavaScript fundamentals."
+    },
+    {
+      "id": 2,
+      "title": "Basic Video Editing",
+      "issuer": "Udemy",
+      "date": "2023",
+      "tags": ["Premier Pro", "After Effects", "MochaAe"],
+      "link": "#",
+      "description": "Mastered video editing techniques using industry-standard software."
+    },
+    {
+      "id": 3,
+      "title": "Computer System Servicing NCII",
+      "issuer": "Tesda",
+      "date": "2023",
+      "tags": ["Server", "CSS", "Windows", "Networking"],
+      "link": "#",
+      "description": "National certification in computer system servicing and networking."
+    }
+    
+  ]
+}

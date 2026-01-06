@@ -1,0 +1,42 @@
+{
+  "_comment": "Copy this template and paste into the certificates array in certificates.json",
+  
+  "template": {
+    "id": 0,
+    "title": "Certificate Name Here",
+    "issuer": "Organization Name",
+    "date": "2026",
+    "tags": ["Skill1", "Skill2", "Skill3"],
+    "link": "https://certificate-url.com/verify/123",
+    "description": "Brief description of what this certificate covers (optional)."
+  },
+  
+  "minimal_template": {
+    "id": 0,
+    "title": "Certificate Name Here",
+    "issuer": "Organization Name",
+    "date": "2026",
+    "tags": ["Skill1", "Skill2"],
+    "link": "#"
+  },
+  
+  "examples": [
+    {
+      "id": 4,
+      "title": "React Developer Certificate",
+      "issuer": "Meta",
+      "date": "2025",
+      "tags": ["React", "JavaScript", "Frontend"],
+      "link": "https://coursera.org/verify/ABCD1234",
+      "description": "Advanced React development including hooks, context, and performance optimization."
+    },
+    {
+      "id": 5,
+      "title": "AWS Cloud Practitioner",
+      "issuer": "Amazon Web Services",
+      "date": "2025",
+      "tags": ["AWS", "Cloud", "DevOps"],
+      "link": "#"
+    }
+  ]
+}

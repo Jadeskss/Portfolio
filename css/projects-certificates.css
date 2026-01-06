@@ -11,50 +11,58 @@
 }
 
 /* Filter buttons */
-.section-filters {
+.section-filters,
+.filters-container {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .filter-btn {
   background-color: transparent;
-  border: 1px solid var(--border-color);
-  color: var(--text-secondary);
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-size: 0.875rem;
+  border: 2px solid #ddd;
+  color: #333;
+  padding: 0.625rem 1.5rem;
+  border-radius: 0;
+  font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .filter-btn:hover {
-  border-color: var(--primary-color);
-  color: var(--primary-color);
+  border-color: #000;
+  color: #000;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .filter-btn.active {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
+  background-color: #000;
+  border-color: #000;
   color: white;
 }
 
 /* Projects Grid */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
 }
 
 /* Project Card - Modern Style */
 .project-card {
-  position: relative;
-  height: 250px;
-  perspective: 1000px;
-  cursor: pointer;
-  border-radius: 12px;
+  background-color: var(--surface-color);
+  border-radius: 16px;
   overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .project-card-inner {
@@ -634,4 +642,359 @@
 .project-card:nth-child(6),
 .certificate-card:nth-child(6) {
   animation-delay: 0.6s;
+}
+/* Additional styles for dynamic projects */
+.filters-section {
+  margin-bottom: 2rem;
+}
+
+.filters-container {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-icon {
+  margin-right: 0.25rem;
+}
+
+.project-card {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.project-card.animate-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.project-image {
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+
+.project-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-tag {
+  background-color: #e8e8e8;
+  color: #333;
+  padding: 0.4rem 0.875rem;
+  border-radius: 0;
+  font-size: 0.813rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.project-description {
+  font-size: 0.938rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #000;
+  text-decoration: none;
+  font-size: 0.938rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0;
+}
+
+.project-link:hover {
+  gap: 0.75rem;
+}
+
+.project-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Redesigned Project Button */
+.project-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background-color: transparent;
+  border: none;
+  border-top: 1px solid #e5e5e5;
+  color: #000;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.project-button:hover {
+  background-color: #000;
+  color: #fff;
+  padding-left: 1.75rem;
+}
+
+.project-button svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.project-button:hover svg {
+  transform: translateX(4px);
+}
+
+.featured-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(255, 215, 0, 0.9);
+  color: #000;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 10;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  grid-column: 1 / -1;
+}
+
+.error-message {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  grid-column: 1 / -1;
+}
+
+.error-message h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+/* View More Button */
+.view-more-container {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.view-more-btn {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 0.875rem 2.5rem;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.view-more-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.view-more-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.view-more-btn:disabled:hover {
+  transform: none;
+  background-color: transparent;
+  color: var(--primary-color);
+}
+
+/* View More Projects Button (for index page) */
+.view-more-projects-btn {
+  background-color: #000;
+  border: 2px solid #000;
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.view-more-projects-btn:hover {
+  background-color: transparent;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.view-more-projects-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.view-more-projects-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* Projects Page Header Styles */
+.projects-page-header {
+  background-color: var(--surface-color);
+  border-bottom: 2px solid var(--border-color);
+  padding: 1.5rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  flex: 1;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.back-link:hover {
+  gap: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.back-link i {
+  font-size: 1rem;
+}
+
+.page-title {
+  flex: 2;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.dark-mode-toggle {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  background: transparent;
+  border: 2px solid var(--border-color);
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0;
+}
+
+.dark-mode-toggle:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+.dark-mode-toggle i {
+  font-size: 1.25rem;
+}
+
+.projects-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.filters-section {
+  margin-bottom: 3rem;
+}
+
+.projects-footer {
+  background-color: var(--surface-color);
+  border-top: 2px solid var(--border-color);
+  padding: 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.projects-footer p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
 }

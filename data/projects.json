@@ -1,0 +1,74 @@
+{
+  "categories": [
+    {
+      "id": "all",
+      "name": "All",
+      "icon": ""
+    },
+    {
+      "id": "web",
+      "name": "Web",
+      "icon": ""
+    },
+    {
+      "id": "design",
+      "name": "Design",
+      "icon": ""
+    },
+    {
+      "id": "video/film",
+      "name": "Video/Film",
+      "icon": ""
+    },
+
+        {
+      "id": "programming",
+      "name": "Programming",
+      "icon": ""
+    },
+
+            {
+      "id": "graphic design",
+      "name": "Graphic Design",
+      "icon": ""
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "SKBE Website",
+      "description": "A Simple website for Sangguniang Kabataan Batchelor East.",
+      "category": "web",
+      "image": "assets/images/projects/pro1.png",
+      "link": "https://jadeskss.github.io/officialskbe/",
+      "github": "#",
+      "tags": ["React", "CSS", "HTML", "JS", "API"],
+      "featured": false,
+      "date": "2024-01"
+    },
+    {
+      "id": 2,
+      "title": "Ai Love You | ShortFilm",
+      "description": "A school ShortFilm related to AI.",
+      "category": "video",
+      "image": "assets/images/projects/pro2.png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Premier Pro", "After Effects", "Canva"],
+      "featured": false,
+      "date": "2024-02"
+    },
+    {
+      "id": 3,
+      "title": "ShoeNiverse | Prototype",
+      "description": "Shoe app Prototype.",
+      "category": "design",
+      "image": "assets/images/projects/pro3.png",
+      "link": "https://www.figma.com/proto/1vz79ZOfbXuI7oHU7Kl5q7/fco-ko?page-id=0%3A1&node-id=111-398&p=f&viewport=1407%2C-1205%2C0.53&t=xcFJ05UGGfJF7dxA-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=60%3A396&show-proto-sidebar=1",
+      "github": "#",
+      "tags": ["Figma"],
+      "featured": false,
+      "date": "2024-03"
+    }
+  ]
+}

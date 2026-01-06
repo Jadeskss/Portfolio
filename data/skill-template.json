@@ -1,0 +1,36 @@
+{
+  "_comment": "Copy one of these templates and paste into the skills array in skills.json",
+  
+  "fontawesome_template": {
+    "id": 0,
+    "name": "Skill Name Here",
+    "category": "programming",
+    "icon": "fab fa-icon-name",
+    "iconType": "fontawesome"
+  },
+  
+  "image_template": {
+    "id": 0,
+    "name": "Software Name Here",
+    "category": "design",
+    "icon": "assets/images/your-icon.png",
+    "iconType": "image"
+  },
+  
+  "examples": [
+    {
+      "id": 15,
+      "name": "Node.js",
+      "category": "programming",
+      "icon": "fab fa-node-js",
+      "iconType": "fontawesome"
+    },
+    {
+      "id": 16,
+      "name": "Blender",
+      "category": "design",
+      "icon": "assets/images/blender.png",
+      "iconType": "image"
+    }
+  ]
+}

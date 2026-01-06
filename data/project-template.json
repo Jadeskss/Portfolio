@@ -1,0 +1,12 @@
+{
+  "id": 0,
+  "title": "Project Name Here",
+  "description": "Write a brief description of your project. Explain what it does, what problem it solves, and what makes it special.",
+  "category": "web",
+  "image": "../assets/images/projects/your-image.png",
+  "link": "https://your-live-demo.com",
+  "github": "https://github.com/yourusername/repo-name",
+  "tags": ["Technology1", "Technology2", "Technology3"],
+  "featured": false,
+  "date": "2026-01"
+}

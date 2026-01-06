@@ -9,12 +9,15 @@
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/responsive-skills.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/projects-certificates.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="js/darkMode.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/navScroll.js"></script>
   <script src="js/projects.js"></script>
+  <script src="js/skills.js"></script>
+  <script src="js/certificates.js"></script>
   <script src="js/main.js"></script>
 </head>
 <body>
@@ -72,7 +75,7 @@
         <div class="education-item">
           <div class="education-header">
             <div class="education-title">
-              <h3>Information and Communications Technology ICT</h3>
+              <h3>Information and Communications Technology (ICT)</h3>
               <p class="education-institution">Navidad National High School</p>
               <p class="education-honor">• With High Honors</p>
             </div>
@@ -95,128 +98,11 @@
       <h2 class="section-title">Skills & Expertise</h2>
       
       <div class="skills-wrapper">
-        <div class="skills-categories-container">
-          
-          <!-- Programming Category -->
-          <div class="skills-category-section">
-            <div class="category-header">
-              <div class="category-icon">
-                <i class="fas fa-code"></i>
-              </div>
-              <h3 class="skills-category-title">Programming</h3>
-            </div>
-            <div class="skills-grid">
-              <div class="skill-item" data-skill="html5">
-                <div class="skill-icon-wrapper">
-                  <i class="fab fa-html5 skill-icon"></i>
-                </div>
-                <span>HTML5</span>
-              </div>
-              <div class="skill-item" data-skill="css3">
-                <div class="skill-icon-wrapper">
-                  <i class="fab fa-css3-alt skill-icon"></i>
-                </div>
-                <span>CSS3</span>
-              </div>
-              <div class="skill-item" data-skill="javascript">
-                <div class="skill-icon-wrapper">
-                  <i class="fab fa-js skill-icon"></i>
-                </div>
-                <span>JavaScript</span>
-              </div>
-              <div class="skill-item" data-skill="python">
-                <div class="skill-icon-wrapper">
-                  <i class="fab fa-python skill-icon"></i>
-                </div>
-                <span>Python</span>
-              </div>
-              <div class="skill-item" data-skill="git">
-                <div class="skill-icon-wrapper">
-                  <i class="fab fa-git-alt skill-icon"></i>
-                </div>
-                <span>Git</span>
-              </div>
-              <div class="skill-item" data-skill="react">
-                <div class="skill-icon-wrapper">
-                  <i class="fab fa-react skill-icon"></i>
-                </div>
-                <span>React</span>
-              </div>
-            </div>
+        <div id="skills-categories-container" class="skills-categories-container">
+          <!-- Skills will be dynamically loaded here -->
+          <div class="loading">
+            <p>Loading skills...</p>
           </div>
-          
-          <!-- Graphic Design Category -->
-          <div class="skills-category-section">
-            <div class="category-header">
-              <div class="category-icon">
-                <i class="fas fa-palette"></i>
-              </div>
-              <h3 class="skills-category-title">Graphic Design</h3>
-            </div>
-            <div class="skills-grid">
-              <div class="skill-item" data-skill="photoshop">
-                <div class="skill-icon-img">
-                  <img src="assets/images/ps.png" alt="Photoshop" class="software-icon">
-                </div>
-                <span>Photoshop</span>
-              </div>
-              <div class="skill-item" data-skill="illustrator">
-                <div class="skill-icon-img">
-                  <img src="assets/images/ai.png" alt="Illustrator" class="software-icon">
-                </div>
-                <span>Illustrator</span>
-              </div>
-              <div class="skill-item" data-skill="figma">
-                <div class="skill-icon-img">
-                  <img src="assets/images/Figma.svg" alt="Figma" class="software-icon">
-                </div>
-                <span>Figma</span>
-              </div>
-              <div class="skill-item" data-skill="canva">
-                <div class="skill-icon-img">
-                  <img src="assets/images/canva.png" alt="Canva" class="software-icon">
-                </div>
-                <span>Canva</span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Video Editing Category -->
-          <div class="skills-category-section">
-            <div class="category-header">
-              <div class="category-icon">
-                <i class="fas fa-film"></i>
-              </div>
-              <h3 class="skills-category-title">Video Editing</h3>
-            </div>
-            <div class="skills-grid">
-              <div class="skill-item" data-skill="premiere">
-                <div class="skill-icon-img">
-                  <img src="assets/images/pr.png" alt="Premiere Pro" class="software-icon">
-                </div>
-                <span>Premiere Pro</span>
-              </div>
-              <div class="skill-item" data-skill="aftereffects">
-                <div class="skill-icon-img">
-                  <img src="assets/images/ae.png" alt="After Effects" class="software-icon">
-                </div>
-                <span>After Effects</span>
-              </div>
-              <div class="skill-item" data-skill="lightroom">
-                <div class="skill-icon-img">
-                  <img src="assets/images/lr.png" alt="Lightroom" class="software-icon">
-                </div>
-                <span>Lightroom</span>
-              </div>
-              <div class="skill-item" data-skill="capcut">
-                <div class="skill-icon-img">
-                  <img src="assets/images/cap.png" alt="Capcut" class="software-icon">
-                </div>
-                <span>Capcut</span>
-              </div>
-            </div>
-          </div>
-          
         </div>
       </div>
     </section>
@@ -224,139 +110,25 @@
     <section id="projects" class="section fade-in">
       <div class="projects-header">
         <h2 class="section-title">My Projects</h2>
-        <div class="projects-filters">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="web">Web</button>
-          <button class="filter-btn" data-filter="design">Design</button>
-          <button class="filter-btn" data-filter="video">Video</button>
+        <div id="project-filters" class="projects-filters">
+          <!-- Filters will be dynamically loaded here -->
         </div>
       </div>
       
-      <div class="projects-grid">
-        <!-- Project 1: SKBE Website -->
-        <div class="project-card" data-category="web">
-          <div class="project-image-container">
-            <img src="assets/images/pro1.png" alt="SKBE Website" class="project-image">
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">SKBE Website</h3>
-            <div class="project-tags">
-              <span class="project-tag">React</span>
-              <span class="project-tag">CSS</span>
-              <span class="project-tag">HTML</span>
-              <span class="project-tag">JS</span>
-              <span class="project-tag">API</span>
-            </div>
-            <p class="project-description">A Simple website for Sangguniang Kabataan Batchelor East.</p>
-            <a href="https://jadeskss.github.io/officialskbe/" class="project-button" target="_blank">
-              View Project
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 2: AI Love You Short Film -->
-        <div class="project-card" data-category="video">
-          <div class="project-image-container">
-            <img src="assets/images/pro2.png" alt="AI Love You Short Film" class="project-image">
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">Ai Love You | ShortFilm</h3>
-            <div class="project-tags">
-              <span class="project-tag">Premier Pro</span>
-              <span class="project-tag">After Effects</span>
-              <span class="project-tag">Canva</span>
-            </div>
-            <p class="project-description">A school ShortFilm related to AI.</p>
-            <a href="#" class="project-button">
-              Watch Film
-              <i class="fas fa-play"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 3: ShoeNiverse Prototype -->
-        <div class="project-card" data-category="design">
-          <div class="project-image-container">
-            <img src="assets/images/pro3.png" alt="ShoeNiverse Prototype" class="project-image">
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">ShoeNiverse | Prototype</h3>
-            <div class="project-tags">
-              <span class="project-tag">Figma</span>
-            </div>
-            <p class="project-description">Shoe app Prototype.</p>
-            <a href="https://www.figma.com/proto/1vz79ZOfbXuI7oHU7Kl5q7/fco-ko?page-id=0%3A1&node-id=111-398&p=f&viewport=1407%2C-1205%2C0.53&t=xcFJ05UGGfJF7dxA-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=60%3A396&show-proto-sidebar=1" class="project-button" target="_blank">
-              View Prototype
-              <i class="fab fa-figma"></i>
-            </a>
-          </div>
+      <div id="projects-container" class="projects-grid">
+        <!-- Projects will be dynamically loaded here -->
+        <div class="loading">
+          <p>Loading projects...</p>
         </div>
       </div>
     </section>
 
     <section id="certificates" class="section fade-in">
       <h2 class="section-title">Certifications</h2>
-      <div class="education-container">
-        <!-- Certificate 1 -->
-        <div class="education-item">
-          <div class="education-header">
-            <div class="education-title">
-              <h3>Web Development Fundamentals</h3>
-              <p class="education-institution">freeCodeCamp</p>
-              <div class="certificate-tags">
-                <span class="cert-tag">HTML5</span>
-                <span class="cert-tag">CSS3</span>
-                <span class="cert-tag">JavaScript</span>
-              </div>
-            </div>
-            <div class="education-date">2024</div>
-          </div>
-          <a href="#" class="certificate-view-btn">
-            <i class="fas fa-external-link-alt"></i>
-            View Certificate
-          </a>
-        </div>
-        
-        <!-- Certificate 2 -->
-        <div class="education-item">
-          <div class="education-header">
-            <div class="education-title">
-              <h3>Basic Video Editing</h3>
-              <p class="education-institution">Udemy</p>
-              <div class="certificate-tags">
-                <span class="cert-tag">Premier Pro</span>
-                <span class="cert-tag">After Effects</span>
-                <span class="cert-tag">MochaAe</span>
-              </div>
-            </div>
-            <div class="education-date">2023</div>
-          </div>
-          <a href="#" class="certificate-view-btn">
-            <i class="fas fa-external-link-alt"></i>
-            View Certificate
-          </a>
-        </div>
-
-        <!-- Certificate 3 -->
-        <div class="education-item">
-          <div class="education-header">
-            <div class="education-title">
-              <h3>Computer System Servicing NCII</h3>
-              <p class="education-institution">Tesda</p>
-              <div class="certificate-tags">
-                <span class="cert-tag">Server</span>
-                <span class="cert-tag">CSS</span>
-                <span class="cert-tag">Windows</span>
-                <span class="cert-tag">Networking</span>
-              </div>
-            </div>
-            <div class="education-date">2023</div>
-          </div>
-          <a href="#" class="certificate-view-btn">
-            <i class="fas fa-external-link-alt"></i>
-            View Certificate
-          </a>
+      <div id="certificates-container" class="education-container">
+        <!-- Certificates will be dynamically loaded here -->
+        <div class="loading">
+          <p>Loading certificates...</p>
         </div>
       </div>
     </section>

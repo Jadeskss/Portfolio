@@ -1,0 +1,113 @@
+{
+  "categories": [
+    {
+      "id": "programming",
+      "name": "Programming",
+      "icon": "fas fa-code"
+    },
+    {
+      "id": "design",
+      "name": "Graphic Design",
+      "icon": "fas fa-palette"
+    },
+    {
+      "id": "video",
+      "name": "Video Editing",
+      "icon": "fas fa-film"
+    }
+  ],
+  "skills": [
+    {
+      "id": 1,
+      "name": "HTML5",
+      "category": "programming",
+      "icon": "fab fa-html5",
+      "iconType": "fontawesome"
+    },
+    {
+      "id": 2,
+      "name": "CSS3",
+      "category": "programming",
+      "icon": "fab fa-css3-alt",
+      "iconType": "fontawesome"
+    },
+    {
+      "id": 3,
+      "name": "JavaScript",
+      "category": "programming",
+      "icon": "fab fa-js",
+      "iconType": "fontawesome"
+    },
+    {
+      "id": 4,
+      "name": "Python",
+      "category": "programming",
+      "icon": "fab fa-python",
+      "iconType": "fontawesome"
+    },
+    {
+      "id": 5,
+      "name": "Git",
+      "category": "programming",
+      "icon": "fab fa-git-alt",
+      "iconType": "fontawesome"
+    },
+
+    {
+      "id": 7,
+      "name": "Photoshop",
+      "category": "design",
+      "icon": "assets/images/ps.png",
+      "iconType": "image"
+    },
+    {
+      "id": 8,
+      "name": "Illustrator",
+      "category": "design",
+      "icon": "assets/images/ai.png",
+      "iconType": "image"
+    },
+    {
+      "id": 9,
+      "name": "Figma",
+      "category": "design",
+      "icon": "assets/images/Figma.svg",
+      "iconType": "image"
+    },
+    {
+      "id": 10,
+      "name": "Canva",
+      "category": "design",
+      "icon": "assets/images/canva.png",
+      "iconType": "image"
+    },
+    {
+      "id": 11,
+      "name": "Premiere Pro",
+      "category": "video",
+      "icon": "assets/images/pr.png",
+      "iconType": "image"
+    },
+    {
+      "id": 12,
+      "name": "After Effects",
+      "category": "video",
+      "icon": "assets/images/ae.png",
+      "iconType": "image"
+    },
+    {
+      "id": 13,
+      "name": "Lightroom",
+      "category": "video",
+      "icon": "assets/images/lr.png",
+      "iconType": "image"
+    },
+    {
+      "id": 14,
+      "name": "Capcut",
+      "category": "video",
+      "icon": "assets/images/cap.png",
+      "iconType": "image"
+    }
+  ]
+}
