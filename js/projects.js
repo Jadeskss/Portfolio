@@ -8,6 +8,7 @@ let currentProjectsShown = 6;
 document.addEventListener('DOMContentLoaded', async function() {
     await loadProjects();
     initFilters();
+    initImageModal();
 });
 
 // Load projects from JSON
@@ -152,6 +153,7 @@ function createProjectCard(project, index) {
     const card = document.createElement('div');
     card.className = 'project-card';
     card.setAttribute('data-category', project.category);
+    card.setAttribute('data-title', project.title);
     card.style.opacity = '0';
     card.style.transform = 'translateY(20px)';
     
@@ -236,6 +238,59 @@ function displayError() {
                 <p>Please check your connection and try again.</p>
             </div>
         `;
+    }
+}
+
+// Initialize Image Modal
+function initImageModal() {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const captionText = document.getElementById('modalCaption');
+    const closeBtn = document.querySelector('.modal-close');
+    
+    if (!modal) return;
+    
+    // Add click event to project images using event delegation
+    document.addEventListener('click', function(e) {
+        const projectImage = e.target.closest('.project-image');
+        if (projectImage) {
+            const img = projectImage.querySelector('img');
+            const card = projectImage.closest('.project-card');
+            const title = card.querySelector('.project-title');
+            
+            if (img && img.src && !img.src.includes('icon.png')) {
+                modal.classList.add('show');
+                modalImg.src = img.src;
+                captionText.textContent = title ? title.textContent : '';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+    });
+    
+    // Close modal when clicking the X
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            closeModal();
+        };
+    }
+    
+    // Close modal when clicking outside the image
+    modal.onclick = function(e) {
+        if (e.target === modal || e.target === modalImg.parentElement) {
+            closeModal();
+        }
+    };
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('show')) {
+            closeModal();
+        }
+    });
+    
+    function closeModal() {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
     }
 }
 

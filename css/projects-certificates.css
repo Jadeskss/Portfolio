@@ -998,3 +998,421 @@
   color: var(--text-secondary);
   font-size: 0.95rem;
 }
+/* Image Modal Styles */
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  padding: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.3s ease;
+}
+
+.image-modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 85vh;
+  object-fit: contain;
+  animation: zoomIn 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.modal-caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #fff;
+  padding: 20px 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.modal-close {
+  position: absolute;
+  top: 30px;
+  right: 45px;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 300;
+  transition: 0.3s;
+  cursor: pointer;
+  z-index: 10001;
+  line-height: 1;
+  user-select: none;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: #bbb;
+  text-decoration: none;
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Make project images clickable */
+.project-card .project-image {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card .project-image::after {
+  content: 'VIEW';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+}
+
+.project-card .project-image:hover::after {
+  opacity: 0.9;
+}
+
+.project-card .project-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Responsive modal */
+@media (max-width: 768px) {
+  .modal-content {
+    max-width: 95%;
+    max-height: 80vh;
+  }
+  
+  .modal-close {
+    top: 15px;
+    right: 25px;
+    font-size: 40px;
+  }
+  
+  .modal-caption {
+    font-size: 1rem;
+    width: 90%;
+  }
+  
+  /* Projects Page Header */
+  .projects-page-header .header-container {
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .page-title {
+    font-size: 1.5rem;
+  }
+  
+  .back-link {
+    font-size: 0.9rem;
+  }
+  
+  /* Projects Grid - 2 columns on tablet */
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  /* Filter buttons */
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Project card content */
+  .project-content {
+    padding: 1rem;
+  }
+  
+  .project-title {
+    font-size: 1.1rem;
+  }
+  
+  .project-description {
+    font-size: 0.9rem;
+  }
+  
+  .project-tag {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Projects Grid - 2 columns on mobile */
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  /* Make project cards image-only with overlay title */
+  .project-card {
+    position: relative;
+    min-height: 200px;
+    aspect-ratio: 1;
+  }
+  
+  .project-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Hide the content section */
+  .project-content {
+    display: none;
+  }
+  
+  /* Hide the button */
+  .project-button {
+    display: none;
+  }
+  
+  /* Create title overlay */
+  .project-card::after {
+    content: attr(data-title);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.75rem 0.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 70%, transparent 100%);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.3;
+    pointer-events: none;
+  }
+  
+  /* Remove VIEW hover effect on small screens */
+  .project-card .project-image::after {
+    display: none;
+  }
+  
+  /* Header adjustments */
+  .projects-page-header .header-container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .page-title {
+    font-size: 1.3rem;
+    order: 2;
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+  
+  .back-link {
+    order: 1;
+    font-size: 0.85rem;
+  }
+  
+  .dark-mode-toggle {
+    order: 3;
+  }
+  
+  /* Filters - stack on very small screens */
+  .filters-section {
+    margin-bottom: 2rem;
+  }
+  
+  .filters-container {
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    flex: 0 1 auto;
+  }
+  
+  /* Project cards */
+  .project-card {
+    border-radius: 12px;
+  }
+  
+  .project-content {
+    padding: 1rem;
+  }
+  
+  .project-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .project-description {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  
+  .project-tags {
+    gap: 0.4rem;
+    margin: 0.75rem 0;
+  }
+  
+  .project-tag {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  .project-button {
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  /* View More button */
+  .view-more-btn,
+  .view-more-projects-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Modal adjustments */
+  .modal-close {
+    top: 10px;
+    right: 15px;
+    font-size: 35px;
+  }
+  
+  .project-card .project-image::after {
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Even smaller screens */
+  .page-title {
+    font-size: 1.2rem;
+  }
+  
+  .back-link span {
+    display: none;
+  }
+  
+  .back-link i {
+    font-size: 1.2rem;
+  }
+  
+  .filter-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .project-title {
+    font-size: 1rem;
+  }
+  
+  .project-description {
+    font-size: 0.8rem;
+  }
+  
+  .project-tag {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.4rem;
+  }
+  
+  .project-button {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.85rem;
+  }
+  
+  .modal-close {
+    top: 5px;
+    right: 10px;
+    font-size: 30px;
+  }
+  
+  .projects-main {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Responsive for homepage projects section */
+@media (max-width: 991px) {
+  #projects .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  #projects .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  #projects .project-card {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 576px) {
+  #projects .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  #projects .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  #projects .project-card {
+    max-width: 100%;
+  }
+}

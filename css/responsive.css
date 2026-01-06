@@ -76,6 +76,15 @@
     width: 90%;
   }
   
+  /* Dark mode toggle - adjust size and position */
+  .dark-mode-toggle {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+    padding: 0.4rem;
+    margin-left: 0.5rem;
+  }
+  
   /* Mobile navigation */
   .mobile-menu-toggle {
     display: block;
@@ -191,6 +200,21 @@
   
   p {
     font-size: 0.95rem;
+  }
+  
+  /* Header and navigation adjustments */
+  nav {
+    padding: 0 1rem;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.5rem;
+  }
+  
+  .logo {
+    font-size: 1.1rem;
+  }
+  
+  .dark-mode-toggle {
+    margin-left: auto;
   }
   
   .profile-picture-wrapper {
@@ -408,6 +432,15 @@
 
 /* Even smaller devices */
 @media (max-width: 480px) {
+  /* Dark mode toggle - even smaller */
+  .dark-mode-toggle {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    padding: 0.3rem;
+    margin-left: 0.25rem;
+  }
+  
   #submit-btn, .contact-form button[type="submit"] {
     max-width: 100%;  /* Full width on very small screens */
   }

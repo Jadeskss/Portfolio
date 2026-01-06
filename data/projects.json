@@ -31,7 +31,14 @@
       "id": "graphic design",
       "name": "Graphic Design",
       "icon": ""
+    },
+
+    {
+      "id": "overlays",
+      "name": "Overlays",
+      "icon": ""
     }
+
   ],
   "projects": [
     {
@@ -69,6 +76,258 @@
       "tags": ["Figma"],
       "featured": false,
       "date": "2024-03"
+    },
+    {
+      "id": 4,
+      "title": "Graphic Overlay 1",
+      "description": "Creative graphic design overlay.",
+      "category": "overlays",
+      "image": "assets/images/projects/overlays/ove (1).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "Illustrator"],
+      "featured": false,
+      "date": "2024-04"
+    },
+    {
+      "id": 5,
+      "title": "Graphic Overlay 2",
+      "description": "Creative graphic design overlay.",
+      "category": "overlays",
+      "image": "assets/images/projects/overlays/ove (2).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "Illustrator"],
+      "featured": false,
+      "date": "2024-04"
+    },
+    {
+      "id": 6,
+      "title": "Graphic Overlay 3",
+      "description": "Creative graphic design overlay.",
+      "category": "overlays",
+      "image": "assets/images/projects/overlays/ove (3).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "Illustrator"],
+      "featured": false,
+      "date": "2024-04"
+    },
+    {
+      "id": 7,
+      "title": "Graphic Overlay 4",
+      "description": "Creative graphic design overlay.",
+      "category": "overlays",
+      "image": "assets/images/projects/overlays/ove (4).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "Illustrator"],
+      "featured": false,
+      "date": "2024-04"
+    },
+    {
+      "id": 8,
+      "title": "Graphic Overlay 5",
+      "description": "Creative graphic design overlay.",
+      "category": "overlays",
+      "image": "assets/images/projects/overlays/ove (5).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "Illustrator"],
+      "featured": false,
+      "date": "2024-04"
+    },
+    {
+      "id": 9,
+      "title": "Graphic Overlay 6",
+      "description": "Creative graphic design overlay.",
+      "category": "overlays",
+      "image": "assets/images/projects/overlays/ove (6).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "Illustrator"],
+      "featured": false,
+      "date": "2024-04"
+    },
+    {
+      "id": 10,
+      "title": "Graphic Overlay 7",
+      "description": "Creative graphic design overlay.",
+      "category": "overlays",
+      "image": "assets/images/projects/overlays/ove (7).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "Illustrator"],
+      "featured": false,
+      "date": "2024-04"
+    },
+    {
+      "id": 11,
+      "title": "Graphic Overlay 8",
+      "description": "Creative graphic design overlay.",
+      "category": "overlays",
+      "image": "assets/images/projects/overlays/ove (8).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "Illustrator"],
+      "featured": false,
+      "date": "2024-04"
+    },
+    {
+      "id": 12,
+      "title": "Graphic Overlay 9",
+      "description": "Creative graphic design overlay.",
+      "category": "overlays",
+      "image": "assets/images/projects/overlays/ove (9).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "Illustrator"],
+      "featured": false,
+      "date": "2024-04"
+    },
+    {
+      "id": 13,
+      "title": "Graphic Overlay 10",
+      "description": "Creative graphic design overlay.",
+      "category": "overlays",
+      "image": "assets/images/projects/overlays/ove (10).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "Illustrator"],
+      "featured": false,
+      "date": "2024-04"
+    },
+    {
+      "id": 14,
+      "title": "Publication Design 1",
+      "description": "Creative publication graphic design.",
+      "category": "graphic design",
+      "image": "assets/images/projects/pubs/pub (1).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "InDesign"],
+      "featured": false,
+      "date": "2024-05"
+    },
+    {
+      "id": 15,
+      "title": "Publication Design 2",
+      "description": "Creative publication graphic design.",
+      "category": "graphic design",
+      "image": "assets/images/projects/pubs/pub (2).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "InDesign"],
+      "featured": false,
+      "date": "2024-05"
+    },
+    {
+      "id": 16,
+      "title": "Publication Design 3",
+      "description": "Creative publication graphic design.",
+      "category": "graphic design",
+      "image": "assets/images/projects/pubs/pub (3).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "InDesign"],
+      "featured": false,
+      "date": "2024-05"
+    },
+    {
+      "id": 17,
+      "title": "Publication Design 4",
+      "description": "Creative publication graphic design.",
+      "category": "graphic design",
+      "image": "assets/images/projects/pubs/pub (4).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "InDesign"],
+      "featured": false,
+      "date": "2024-05"
+    },
+    {
+      "id": 18,
+      "title": "Publication Design 5",
+      "description": "Creative publication graphic design.",
+      "category": "graphic design",
+      "image": "assets/images/projects/pubs/pub (5).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "InDesign"],
+      "featured": false,
+      "date": "2024-05"
+    },
+    {
+      "id": 19,
+      "title": "Sports Design 1",
+      "description": "Sports graphic design project.",
+      "category": "graphic design",
+      "image": "assets/images/projects/sports/spo (1).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "Illustrator"],
+      "featured": false,
+      "date": "2024-06"
+    },
+    {
+      "id": 20,
+      "title": "Sports Design 2",
+      "description": "Sports graphic design project.",
+      "category": "graphic design",
+      "image": "assets/images/projects/sports/spo (2).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "Illustrator"],
+      "featured": false,
+      "date": "2024-06"
+    },
+    {
+      "id": 21,
+      "title": "Sports Design 3",
+      "description": "Sports graphic design project.",
+      "category": "graphic design",
+      "image": "assets/images/projects/sports/spo (3).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "Illustrator"],
+      "featured": false,
+      "date": "2024-06"
+    },
+    {
+      "id": 22,
+      "title": "Sports Design 4",
+      "description": "Sports graphic design project.",
+      "category": "graphic design",
+      "image": "assets/images/projects/sports/spo (4).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "Illustrator"],
+      "featured": false,
+      "date": "2024-06"
+    },
+    {
+      "id": 23,
+      "title": "Sports Design 5",
+      "description": "Sports graphic design project.",
+      "category": "graphic design",
+      "image": "assets/images/projects/sports/spo (5).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "Illustrator"],
+      "featured": false,
+      "date": "2024-06"
+    },
+    {
+      "id": 24,
+      "title": "Sports Design 6",
+      "description": "Sports graphic design project.",
+      "category": "graphic design",
+      "image": "assets/images/projects/sports/spo (6).png",
+      "link": "#",
+      "github": "#",
+      "tags": ["Photoshop", "Illustrator"],
+      "featured": false,
+      "date": "2024-06"
     }
   ]
 }
