@@ -26,7 +26,17 @@
       "tags": ["Server", "CSS", "Windows", "Networking"],
       "link": "#",
       "description": "National certification in computer system servicing and networking."
+    },
+    {
+      "id": 4,
+      "title": "Industrial Networking Essentials",
+      "issuer": "Cisco",
+      "date": "2025",
+      "tags": ["Ethernet", "Industrial Devices Configuration", "IP Addressing", "Network Security"],
+      "link": "https://www.credly.com/badges/5e958876-84fd-475c-a47b-6378053d1317",
+      "description": "Learn fundamental networking concepts for modern industrial architectures and practice with industrial devices in Cisco Packet Tracer."
     }
+
     
   ]
 }
