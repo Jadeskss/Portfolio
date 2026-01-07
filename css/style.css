@@ -178,17 +178,6 @@ nav a:hover {
     margin-bottom: 1.5rem;
 }
 
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 4px;
-    background-color: var(--primary-color);
-    border-radius: 2px;
-}
-
 /* Education Section */
 .education-container {
     display: flex;
@@ -217,6 +206,35 @@ nav a:hover {
     padding: 2rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
+}
+
+/* Education marker (circle on timeline) */
+.education-marker {
+    position: absolute;
+    left: -38px;
+    top: 2rem;
+    width: 12px;
+    height: 12px;
+    background-color: var(--border-color);
+    border: 2px solid var(--background-color);
+    border-radius: 50%;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+/* Active/Current education marker */
+.education-marker.active {
+    width: 18px;
+    height: 18px;
+    background-color: var(--primary-color);
+    border: 3px solid var(--background-color);
+    box-shadow: 0 0 0 4px var(--primary-color);
+    left: -41px;
+}
+
+/* Current education item styling */
+.education-item.current {
+    border-left: 3px solid var(--primary-color);
 }
 
 /* Timeline bullet */
@@ -947,13 +965,14 @@ body.dark-mode .project-button:hover {
 }
 
 .dark-mode .btn-outline {
-  border-color: #ffffff;
-  color: #ffffff;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  background-color: transparent !important;
 }
 
 .dark-mode .btn-outline:hover {
-  background-color: #ffffff;
-  color: #1a1a2e;
+  background-color: #ffffff !important;
+  color: #000000 !important;
 }
 
 /* Form styling in dark mode */

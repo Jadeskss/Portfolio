@@ -108,6 +108,28 @@
       "category": "video",
       "icon": "assets/images/cap.png",
       "iconType": "image"
+    },
+    {
+      "id": 14,
+      "name": "Java",
+      "category": "programming",
+      "icon": "fab fa-java",
+      "iconType": "fontawesome"
+    },
+    {
+      "id": 15,
+      "name": "C++",
+      "category": "programming",
+      "icon": "fas fa-code",
+      "iconType": "fontawesome"
+    },
+    {
+      "id": 16,
+      "name": "SQL",
+      "category": "programming",
+      "icon": "fas fa-database",
+      "iconType": "fontawesome"
     }
+    
   ]
 }

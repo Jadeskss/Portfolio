@@ -76,13 +76,9 @@
     width: 90%;
   }
   
-  /* Dark mode toggle - adjust size and position */
+  /* Dark mode toggle - hide on mobile */
   .dark-mode-toggle {
-    width: 36px;
-    height: 36px;
-    font-size: 1.1rem;
-    padding: 0.4rem;
-    margin-left: 0.5rem;
+    display: none;
   }
   
   /* Mobile navigation */
@@ -213,10 +209,6 @@
     font-size: 1.1rem;
   }
   
-  .dark-mode-toggle {
-    margin-left: auto;
-  }
-  
   .profile-picture-wrapper {
     width: 150px;
     height: 150px;
@@ -224,31 +216,55 @@
   
   /* Education responsive for small screens */
   .education-container {
-    padding-left: 40px;
+    padding-left: 30px;
+    gap: 1.25rem;
   }
   
   .education-container::before {
-    left: 18px;
+    left: 12px;
+    width: 1px;
   }
   
   .education-item::before {
-    left: -28px;
-    width: 12px;
-    height: 12px;
-    top: 26px;
+    left: -24px;
+    width: 10px;
+    height: 10px;
+    top: 20px;
   }
   
   .education-item {
-    padding: 1.5rem;
+    padding: 1rem;
+  }
+  
+  .education-marker {
+    left: -26px;
+    top: 1rem;
+    width: 10px;
+    height: 10px;
+  }
+  
+  .education-marker.active {
+    width: 14px;
+    height: 14px;
+    left: -28px;
   }
   
   .education-title h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .education-institution {
+    font-size: 0.85rem;
+  }
+  
+  .education-honor {
+    font-size: 0.8rem;
   }
   
   .education-date {
-    font-size: 0.85rem;
-    padding: 0.4rem 0.75rem;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
   }
   
   /* Contact section responsive */
@@ -324,6 +340,51 @@
   .section {
     padding: 1.25rem;
     margin: 1.5rem 0;
+  }
+  
+  /* Education - even smaller */
+  .education-container {
+    padding-left: 25px;
+    gap: 1rem;
+  }
+  
+  .education-container::before {
+    left: 10px;
+  }
+  
+  .education-item {
+    padding: 0.75rem;
+  }
+  
+  .education-marker {
+    left: -22px;
+    width: 8px;
+    height: 8px;
+    top: 0.75rem;
+  }
+  
+  .education-marker.active {
+    width: 12px;
+    height: 12px;
+    left: -24px;
+  }
+  
+  .education-title h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .education-institution {
+    font-size: 0.8rem;
+  }
+  
+  .education-honor {
+    font-size: 0.75rem;
+  }
+  
+  .education-date {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
   }
   
   /* Projects filters for very small screens */
@@ -432,14 +493,6 @@
 
 /* Even smaller devices */
 @media (max-width: 480px) {
-  /* Dark mode toggle - even smaller */
-  .dark-mode-toggle {
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
-    padding: 0.3rem;
-    margin-left: 0.25rem;
-  }
   
   #submit-btn, .contact-form button[type="submit"] {
     max-width: 100%;  /* Full width on very small screens */
@@ -449,8 +502,21 @@
 /* Certificate section styling - smaller cards */
 .certificates-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Smaller minimum width */
-  gap: 1.5rem; /* Smaller gap between cards */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 575px) {
+  .certificates-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 399px) {
+  .certificates-grid {
+    gap: 0.75rem;
+  }
 }
 
 .certificate-card {
@@ -459,32 +525,71 @@
   flex-direction: column;
   background-color: var(--surface-color);
   border-radius: 0.75rem;
-  box-shadow: 0 3px 10px var(--shadow-color); /* Lighter shadow */
+  box-shadow: 0 3px 10px var(--shadow-color);
   transition: transform 0.3s, box-shadow 0.3s;
   overflow: hidden;
-  border-top: 3px solid var(--primary-color); /* Thinner top border */
+  border-top: 3px solid var(--primary-color);
 }
 
 .certificate-content {
-  padding: 1.25rem; /* Smaller padding */
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   justify-content: space-between;
 }
 
+@media (max-width: 575px) {
+  .certificate-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 399px) {
+  .certificate-content {
+    padding: 0.75rem;
+  }
+}
+
 .certificate-card h3 {
   margin-top: 0;
   margin-bottom: 0.4rem;
-  font-size: 1rem; /* Smaller heading */
+  font-size: 1rem;
   color: var(--text-color);
+}
+
+@media (max-width: 575px) {
+  .certificate-card h3 {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 399px) {
+  .certificate-card h3 {
+    font-size: 0.85rem;
+  }
 }
 
 .certificate-info {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.75rem;
-  font-size: 0.8rem; /* Smaller text */
+  font-size: 0.8rem;
+}
+
+@media (max-width: 575px) {
+  .certificate-info {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 399px) {
+  .certificate-info {
+    font-size: 0.7rem;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
 }
 
 .certificate-tags {
@@ -494,20 +599,61 @@
   margin-bottom: 0.75rem;
 }
 
+@media (max-width: 575px) {
+  .certificate-tags {
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
 .certificate-card .project-tag {
-  font-size: 0.65rem; /* Smaller tags */
+  font-size: 0.65rem;
   padding: 0.15rem 0.4rem;
 }
 
+@media (max-width: 575px) {
+  .certificate-card .project-tag {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.3rem;
+  }
+}
+
 .certificate-card p {
-  font-size: 0.85rem; /* Smaller paragraph */
+  font-size: 0.85rem;
   margin-bottom: 0.75rem;
   line-height: 1.4;
 }
 
+@media (max-width: 575px) {
+  .certificate-card p {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 399px) {
+  .certificate-card p {
+    font-size: 0.75rem;
+  }
+}
+
 .certificate-btn {
-  padding: 0.4rem 0.75rem; /* Smaller button */
+  padding: 0.4rem 0.75rem;
   font-size: 0.85rem;
+}
+
+@media (max-width: 575px) {
+  .certificate-btn {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 399px) {
+  .certificate-btn {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
+  }
 }
 
 /* Responsive styling for project buttons */

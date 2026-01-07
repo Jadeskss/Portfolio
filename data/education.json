@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "degree": "Bachelor of Science in Information Technology",
+    "institution": "Panpacific University",
+    "honor": "",
+    "startDate": "September 2024",
+    "endDate": "Present",
+    "isCurrent": true
+  },
+  {
+    "id": 2,
+    "degree": "Bachelor of Science in Information Technology",
+    "institution": "Navidad National High School",
+    "honor": "With High Honors",
+    "startDate": "May 2022",
+    "endDate": "May 2023",
+    "isCurrent": false
+  },
+    {
+        "id": 3,
+        "degree": "Grade School",
+        "institution": "Batchelor Elementary School",
+        "honor": "With Honors, Best in ICT awardee",
+        "startDate": "",
+        "endDate": "",
+        "isCurrent": false
+    }
+]
