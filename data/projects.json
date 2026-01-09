@@ -341,6 +341,18 @@
       "tags": ["CSS", "HTML", "JS", "API"],
       "featured": true,
       "date": "2025"
-    }
+    },
+    {
+  "id": 26,
+  "title": "Simple Banking System",
+  "description": "A simple banking system application developed in Python.",
+  "category": "programming",
+  "image": "assets/images/projects/code.png",
+  "link": "#",
+  "github": "https://github.com/yourusername/data-analyzer",
+  "tags": ["Python", "Tkinter", "json"],
+  "featured": false,
+  "date": "2026-01"
+}
   ]
 }
