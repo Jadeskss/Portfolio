@@ -1,4 +1,6 @@
-[
+{
+  "version": "1.0.0",
+  "education": [
   {
     "id": 1,
     "degree": "Bachelor of Science in Information Technology",
@@ -26,4 +28,6 @@
         "endDate": "",
         "isCurrent": false
     }
+  
 ]
+}

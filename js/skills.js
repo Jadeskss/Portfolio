@@ -6,15 +6,37 @@ document.addEventListener('DOMContentLoaded', async function() {
     await loadSkills();
 });
 
-// Load skills from JSON
+// Load skills from JSON with automatic change detection
 async function loadSkills() {
     try {
         // Detect if we're in root or pages folder
         const isInPages = window.location.pathname.includes('/pages/');
         const jsonPath = isInPages ? '../data/skills.json' : 'data/skills.json';
         
-        const response = await fetch(jsonPath);
-        skillsData = await response.json();
+        // Always fetch fresh data
+        const response = await fetch(jsonPath, {
+            cache: 'no-cache'
+        });
+        const freshData = await response.json();
+        
+        // Create hash of current data for comparison
+        const freshHash = JSON.stringify(freshData).length;
+        const cachedHash = localStorage.getItem('skillsHash');
+        
+        // Use cached data only if hash matches
+        if (cachedHash && cachedHash === freshHash.toString()) {
+            const cachedData = localStorage.getItem('skillsData');
+            if (cachedData) {
+                skillsData = JSON.parse(cachedData);
+            } else {
+                skillsData = freshData;
+            }
+        } else {
+            // Data changed, use fresh data and update cache
+            skillsData = freshData;
+            localStorage.setItem('skillsData', JSON.stringify(skillsData));
+            localStorage.setItem('skillsHash', freshHash.toString());
+        }
         
         // Render skills
         renderSkills();
@@ -43,7 +65,7 @@ function renderSkills() {
     
     // Trigger animations
     setTimeout(() => {
-        const skillItems = document.querySelectorAll('.skill-item');
+        const skillItems = document.querySelectorAll('.skill-pill');
         skillItems.forEach((item, i) => {
             setTimeout(() => {
                 item.style.opacity = '1';
@@ -58,44 +80,20 @@ function createCategorySection(category, skills) {
     const section = document.createElement('div');
     section.className = 'skills-category-section';
     
-    // Detect if we're in pages folder for image paths
-    const isInPages = window.location.pathname.includes('/pages/');
-    
-    // Create skills grid HTML
+    // Create skills HTML as simple pills
     const skillsHTML = skills.map(skill => {
-        let iconHTML = '';
-        
-        if (skill.iconType === 'fontawesome') {
-            iconHTML = `
-                <div class="skill-icon-wrapper">
-                    <i class="${skill.icon} skill-icon"></i>
-                </div>
-            `;
-        } else if (skill.iconType === 'image') {
-            const imagePath = isInPages ? '../' + skill.icon : skill.icon;
-            iconHTML = `
-                <div class="skill-icon-img">
-                    <img src="${imagePath}" alt="${skill.name}" class="software-icon">
-                </div>
-            `;
-        }
-        
         return `
-            <div class="skill-item" data-skill="${skill.name.toLowerCase().replace(/\s+/g, '')}" style="opacity: 0; transform: translateY(20px); transition: all 0.3s ease;">
-                ${iconHTML}
+            <div class="skill-pill" data-skill="${skill.name.toLowerCase().replace(/\s+/g, '')}" style="opacity: 0; transform: translateY(20px); transition: all 0.3s ease;">
                 <span>${skill.name}</span>
             </div>
         `;
     }).join('');
     
     section.innerHTML = `
-        <div class="category-header">
-            <div class="category-icon">
-                <i class="${category.icon}"></i>
-            </div>
+        <div class="category-header-simple">
             <h3 class="skills-category-title">${category.name}</h3>
         </div>
-        <div class="skills-grid">
+        <div class="skills-pills-container">
             ${skillsHTML}
         </div>
     `;

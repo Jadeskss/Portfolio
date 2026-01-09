@@ -1,4 +1,5 @@
 {
+  "version": "1.0.0",
   "categories": [
     {
       "id": "programming",
@@ -52,84 +53,93 @@
       "icon": "fab fa-git-alt",
       "iconType": "fontawesome"
     },
-
     {
-      "id": 7,
-      "name": "Photoshop",
-      "category": "design",
-      "icon": "assets/images/ps.png",
-      "iconType": "image"
-    },
-    {
-      "id": 8,
-      "name": "Illustrator",
-      "category": "design",
-      "icon": "assets/images/ai.png",
-      "iconType": "image"
-    },
-    {
-      "id": 9,
-      "name": "Figma",
-      "category": "design",
-      "icon": "assets/images/Figma.svg",
-      "iconType": "image"
-    },
-    {
-      "id": 10,
-      "name": "Canva",
-      "category": "design",
-      "icon": "assets/images/canva.png",
-      "iconType": "image"
-    },
-    {
-      "id": 11,
-      "name": "Premiere Pro",
-      "category": "video",
-      "icon": "assets/images/pr.png",
-      "iconType": "image"
-    },
-    {
-      "id": 12,
-      "name": "After Effects",
-      "category": "video",
-      "icon": "assets/images/ae.png",
-      "iconType": "image"
-    },
-    {
-      "id": 13,
-      "name": "Lightroom",
-      "category": "video",
-      "icon": "assets/images/lr.png",
-      "iconType": "image"
-    },
-    {
-      "id": 14,
-      "name": "Capcut",
-      "category": "video",
-      "icon": "assets/images/cap.png",
-      "iconType": "image"
-    },
-    {
-      "id": 14,
+      "id": 6,
       "name": "Java",
       "category": "programming",
       "icon": "fab fa-java",
       "iconType": "fontawesome"
     },
     {
-      "id": 15,
+      "id": 7,
       "name": "C++",
       "category": "programming",
       "icon": "fas fa-code",
       "iconType": "fontawesome"
     },
     {
-      "id": 16,
+      "id": 8,
       "name": "SQL",
       "category": "programming",
       "icon": "fas fa-database",
       "iconType": "fontawesome"
+    },
+    
+
+    {
+      "id": 9,
+      "name": "Photoshop",
+      "category": "design",
+      "icon": "assets/images/ps.png",
+      "iconType": "image"
+    },
+    {
+      "id": 10,
+      "name": "Illustrator",
+      "category": "design",
+      "icon": "assets/images/ai.png",
+      "iconType": "image"
+    },
+    {
+      "id": 11,
+      "name": "Figma",
+      "category": "design",
+      "icon": "assets/images/Figma.svg",
+      "iconType": "image"
+    },
+    {
+      "id": 12,
+      "name": "Canva",
+      "category": "design",
+    
+      "iconType": "image"
+    },
+    {
+      "id": 13,
+      "name": "Premiere Pro",
+      "category": "video",
+      "icon": "assets/images/pr.png",
+      "iconType": "image"
+    },
+    {
+      "id": 14,
+      "name": "After Effects",
+      "category": "video",
+      "icon": "assets/images/ae.png",
+      "iconType": "image"
+    },
+    {
+      "id": 15,
+      "name": "Lightroom",
+      "category": "video",
+      "icon": "assets/images/lr.png",
+      "iconType": "image"
+    },
+    {
+      "id": 16,
+      "name": "Capcut",
+      "category": "video",
+      "icon": "assets/images/cap.png",
+      "iconType": "image"
+    },
+    {
+      "id": 17,
+      "name": "Davinci Resolve",
+      "category": "video",
+      "icon": "assets/images/cap.png",
+      "iconType": "image"
     }
     
+
   ]
 }

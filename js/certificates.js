@@ -6,15 +6,37 @@ document.addEventListener('DOMContentLoaded', async function() {
     await loadCertificates();
 });
 
-// Load certificates from JSON
+// Load certificates from JSON with automatic change detection
 async function loadCertificates() {
     try {
         // Detect if we're in root or pages folder
         const isInPages = window.location.pathname.includes('/pages/');
         const jsonPath = isInPages ? '../data/certificates.json' : 'data/certificates.json';
         
-        const response = await fetch(jsonPath);
-        certificatesData = await response.json();
+        // Always fetch fresh data
+        const response = await fetch(jsonPath, {
+            cache: 'no-cache'
+        });
+        const freshData = await response.json();
+        
+        // Create hash of current data for comparison
+        const freshHash = JSON.stringify(freshData).length;
+        const cachedHash = localStorage.getItem('certificatesHash');
+        
+        // Use cached data only if hash matches
+        if (cachedHash && cachedHash === freshHash.toString()) {
+            const cachedData = localStorage.getItem('certificatesData');
+            if (cachedData) {
+                certificatesData = JSON.parse(cachedData);
+            } else {
+                certificatesData = freshData;
+            }
+        } else {
+            // Data changed, use fresh data and update cache
+            certificatesData = freshData;
+            localStorage.setItem('certificatesData', JSON.stringify(certificatesData));
+            localStorage.setItem('certificatesHash', freshHash.toString());
+        }
         
         // Render certificates
         renderCertificates();
@@ -44,7 +66,7 @@ function renderCertificates() {
     
     // Trigger animations
     setTimeout(() => {
-        const certItems = document.querySelectorAll('.education-item');
+        const certItems = document.querySelectorAll('.certificate-item');
         certItems.forEach((item, i) => {
             setTimeout(() => {
                 item.style.opacity = '1';
@@ -57,41 +79,16 @@ function renderCertificates() {
 // Create certificate element
 function createCertificateElement(cert, index) {
     const item = document.createElement('div');
-    item.className = 'education-item';
+    item.className = 'certificate-item';
     item.style.opacity = '0';
     item.style.transform = 'translateY(20px)';
     item.style.transition = 'all 0.3s ease';
     
-    // Build tags HTML
-    const tagsHTML = cert.tags.map(tag => 
-        `<span class="cert-tag">${tag}</span>`
-    ).join('');
-    
     item.innerHTML = `
-        <div class="education-header">
-            <div class="education-title">
-                <h3>${cert.title}</h3>
-                <p class="education-institution">${cert.issuer}</p>
-                ${cert.tags.length > 0 ? `
-                    <div class="certificate-tags">
-                        ${tagsHTML}
-                    </div>
-                ` : ''}
-                ${cert.description ? `<p class="cert-description">${cert.description}</p>` : ''}
-            </div>
-            <div class="education-date">${cert.date}</div>
+        <div class="certificate-info-simple">
+            <h3 class="certificate-title">${cert.title}</h3>
+            <p class="certificate-issuer">${cert.issuer}</p>
         </div>
-        ${cert.link !== '#' ? `
-            <a href="${cert.link}" target="_blank" rel="noopener noreferrer" class="certificate-view-btn">
-                <i class="fas fa-external-link-alt"></i>
-                View Certificate
-            </a>
-        ` : `
-            <a href="#" class="certificate-view-btn" onclick="return false;" style="opacity: 0.5; cursor: not-allowed;">
-                <i class="fas fa-external-link-alt"></i>
-                View Certificate
-            </a>
-        `}
     `;
     
     return item;

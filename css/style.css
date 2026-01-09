@@ -63,7 +63,7 @@ body {
 /* Zoom out to 75% on desktop */
 @media (min-width: 1024px) {
     body {
-        zoom: 0.75;
+        zoom: 0.65;
     }
 }
 
@@ -79,16 +79,27 @@ h1 {
     letter-spacing: -0.025em;
 }
 
-/* Verify badge styling */
+/* Verify badge styling - Twitter/X style */
 .verify-badge {
     color: #1DA1F2;
-    width: 0.75em;
-    height: 0.75em;
-    margin-left: 0.25rem;
+    width: 1.1em;
+    height: 1.1em;
+    margin-left: 0.4rem;
     vertical-align: middle;
     display: inline-block;
     position: relative;
-    top: -0.1em;
+    top: -0.05em;
+    filter: drop-shadow(0 1px 2px rgba(29, 161, 242, 0.3));
+}
+
+/* Hero name styling */
+.hero-name {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    line-height: 1.2;
 }
 
 h2 {
@@ -357,6 +368,102 @@ nav a:hover {
 .dark-mode .certificate-view-btn:hover {
     background-color: var(--surface-color);
     color: var(--primary-color);
+}
+
+/* New Certificate List Styling */
+.certificates-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.certificates-header .section-title {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.certificates-header .section-title i {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.view-all-link {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.view-all-link:hover {
+    color: var(--primary-color);
+    gap: 0.5rem;
+}
+
+.view-all-link i {
+    font-size: 0.75rem;
+}
+
+.certificates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.certificate-item {
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.certificate-item:hover {
+    background-color: #e5e7eb;
+    border-color: #d1d5db;
+}
+
+.certificate-info-simple {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.certificate-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.certificate-issuer {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Dark mode for new certificate list */
+.dark-mode .certificate-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .certificate-item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark-mode .certificate-title {
+    color: #e5e7eb;
+}
+
+.dark-mode .certificate-issuer {
+    color: #9ca3af;
 }
 
 /* Contact Section */
@@ -1204,200 +1311,78 @@ body.dark-mode .project-button:hover {
 .skills-categories-container {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
   padding: 0 2rem;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-/* Enhanced skill category section with subtle card styling */
+/* Skill category section */
 .skills-category-section {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  background-color: var(--surface-color);
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  padding: 2.5rem;
+  gap: 1rem;
+  padding: 0;
   position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid var(--border-color);
 }
 
-.skills-category-section:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-}
-
-/* Modern category header with icon */
-.category-header {
+/* Simple category header without icon badge */
+.category-header-simple {
   display: flex;
   align-items: center;
-  gap: 1rem;
   margin-bottom: 0.5rem;
 }
 
-.category-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-}
-
-.category-icon i {
-  font-size: 1.5rem;
-  color: white;
-}
-
-/* Improved category titles with modern styling */
+/* Category title */
 .skills-category-title {
-  font-size: 1.6rem;
+  font-size: 1.1rem;
   color: var(--text-primary);
-  font-weight: 700;
-  position: relative;
-  margin: 0;
-  padding-bottom: 0.5rem;
-}
-
-.skills-category-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  border-radius: 3px;
-}
-
-/* Simple grid layout for skills */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 2rem;
-  padding: 1rem 0;
-  justify-items: center;
-}
-
-/* Modern skill items with hover effects */
-.skill-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  background: transparent;
-  transition: all 0.3s ease;
-  min-width: 100px;
-  border: none;
-  position: relative;
-}
-
-/* Custom skill item styling based on data attribute */
-.skill-item[data-skill="html5"]:hover .skill-icon { color: #E44D26; }
-.skill-item[data-skill="css3"]:hover .skill-icon { color: #264DE4; }
-.skill-item[data-skill="javascript"]:hover .skill-icon { color: #F7DF1E; }
-.skill-item[data-skill="python"]:hover .skill-icon { color: #3776AB; }
-.skill-item[data-skill="git"]:hover .skill-icon { color: #F05032; }
-.skill-item[data-skill="react"]:hover .skill-icon { color: #61DAFB; }
-
-.skill-item:hover {
-  transform: translateY(-10px);
-}
-
-/* Skill icon wrapper for better styling */
-.skill-icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 70px;
-  height: 70px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  margin-bottom: 0.75rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.dark-mode .skill-icon-wrapper {
-  background-color: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.skill-item:hover .skill-icon-wrapper {
-  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.25);
-  transform: scale(1.05);
-}
-
-/* Enhanced logo styling with better visibility */
-.skill-icon {
-  font-size: 2.25rem;
-  color: var(--primary-color);
-  transition: all 0.3s ease;
-}
-
-/* Enhanced image icon container */
-.skill-icon-img {
-  width: 70px;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0.75rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.dark-mode .skill-icon-img {
-  background-color: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.skill-item:hover .skill-icon-img {
-  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.25);
-  transform: scale(1.05);
-}
-
-/* Improved software icon styling */
-.software-icon {
-  max-width: 70%;
-  max-height: 70%;
-  object-fit: contain;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}
-
-.skill-item:hover .software-icon {
-  transform: scale(1.15);
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2)) brightness(1.1);
-}
-
-.skill-item:hover .skill-icon {
-  transform: scale(1.15);
-  filter: drop-shadow(0 4px 12px rgba(37, 99, 235, 0.3));
-}
-
-/* Modern skill name styling */
-.skill-item span {
-  font-size: 0.9rem;
   font-weight: 600;
-  color: var(--text-primary);
-  text-align: center;
-  transition: all 0.3s ease;
+  margin: 0;
+}
+
+/* Pills container with flex wrap */
+.skills-pills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+/* Pill/badge style for skills */
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1f2937;
+  transition: all 0.2s ease;
+  cursor: default;
   white-space: nowrap;
-  margin-top: 0.5rem;
-  letter-spacing: -0.01em;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.skill-pill:hover {
+  background-color: #e5e7eb;
+  border-color: #d1d5db;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Dark mode pills */
+.dark-mode .skill-pill {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #e5e7eb;
+}
+
+.dark-mode .skill-pill:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

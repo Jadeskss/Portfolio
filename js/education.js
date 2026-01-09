@@ -1,11 +1,34 @@
 // Education data management
 let educationData = [];
 
-// Load education data
+// Load education data with automatic change detection
 async function loadEducation() {
   try {
-    const response = await fetch('data/education.json');
-    educationData = await response.json();
+    // Always fetch fresh data
+    const response = await fetch('data/education.json', {
+      cache: 'no-cache'
+    });
+    const freshData = await response.json();
+    
+    // Create hash of current data for comparison
+    const freshHash = JSON.stringify(freshData).length;
+    const cachedHash = localStorage.getItem('educationHash');
+    
+    // Use cached data only if hash matches
+    if (cachedHash && cachedHash === freshHash.toString()) {
+      const cachedData = localStorage.getItem('educationData');
+      if (cachedData) {
+        educationData = JSON.parse(cachedData);
+      } else {
+        educationData = freshData.education || freshData;
+      }
+    } else {
+      // Data changed, use fresh data and update cache
+      educationData = freshData.education || freshData;
+      localStorage.setItem('educationData', JSON.stringify(educationData));
+      localStorage.setItem('educationHash', freshHash.toString());
+    }
+    
     renderEducation();
   } catch (error) {
     console.error('Error loading education data:', error);

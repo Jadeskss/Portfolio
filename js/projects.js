@@ -11,15 +11,37 @@ document.addEventListener('DOMContentLoaded', async function() {
     initImageModal();
 });
 
-// Load projects from JSON
+// Load projects from JSON with automatic change detection
 async function loadProjects() {
     try {
         // Detect if we're in root or pages folder
         const isInPages = window.location.pathname.includes('/pages/');
         const jsonPath = isInPages ? '../data/projects.json' : 'data/projects.json';
         
-        const response = await fetch(jsonPath);
-        projectsData = await response.json();
+        // Always fetch fresh data
+        const response = await fetch(jsonPath, {
+            cache: 'no-cache'
+        });
+        const freshData = await response.json();
+        
+        // Create hash of current data for comparison
+        const freshHash = JSON.stringify(freshData).length;
+        const cachedHash = localStorage.getItem('projectsHash');
+        
+        // Use cached data only if hash matches
+        if (cachedHash && cachedHash === freshHash.toString()) {
+            const cachedData = localStorage.getItem('projectsData');
+            if (cachedData) {
+                projectsData = JSON.parse(cachedData);
+            } else {
+                projectsData = freshData;
+            }
+        } else {
+            // Data changed, use fresh data and update cache
+            projectsData = freshData;
+            localStorage.setItem('projectsData', JSON.stringify(projectsData));
+            localStorage.setItem('projectsHash', freshHash.toString());
+        }
         
         // Render categories
         renderCategories();
