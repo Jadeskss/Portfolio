@@ -1,0 +1,21 @@
+{
+  "name": "jade-portfolio",
+  "version": "1.0.0",
+  "description": "Jade's Portfolio Website with Node.js backend",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "vercel-build": "echo 'No build needed'"
+  },
+  "keywords": ["portfolio", "nodejs", "express"],
+  "author": "Jade Madriaga",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": ">=18.x"
+  }
+}

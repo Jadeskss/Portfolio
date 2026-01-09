@@ -4,8 +4,12 @@ let educationData = [];
 // Load education data with automatic change detection
 async function loadEducation() {
   try {
-    // Always fetch fresh data
-    const response = await fetch('data/education.json', {
+    // Fetch from API endpoint
+    const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+        ? 'http://localhost:3000/api/education'
+        : '/api/education';
+    
+    const response = await fetch(apiUrl, {
       cache: 'no-cache'
     });
     const freshData = await response.json();

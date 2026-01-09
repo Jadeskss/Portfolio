@@ -6,15 +6,15 @@ document.addEventListener('DOMContentLoaded', async function() {
     await loadSkills();
 });
 
-// Load skills from JSON with automatic change detection
+// Load skills from API with automatic change detection
 async function loadSkills() {
     try {
-        // Detect if we're in root or pages folder
-        const isInPages = window.location.pathname.includes('/pages/');
-        const jsonPath = isInPages ? '../data/skills.json' : 'data/skills.json';
+        // Fetch from API endpoint
+        const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+            ? 'http://localhost:3000/api/skills'
+            : '/api/skills';
         
-        // Always fetch fresh data
-        const response = await fetch(jsonPath, {
+        const response = await fetch(apiUrl, {
             cache: 'no-cache'
         });
         const freshData = await response.json();

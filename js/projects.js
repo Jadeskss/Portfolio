@@ -11,15 +11,15 @@ document.addEventListener('DOMContentLoaded', async function() {
     initImageModal();
 });
 
-// Load projects from JSON with automatic change detection
+// Load projects from API with automatic change detection
 async function loadProjects() {
     try {
-        // Detect if we're in root or pages folder
-        const isInPages = window.location.pathname.includes('/pages/');
-        const jsonPath = isInPages ? '../data/projects.json' : 'data/projects.json';
+        // Fetch from API endpoint
+        const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+            ? 'http://localhost:3000/api/projects'
+            : '/api/projects';
         
-        // Always fetch fresh data
-        const response = await fetch(jsonPath, {
+        const response = await fetch(apiUrl, {
             cache: 'no-cache'
         });
         const freshData = await response.json();
@@ -125,7 +125,7 @@ function renderViewMoreButton(totalProjects) {
         viewMoreContainer.className = 'view-more-container';
         
         viewMoreContainer.innerHTML = `
-            <a href="pages/projects.html" class="view-more-projects-btn">
+            <a href="pages/projects" class="view-more-projects-btn">
                 View More Projects
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
