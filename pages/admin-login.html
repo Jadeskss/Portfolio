@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: #f8f8f8;
+            padding: 50px;
+            max-width: 450px;
+            width: 100%;
+            border: 2px solid #000000;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .login-header i {
+            font-size: 50px;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        .login-header h1 {
+            color: #000000;
+            margin-bottom: 10px;
+            font-weight: 700;
+            font-size: 28px;
+        }
+
+        .login-header p {
+            color: #666666;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #000000;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            border: 2px solid #000000;
+            background: #ffffff;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #000000;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: none;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            background: transparent;
+        }
+
+        .form-group input:focus {
+            outline: none;
+        }
+
+        .input-wrapper:focus-within {
+            background: #f8f8f8;
+        }
+
+        .btn {
+            width: 100%;
+            background: #000000;
+            color: #ffffff;
+            padding: 15px;
+            border: 2px solid #000000;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 25px;
+            display: none;
+            border: 2px solid #000000;
+            background: #ffffff;
+        }
+
+        .alert.error {
+            color: #000000;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-link a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            border-bottom: 2px solid #000000;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <i class="fas fa-lock"></i>
+            <h1>ADMIN ACCESS</h1>
+            <p>Enter your credentials to continue</p>
+        </div>
+
+        <div id="alertBox" class="alert"></div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" required autocomplete="username">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-key"></i>
+                    <input type="password" id="password" required autocomplete="current-password">
+                </div>
+            </div>
+
+            <button type="submit" class="btn">
+                <i class="fas fa-sign-in-alt"></i> LOGIN
+            </button>
+        </form>
+
+        <div class="back-link">
+            <a href="../index.html">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function showAlert(message) {
+            const alertBox = document.getElementById('alertBox');
+            alertBox.textContent = message;
+            alertBox.className = 'alert error show';
+            
+            setTimeout(() => {
+                alertBox.classList.remove('show');
+            }, 5000);
+        }
+
+        async function handleLogin(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const btn = event.target.querySelector('button[type="submit"]');
+            
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> LOGGING IN...';
+            
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
+                    const expirationTime = Date.now() + (8 * 60 * 60 * 1000);
+                    localStorage.setItem('adminAuth', JSON.stringify({
+                        authenticated: true,
+                        token: data.token,
+                        expiration: expirationTime
+                    }));
+                    
+                    window.location.href = 'ups';
+                } else {
+                    showAlert(data.error || 'Invalid username or password');
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> LOGIN';
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showAlert('An error occurred during login');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> LOGIN';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const auth = localStorage.getItem('adminAuth');
+            if (auth) {
+                const authData = JSON.parse(auth);
+                if (authData.authenticated && authData.expiration > Date.now()) {
+                    window.location.href = 'ups';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

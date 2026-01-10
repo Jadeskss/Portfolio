@@ -51,47 +51,28 @@ function renderCertificates() {
     const certificatesContainer = document.getElementById('certificates-container');
     if (!certificatesContainer) return;
     
-    certificatesContainer.innerHTML = '';
+    if (!certificatesData || !certificatesData.certificates || certificatesData.certificates.length === 0) {
+        certificatesContainer.innerHTML = '<p class="no-items">No certificates yet.</p>';
+        return;
+    }
     
     // Sort by date (newest first)
     const sortedCertificates = [...certificatesData.certificates].sort((a, b) => {
         return parseInt(b.date) - parseInt(a.date);
     });
     
-    // Render each certificate
-    sortedCertificates.forEach((cert, index) => {
-        const certElement = createCertificateElement(cert, index);
-        certificatesContainer.appendChild(certElement);
-    });
+    // Show only the 4 most recent certificates
+    const recentCertificates = sortedCertificates.slice(0, 4);
     
-    // Trigger animations
-    setTimeout(() => {
-        const certItems = document.querySelectorAll('.certificate-item');
-        certItems.forEach((item, i) => {
-            setTimeout(() => {
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
-            }, i * 100);
-        });
-    }, 100);
-}
-
-// Create certificate element
-function createCertificateElement(cert, index) {
-    const item = document.createElement('div');
-    item.className = 'certificate-item';
-    item.style.opacity = '0';
-    item.style.transform = 'translateY(20px)';
-    item.style.transition = 'all 0.3s ease';
-    
-    item.innerHTML = `
-        <div class="certificate-info-simple">
-            <h3 class="certificate-title">${cert.title}</h3>
-            <p class="certificate-issuer">${cert.issuer}</p>
+    // Render certificates in new format
+    certificatesContainer.innerHTML = recentCertificates.map(cert => `
+        <div class="dual-section-item">
+            <div class="item-content">
+                <h3 class="item-title">${cert.title}</h3>
+                <p class="item-subtitle">${cert.issuer}</p>
+            </div>
         </div>
-    `;
-    
-    return item;
+    `).join('');
 }
 
 // Display error message

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogs | Jade Madriaga</title>
+  <link rel="icon" type="image/x-icon" href="../assets/images/icon.PNG">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #000000;
+      color: #ffffff;
+      padding: 20px 40px;
+      border-bottom: 2px solid #000000;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.7;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .page-header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .page-header p {
+      font-size: 18px;
+      color: #666666;
+    }
+
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: #ffffff;
+      color: #000000;
+      padding: 10px 25px;
+      border: 2px solid #000000;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    .blogs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .blog-card {
+      background: #ffffff;
+      border: 2px solid #000000;
+      padding: 30px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 5px 5px 0 #000000;
+    }
+
+    .blog-meta {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+      font-size: 12px;
+      color: #666666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .blog-category {
+      background: #000000;
+      color: #ffffff;
+      padding: 4px 12px;
+      font-weight: 600;
+    }
+
+    .blog-date {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .blog-card h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+
+    .blog-excerpt {
+      font-size: 15px;
+      color: #666666;
+      margin-bottom: 20px;
+      flex-grow: 1;
+      line-height: 1.6;
+    }
+
+    .blog-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 2px solid #000000;
+    }
+
+    .blog-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .blog-tag {
+      font-size: 11px;
+      color: #666666;
+      padding: 4px 10px;
+      border: 1px solid #cccccc;
+      text-transform: uppercase;
+    }
+
+    .read-more {
+      font-size: 13px;
+      font-weight: 600;
+      color: #000000;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: gap 0.3s ease;
+    }
+
+    .read-more:hover {
+      gap: 12px;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 100px 20px;
+      font-size: 18px;
+      color: #666666;
+    }
+
+    .no-blogs {
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .no-blogs i {
+      font-size: 64px;
+      color: #cccccc;
+      margin-bottom: 20px;
+    }
+
+    .no-blogs h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .no-blogs p {
+      color: #666666;
+    }
+
+    /* Blog Modal */
+    .blog-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    .blog-modal.active {
+      display: block;
+    }
+
+    .blog-modal-content {
+      max-width: 800px;
+      margin: 80px auto;
+      background: #ffffff;
+      border: 2px solid #000000;
+      padding: 60px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #000000;
+      color: #ffffff;
+      width: 40px;
+      height: 40px;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: #ffffff;
+      color: #000000;
+      border: 2px solid #000000;
+    }
+
+    .modal-header {
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: 2px solid #000000;
+    }
+
+    .modal-header h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .modal-meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: #666666;
+      text-transform: uppercase;
+    }
+
+    .modal-content-body {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #333333;
+    }
+
+    .modal-content-body p {
+      margin-bottom: 20px;
+    }
+
+    .modal-content-body h2 {
+      font-size: 28px;
+      margin: 40px 0 20px;
+    }
+
+    .modal-content-body h3 {
+      font-size: 22px;
+      margin: 30px 0 15px;
+    }
+
+    footer {
+      background: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 30px 40px;
+      border-top: 2px solid #000000;
+    }
+
+    footer p {
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 20px;
+      }
+
+      .page-header h1 {
+        font-size: 32px;
+      }
+
+      .blogs-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .blog-modal-content {
+        margin: 20px;
+        padding: 40px 30px;
+      }
+
+      .modal-header h1 {
+        font-size: 28px;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+    body {
+        zoom: 0.65;
+    }
+}
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Jade.Dev</div>
+      <div class="nav-links">
+        <a href="../index"><i class="fas fa-home"></i> Home</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <h1> Blog</h1>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" data-category="all">All</button>
+      <button class="filter-btn" data-category="Tech">Tech</button>
+      <button class="filter-btn" data-category="Personal">Personal</button>
+      <button class="filter-btn" data-category="Tutorial">Tutorial</button>
+      <button class="filter-btn" data-category="News">News</button>
+      <button class="filter-btn" data-category="General">General</button>
+    </div>
+
+    <div id="blogs-container" class="blogs-grid">
+      <div class="loading">
+        <i class="fas fa-spinner fa-spin"></i>
+        <p>Loading blogs...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Blog Modal -->
+  <div id="blogModal" class="blog-modal">
+    <div class="blog-modal-content">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div class="modal-header">
+        <h1 id="modalTitle"></h1>
+        <div class="modal-meta" id="modalMeta"></div>
+      </div>
+      <div class="modal-content-body" id="modalBody"></div>
+    </div>
+  </div>
+
+
+  <script>
+    let allBlogs = [];
+    let currentCategory = 'all';
+
+    // Load blogs on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      loadBlogs();
+      setupFilters();
+    });
+
+    async function loadBlogs() {
+      try {
+        const response = await fetch('/api/blogs');
+        allBlogs = await response.json();
+        
+        if (!allBlogs || allBlogs.length === 0) {
+          displayNoBlogs();
+          return;
+        }
+
+        // Sort by date (newest first)
+        allBlogs.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        displayBlogs(allBlogs);
+      } catch (error) {
+        console.error('Error loading blogs:', error);
+        displayError();
+      }
+    }
+
+    function displayBlogs(blogs) {
+      const container = document.getElementById('blogs-container');
+      
+      if (blogs.length === 0) {
+        displayNoBlogs();
+        return;
+      }
+
+      container.innerHTML = blogs.map(blog => {
+        // Handle tags as string or array
+        let tagsArray = [];
+        if (Array.isArray(blog.tags)) {
+          tagsArray = blog.tags;
+        } else if (typeof blog.tags === 'string' && blog.tags) {
+          tagsArray = blog.tags.split(',').map(t => t.trim());
+        }
+        
+        return `
+        <div class="blog-card" onclick="openBlog('${blog.id}')">
+          <div class="blog-meta">
+            <span class="blog-category">${blog.category || 'General'}</span>
+            <span class="blog-date">
+              <i class="fas fa-calendar"></i> ${formatDate(blog.date)}
+            </span>
+          </div>
+          <h2>${blog.title}</h2>
+          <p class="blog-excerpt">${blog.excerpt}</p>
+          <div class="blog-footer">
+            <div class="blog-tags">
+              ${tagsArray.slice(0, 3).map(tag => `
+                <span class="blog-tag">#${tag}</span>
+              `).join('')}
+            </div>
+            <a href="#" class="read-more" onclick="event.stopPropagation(); openBlog('${blog.id}')">
+              Read More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      `;
+      }).join('');
+    }
+
+    function setupFilters() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Update active state
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          
+          // Filter blogs
+          const category = btn.dataset.category;
+          currentCategory = category;
+          
+          if (category === 'all') {
+            displayBlogs(allBlogs);
+          } else {
+            const filtered = allBlogs.filter(blog => blog.category === category);
+            displayBlogs(filtered);
+          }
+        });
+      });
+    }
+
+    function openBlog(blogId) {
+      const blog = allBlogs.find(b => b.id === blogId);
+      if (!blog) return;
+
+      document.getElementById('modalTitle').textContent = blog.title;
+      document.getElementById('modalMeta').innerHTML = `
+        <span><i class="fas fa-tag"></i> ${blog.category || 'General'}</span>
+        <span><i class="fas fa-calendar"></i> ${formatDate(blog.date)}</span>
+        <span><i class="fas fa-clock"></i> ${blog.readTime || '5 min read'}</span>
+      `;
+      document.getElementById('modalBody').innerHTML = blog.content || '<p>No content available.</p>';
+      document.getElementById('blogModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('blogModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      const options = { month: 'short', day: 'numeric', year: 'numeric' };
+      return date.toLocaleDateString('en-US', options);
+    }
+
+    function displayNoBlogs() {
+      const container = document.getElementById('blogs-container');
+      container.innerHTML = `
+        <div class="no-blogs" style="grid-column: 1 / -1;">
+          <i class="fas fa-blog"></i>
+          <h3>No blogs found</h3>
+          <p>Check back soon for new content!</p>
+        </div>
+      `;
+    }
+
+    function displayError() {
+      const container = document.getElementById('blogs-container');
+      container.innerHTML = `
+        <div class="no-blogs" style="grid-column: 1 / -1;">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>Failed to load blogs</h3>
+          <p>Please try again later.</p>
+        </div>
+      `;
+    }
+
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    // Close modal when clicking outside
+    document.getElementById('blogModal').addEventListener('click', (e) => {
+      if (e.target.id === 'blogModal') {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>

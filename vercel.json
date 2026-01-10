@@ -2,7 +2,10 @@
   "version": 2,
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/pages/projects", "destination": "/pages/projects.html" }
+    { "source": "/pages/projects", "destination": "/pages/projects.html" },
+    { "source": "/pages/blogs", "destination": "/pages/blogs.html" },
+    { "source": "/pages/admin-login", "destination": "/pages/admin-login.html" },
+    { "source": "/pages/ups", "destination": "/pages/ups.html" }
   ],
   "cleanUrls": true,
   "trailingSlash": false,

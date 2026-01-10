@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Upload Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            background: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .file-upload {
+            border: 2px dashed #667eea;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .file-upload:hover {
+            background: #f8f9ff;
+            border-color: #764ba2;
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .file-upload-label {
+            cursor: pointer;
+        }
+
+        .file-upload i {
+            font-size: 48px;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .file-preview {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .file-preview.active {
+            display: block;
+        }
+
+        .file-preview img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 8px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .tags-input-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 8px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            min-height: 45px;
+        }
+
+        .tags-input-container:focus-within {
+            border-color: #667eea;
+        }
+
+        .tag {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .tag-remove {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .tags-input {
+            border: none;
+            outline: none;
+            flex: 1;
+            min-width: 150px;
+            padding: 5px;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .alert.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .alert.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .tech-stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .tech-item {
+            padding: 8px;
+            background: #f8f9ff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            border-color: #667eea;
+        }
+
+        .tech-item.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            color: #667eea;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .logout-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #dc3545;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <button class="logout-btn" onclick="logout()">
+        <i class="fas fa-sign-out-alt"></i> Logout
+    </button>
+    
+    <a href="../index.html" class="back-link">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+    </a>
+
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-cloud-upload-alt"></i> Content Upload Manager</h1>
+            <p>Upload and manage your projects, certificates, skills, and education entries</p>
+        </div>
+
+        <div id="alertBox" class="alert"></div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('project')">
+                <i class="fas fa-project-diagram"></i> Add Project
+            </button>
+            <button class="tab" onclick="switchTab('certificate')">
+                <i class="fas fa-certificate"></i> Add Certificate
+            </button>
+            <button class="tab" onclick="switchTab('skill')">
+                <i class="fas fa-code"></i> Add Skill
+            </button>
+            <button class="tab" onclick="switchTab('education')">
+                <i class="fas fa-graduation-cap"></i> Add Education
+            </button>
+        </div>
+
+        <!-- Project Form -->
+        <div id="project-section" class="content-section active">
+            <h2><i class="fas fa-project-diagram"></i> Add New Project</h2>
+            <form id="projectForm" onsubmit="submitProject(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="projectTitle">Project Title *</label>
+                        <input type="text" id="projectTitle" required placeholder="Enter project title">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectCategory">Category *</label>
+                        <select id="projectCategory" required>
+                            <option value="">Select category</option>
+                            <option value="web">Web</option>
+                            <option value="design">Design</option>
+                            <option value="video/film">Video/Film</option>
+                            <option value="programming">Programming</option>
+                            <option value="graphic design">Graphic Design</option>
+                            <option value="overlays">Overlays</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectDescription">Description *</label>
+                    <textarea id="projectDescription" required placeholder="Describe your project"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="projectLink">Project Link</label>
+                        <input type="url" id="projectLink" placeholder="https://example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectGithub">GitHub Repository</label>
+                        <input type="url" id="projectGithub" placeholder="https://github.com/username/repo">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Technologies Used</label>
+                    <div class="tags-input-container" id="techTagsContainer" onclick="document.getElementById('techTagInput').focus()">
+                        <input type="text" class="tags-input" id="techTagInput" placeholder="Type and press Enter to add technologies">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectImage">Project Image</label>
+                    <div class="file-upload" onclick="document.getElementById('projectImageInput').click()">
+                        <input type="file" id="projectImageInput" accept="image/*" onchange="previewFile(this, 'projectImagePreview')">
+                        <label class="file-upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to upload or drag and drop</p>
+                            <small>PNG, JPG up to 5MB</small>
+                        </label>
+                    </div>
+                    <div id="projectImagePreview" class="file-preview"></div>
+                </div>
+
+                <button type="submit" class="btn">
+                    <i class="fas fa-plus-circle"></i> Add Project
+                </button>
+            </form>
+        </div>
+
+        <!-- Certificate Form -->
+        <div id="certificate-section" class="content-section">
+            <h2><i class="fas fa-certificate"></i> Add New Certificate</h2>
+            <form id="certificateForm" onsubmit="submitCertificate(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="certTitle">Certificate Title *</label>
+                        <input type="text" id="certTitle" required placeholder="Enter certificate title">
+                    </div>
+                    <div class="form-group">
+                        <label for="certIssuer">Issuer *</label>
+                        <input type="text" id="certIssuer" required placeholder="e.g., freeCodeCamp, Udemy">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="certDate">Date *</label>
+                        <input type="text" id="certDate" required placeholder="e.g., 2024, January 2024">
+                    </div>
+                    <div class="form-group">
+                        <label for="certLink">Certificate Link</label>
+                        <input type="url" id="certLink" placeholder="https://example.com/certificate">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="certDescription">Description *</label>
+                    <textarea id="certDescription" required placeholder="Describe what you learned"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Tags/Skills</label>
+                    <div class="tags-input-container" id="certTagsContainer" onclick="document.getElementById('certTagInput').focus()">
+                        <input type="text" class="tags-input" id="certTagInput" placeholder="Type and press Enter to add tags">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">
+                    <i class="fas fa-plus-circle"></i> Add Certificate
+                </button>
+            </form>
+        </div>
+
+        <!-- Skill Form -->
+        <div id="skill-section" class="content-section">
+            <h2><i class="fas fa-code"></i> Add New Skill</h2>
+            <form id="skillForm" onsubmit="submitSkill(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="skillName">Skill Name *</label>
+                        <input type="text" id="skillName" required placeholder="e.g., React, Photoshop">
+                    </div>
+                    <div class="form-group">
+                        <label for="skillCategory">Category *</label>
+                        <select id="skillCategory" required>
+                            <option value="">Select category</option>
+                            <option value="programming">Programming</option>
+                            <option value="design">Graphic Design</option>
+                            <option value="video">Video Editing</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="skillIcon">FontAwesome Icon Class</label>
+                        <input type="text" id="skillIcon" placeholder="e.g., fab fa-react">
+                        <small>Visit <a href="https://fontawesome.com/icons" target="_blank">FontAwesome</a> to find icons</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="skillIconType">Icon Type</label>
+                        <select id="skillIconType">
+                            <option value="fontawesome">FontAwesome</option>
+                            <option value="svg">SVG</option>
+                            <option value="image">Image</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">
+                    <i class="fas fa-plus-circle"></i> Add Skill
+                </button>
+            </form>
+        </div>
+
+        <!-- Education Form -->
+        <div id="education-section" class="content-section">
+            <h2><i class="fas fa-graduation-cap"></i> Add Education Entry</h2>
+            <form id="educationForm" onsubmit="submitEducation(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="eduInstitution">Institution *</label>
+                        <input type="text" id="eduInstitution" required placeholder="School/University name">
+                    </div>
+                    <div class="form-group">
+                        <label for="eduDegree">Degree/Program *</label>
+                        <input type="text" id="eduDegree" required placeholder="e.g., Bachelor of Science in Computer Science">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="eduStartDate">Start Date *</label>
+                        <input type="text" id="eduStartDate" required placeholder="e.g., 2020">
+                    </div>
+                    <div class="form-group">
+                        <label for="eduEndDate">End Date</label>
+                        <input type="text" id="eduEndDate" placeholder="e.g., 2024 or Present">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="eduDescription">Description</label>
+                    <textarea id="eduDescription" placeholder="Describe your education, achievements, etc."></textarea>
+                </div>
+
+                <button type="submit" class="btn">
+                    <i class="fas fa-plus-circle"></i> Add Education
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Check authentication before loading page
+        function checkAuth() {
+            const auth = localStorage.getItem('adminAuth');
+            if (!auth) {
+                window.location.href = 'admin-login.html';
+                return false;
+            }
+            
+            const authData = JSON.parse(auth);
+            if (!authData.authenticated || authData.expiration < Date.now()) {
+                localStorage.removeItem('adminAuth');
+                window.location.href = 'admin-login.html';
+                return false;
+            }
+            
+            return true;
+        }
+
+        // Check auth on page load
+        if (!checkAuth()) {
+            document.body.style.display = 'none';
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('adminAuth');
+            window.location.href = 'admin-login.html';
+        }
+
+        let projectTechTags = [];
+        let certTags = [];
+
+        // Tab switching
+        function switchTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            event.target.closest('.tab').classList.add('active');
+
+            // Update content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(tabName + '-section').classList.add('active');
+        }
+
+        // Alert functions
+        function showAlert(message, type = 'success') {
+            const alertBox = document.getElementById('alertBox');
+            alertBox.textContent = message;
+            alertBox.className = `alert ${type} show`;
+            
+            setTimeout(() => {
+                alertBox.classList.remove('show');
+            }, 5000);
+        }
+
+        // Tags input functionality
+        function setupTagsInput(inputId, containerId, tagsArray) {
+            const input = document.getElementById(inputId);
+            const container = document.getElementById(containerId);
+
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const value = input.value.trim();
+                    if (value && !tagsArray.includes(value)) {
+                        tagsArray.push(value);
+                        renderTags(containerId, tagsArray, inputId);
+                        input.value = '';
+                    }
+                }
+            });
+        }
+
+        function renderTags(containerId, tagsArray, inputId) {
+            const container = document.getElementById(containerId);
+            const input = document.getElementById(inputId);
+            
+            // Clear container
+            container.innerHTML = '';
+            
+            // Add tags
+            tagsArray.forEach((tag, index) => {
+                const tagElement = document.createElement('span');
+                tagElement.className = 'tag';
+                tagElement.innerHTML = `
+                    ${tag}
+                    <span class="tag-remove" onclick="removeTag(${index}, '${containerId}', '${inputId}')">&times;</span>
+                `;
+                container.appendChild(tagElement);
+            });
+            
+            // Re-add input
+            container.appendChild(input);
+        }
+
+        function removeTag(index, containerId, inputId) {
+            if (containerId === 'techTagsContainer') {
+                projectTechTags.splice(index, 1);
+                renderTags(containerId, projectTechTags, inputId);
+            } else if (containerId === 'certTagsContainer') {
+                certTags.splice(index, 1);
+                renderTags(containerId, certTags, inputId);
+            }
+        }
+
+        // Initialize tags inputs
+        setupTagsInput('techTagInput', 'techTagsContainer', projectTechTags);
+        setupTagsInput('certTagInput', 'certTagsContainer', certTags);
+
+        // File preview
+        function previewFile(input, previewId) {
+            const preview = document.getElementById(previewId);
+            const file = input.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    preview.innerHTML = `
+                        <p><strong>Selected file:</strong> ${file.name}</p>
+                        <img src="${e.target.result}" alt="Preview">
+                    `;
+                    preview.classList.add('active');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Submit functions
+        async function submitProject(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+
+            try {
+                const formData = new FormData();
+                
+                // Add text fields
+                formData.append('title', document.getElementById('projectTitle').value);
+                formData.append('description', document.getElementById('projectDescription').value);
+                formData.append('category', document.getElementById('projectCategory').value);
+                formData.append('link', document.getElementById('projectLink').value || '#');
+                formData.append('github', document.getElementById('projectGithub').value || '');
+                formData.append('technologies', JSON.stringify(projectTechTags));
+
+                // Add image file
+                const imageFile = document.getElementById('projectImageInput').files[0];
+                if (imageFile) {
+                    formData.append('image', imageFile);
+                }
+
+                const response = await fetch('/api/upload/project', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Project added successfully!', 'success');
+                    document.getElementById('projectForm').reset();
+                    document.getElementById('projectImagePreview').classList.remove('active');
+                    projectTechTags = [];
+                    renderTags('techTagsContainer', projectTechTags, 'techTagInput');
+                } else {
+                    showAlert(data.error || 'Failed to add project', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while uploading', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-plus-circle"></i> Add Project';
+            }
+        }
+
+        async function submitCertificate(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+
+            try {
+                const certificateData = {
+                    title: document.getElementById('certTitle').value,
+                    issuer: document.getElementById('certIssuer').value,
+                    date: document.getElementById('certDate').value,
+                    tags: certTags,
+                    link: document.getElementById('certLink').value || '#',
+                    description: document.getElementById('certDescription').value
+                };
+
+                const response = await fetch('/api/upload/certificate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(certificateData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Certificate added successfully!', 'success');
+                    document.getElementById('certificateForm').reset();
+                    certTags = [];
+                    renderTags('certTagsContainer', certTags, 'certTagInput');
+                } else {
+                    showAlert(data.error || 'Failed to add certificate', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while uploading', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-plus-circle"></i> Add Certificate';
+            }
+        }
+
+        async function submitSkill(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+
+            try {
+                const skillData = {
+                    name: document.getElementById('skillName').value,
+                    category: document.getElementById('skillCategory').value,
+                    icon: document.getElementById('skillIcon').value || '',
+                    iconType: document.getElementById('skillIconType').value
+                };
+
+                const response = await fetch('/api/upload/skill', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(skillData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Skill added successfully!', 'success');
+                    document.getElementById('skillForm').reset();
+                } else {
+                    showAlert(data.error || 'Failed to add skill', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while uploading', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-plus-circle"></i> Add Skill';
+            }
+        }
+
+        async function submitEducation(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+
+            try {
+                const educationData = {
+                    institution: document.getElementById('eduInstitution').value,
+                    degree: document.getElementById('eduDegree').value,
+                    startDate: document.getElementById('eduStartDate').value,
+                    endDate: document.getElementById('eduEndDate').value || 'Present',
+                    description: document.getElementById('eduDescription').value || ''
+                };
+
+                const response = await fetch('/api/upload/education', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(educationData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Education entry added successfully!', 'success');
+                    document.getElementById('educationForm').reset();
+                } else {
+                    showAlert(data.error || 'Failed to add education entry', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while uploading', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-plus-circle"></i> Add Education';
+            }
+        }
+    </script>
+</body>
+</html>

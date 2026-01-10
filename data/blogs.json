@@ -1,0 +1,12 @@
+[
+  {
+    "id": "1736385600000",
+    "title": "Wrote my first code",
+    "excerpt": "print(\"Hello World\")",
+    "date": "2026-01-08",
+    "category": "Personal",
+    "readTime": "1 min read",
+    "tags": "Python",
+    "content": "<p>Hello World</p>"
+  }
+]

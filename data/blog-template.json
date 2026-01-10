@@ -1,0 +1,10 @@
+{
+  "id": "unique-id",
+  "title": "Blog Title",
+  "excerpt": "Short description or excerpt",
+  "date": "2026-01-11",
+  "category": "Tech/Personal/Tutorial",
+  "readTime": "5 min read",
+  "tags": ["tag1", "tag2"],
+  "content": "Full blog content in HTML or markdown"
+}

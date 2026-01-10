@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: #000000;
+            color: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #000000;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            background: #000000;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: 2px solid #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .btn-primary {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .btn-danger {
+            background: #000000;
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+
+        .btn-small {
+            padding: 5px 10px;
+            font-size: 11px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 30px;
+            border: 2px solid #000000;
+            background: #f8f8f8;
+        }
+
+        .tab {
+            background: #f8f8f8;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border-right: 2px solid #000000;
+            flex: 1;
+        }
+
+        .tab:last-child {
+            border-right: none;
+        }
+
+        .tab:hover {
+            background: #e0e0e0;
+        }
+
+        .tab.active {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #000000;
+        }
+
+        .section-header h2 {
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #000000;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #000000;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            background: #ffffff;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            background: #f8f8f8;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .file-upload {
+            border: 2px dashed #000000;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f8f8;
+        }
+
+        .file-upload:hover {
+            background: #e0e0e0;
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .file-upload i {
+            font-size: 40px;
+            color: #000000;
+            margin-bottom: 10px;
+        }
+
+        .tags-input-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 8px;
+            border: 2px solid #000000;
+            min-height: 45px;
+            background: #ffffff;
+        }
+
+        .tags-input-container:focus-within {
+            background: #f8f8f8;
+        }
+
+        .tag {
+            background: #000000;
+            color: #ffffff;
+            padding: 5px 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            border: 2px solid #000000;
+        }
+
+        .tag-remove {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .tags-input {
+            border: none;
+            outline: none;
+            flex: 1;
+            min-width: 150px;
+            padding: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            display: none;
+            border: 2px solid #000000;
+        }
+
+        .alert.success {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .alert.error {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: #f8f8f8;
+            padding: 30px;
+            border: 2px solid #000000;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-card p {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: 2px solid #000000;
+        }
+
+        .data-table thead {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #000000;
+            font-size: 13px;
+        }
+
+        .data-table th {
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 11px;
+        }
+
+        .data-table tbody tr {
+            background: #ffffff;
+        }
+
+        .data-table tbody tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .data-table tbody tr:hover {
+            background: #e0e0e0;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .file-preview {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f8f8;
+            border: 2px solid #000000;
+            display: none;
+        }
+
+        .file-preview.active {
+            display: block;
+        }
+
+        .file-preview img {
+            max-width: 200px;
+            max-height: 200px;
+            border: 2px solid #000000;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 3px solid #000000;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #000000;
+        }
+
+        .modal-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .modal-close {
+            font-size: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 14px;
+            color: #666666;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab {
+                border-right: none;
+                border-bottom: 2px solid #000000;
+            }
+
+            .tab:last-child {
+                border-bottom: none;
+            }
+
+            .data-table {
+                font-size: 11px;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Jade Madriaga</h1>
+        <div class="header-actions">
+            <a href="../index.html" class="btn"><i class="fas fa-home"></i> Portfolio</a>
+            <button class="btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="alertBox" class="alert"></div>
+
+        <!-- Dashboard Stats -->
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <h3 id="totalProjects">0</h3>
+                <p><i class="fas fa-project-diagram"></i> Total Projects</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="totalCertificates">0</h3>
+                <p><i class="fas fa-certificate"></i> Total Certificates</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="totalSkills">0</h3>
+                <p><i class="fas fa-code"></i> Total Skills</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="totalEducation">0</h3>
+                <p><i class="fas fa-graduation-cap"></i> Education Entries</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="totalBlogs">0</h3>
+                <p><i class="fas fa-blog"></i> Blog Posts</p>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('dashboard')">
+                <i class="fas fa-list"></i> Dashboard
+            </button>
+            <button class="tab" onclick="switchTab('add-project')">
+                <i class="fas fa-plus"></i> Add Project
+            </button>
+            <button class="tab" onclick="switchTab('add-certificate')">
+                <i class="fas fa-plus"></i> Add Certificate
+            </button>
+            <button class="tab" onclick="switchTab('add-skill')">
+                <i class="fas fa-plus"></i> Add Skill
+            </button>
+            <button class="tab" onclick="switchTab('add-education')">
+                <i class="fas fa-plus"></i> Add Education
+            </button>
+            <button class="tab" onclick="switchTab('add-blog')">
+                <i class="fas fa-plus"></i> Add Blog
+            </button>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard-section" class="content-section active">
+            <div class="section-header">
+                <h2><i class="fas fa-project-diagram"></i> Projects</h2>
+            </div>
+            <table class="data-table" id="projectsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="5" class="loading">Loading projects...</td></tr>
+                </tbody>
+            </table>
+
+            <div class="section-header" style="margin-top: 50px;">
+                <h2><i class="fas fa-certificate"></i> Certificates</h2>
+            </div>
+            <table class="data-table" id="certificatesTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Issuer</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="5" class="loading">Loading certificates...</td></tr>
+                </tbody>
+            </table>
+
+            <div class="section-header" style="margin-top: 50px;">
+                <h2><i class="fas fa-code"></i> Skills</h2>
+            </div>
+            <table class="data-table" id="skillsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Icon</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="5" class="loading">Loading skills...</td></tr>
+                </tbody>
+            </table>
+
+            <div class="section-header" style="margin-top: 50px;">
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+            </div>
+            <table class="data-table" id="educationTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Institution</th>
+                        <th>Degree</th>
+                        <th>Period</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="5" class="loading">Loading education...</td></tr>
+                </tbody>
+            </table>
+
+            <div class="section-header" style="margin-top: 50px;">
+                <h2><i class="fas fa-blog"></i> Blogs</h2>
+            </div>
+            <table class="data-table" id="blogsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="5" class="loading">Loading blogs...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Add Project Section -->
+        <div id="add-project-section" class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-project-diagram"></i> Add New Project</h2>
+            </div>
+            <form id="projectForm" onsubmit="submitProject(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="projectTitle">Project Title *</label>
+                        <input type="text" id="projectTitle" required placeholder="Enter project title">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectCategory">Category *</label>
+                        <select id="projectCategory" required>
+                            <option value="">Select category</option>
+                            <option value="web">Web</option>
+                            <option value="design">Design</option>
+                            <option value="video/film">Video/Film</option>
+                            <option value="programming">Programming</option>
+                            <option value="graphic design">Graphic Design</option>
+                            <option value="overlays">Overlays</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectDescription">Description *</label>
+                    <textarea id="projectDescription" required placeholder="Describe your project"></textarea>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="projectLink">Project Link</label>
+                        <input type="url" id="projectLink" placeholder="https://example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectGithub">GitHub Repository</label>
+                        <input type="url" id="projectGithub" placeholder="https://github.com/username/repo">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Technologies Used</label>
+                    <div class="tags-input-container" id="techTagsContainer" onclick="document.getElementById('techTagInput').focus()">
+                        <input type="text" class="tags-input" id="techTagInput" placeholder="Type and press Enter">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectImage">Project Image</label>
+                    <div class="file-upload" onclick="document.getElementById('projectImageInput').click()">
+                        <input type="file" id="projectImageInput" accept="image/*" onchange="previewFile(this, 'projectImagePreview')">
+                        <label>
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to upload image</p>
+                            <small>PNG, JPG up to 5MB</small>
+                        </label>
+                    </div>
+                    <div id="projectImagePreview" class="file-preview"></div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-plus-circle"></i> Add Project
+                </button>
+            </form>
+        </div>
+
+        <!-- Add Certificate Section -->
+        <div id="add-certificate-section" class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-certificate"></i> Add New Certificate</h2>
+            </div>
+            <form id="certificateForm" onsubmit="submitCertificate(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="certTitle">Certificate Title *</label>
+                        <input type="text" id="certTitle" required placeholder="Enter certificate title">
+                    </div>
+                    <div class="form-group">
+                        <label for="certIssuer">Issuer *</label>
+                        <input type="text" id="certIssuer" required placeholder="e.g., freeCodeCamp, Udemy">
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="certDate">Date *</label>
+                        <input type="text" id="certDate" required placeholder="e.g., 2024, January 2024">
+                    </div>
+                    <div class="form-group">
+                        <label for="certLink">Certificate Link</label>
+                        <input type="url" id="certLink" placeholder="https://example.com/certificate">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="certDescription">Description *</label>
+                    <textarea id="certDescription" required placeholder="Describe what you learned"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Tags/Skills</label>
+                    <div class="tags-input-container" id="certTagsContainer" onclick="document.getElementById('certTagInput').focus()">
+                        <input type="text" class="tags-input" id="certTagInput" placeholder="Type and press Enter">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-plus-circle"></i> Add Certificate
+                </button>
+            </form>
+        </div>
+
+        <!-- Add Skill Section -->
+        <div id="add-skill-section" class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-code"></i> Add New Skill</h2>
+            </div>
+            <form id="skillForm" onsubmit="submitSkill(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="skillName">Skill Name *</label>
+                        <input type="text" id="skillName" required placeholder="e.g., React, Photoshop">
+                    </div>
+                    <div class="form-group">
+                        <label for="skillCategory">Category *</label>
+                        <select id="skillCategory" required>
+                            <option value="">Select category</option>
+                            <option value="programming">Programming</option>
+                            <option value="design">Graphic Design</option>
+                            <option value="video">Video Editing</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="skillIcon">FontAwesome Icon Class</label>
+                        <input type="text" id="skillIcon" placeholder="e.g., fab fa-react">
+                        <small>Visit <a href="https://fontawesome.com/icons" target="_blank">FontAwesome</a></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="skillIconType">Icon Type</label>
+                        <select id="skillIconType">
+                            <option value="fontawesome">FontAwesome</option>
+                            <option value="svg">SVG</option>
+                            <option value="image">Image</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-plus-circle"></i> Add Skill
+                </button>
+            </form>
+        </div>
+
+        <!-- Add Education Section -->
+        <div id="add-education-section" class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-graduation-cap"></i> Add Education Entry</h2>
+            </div>
+            <form id="educationForm" onsubmit="submitEducation(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="eduInstitution">Institution *</label>
+                        <input type="text" id="eduInstitution" required placeholder="School/University name">
+                    </div>
+                    <div class="form-group">
+                        <label for="eduDegree">Degree/Program *</label>
+                        <input type="text" id="eduDegree" required placeholder="e.g., Bachelor of Science in CS">
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="eduStartDate">Start Date *</label>
+                        <input type="text" id="eduStartDate" required placeholder="e.g., 2020">
+                    </div>
+                    <div class="form-group">
+                        <label for="eduEndDate">End Date</label>
+                        <input type="text" id="eduEndDate" placeholder="e.g., 2024 or Present">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="eduDescription">Description</label>
+                    <textarea id="eduDescription" placeholder="Describe your education, achievements, etc."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-plus-circle"></i> Add Education
+                </button>
+            </form>
+        </div>
+
+        <!-- Add Blog Section -->
+        <div id="add-blog-section" class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-blog"></i> Add New Blog Post</h2>
+            </div>
+            <form id="blogForm" onsubmit="submitBlog(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="blogTitle">Blog Title *</label>
+                        <input type="text" id="blogTitle" required placeholder="Enter blog title">
+                    </div>
+                    <div class="form-group">
+                        <label for="blogCategory">Category *</label>
+                        <select id="blogCategory" required>
+                            <option value="">Select category</option>
+                            <option value="Tech">Tech</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Tutorial">Tutorial</option>
+                            <option value="News">News</option>
+                            <option value="General">General</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="blogExcerpt">Excerpt/Summary *</label>
+                    <textarea id="blogExcerpt" required placeholder="Short description or preview (1-2 sentences)" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="blogReadTime">Read Time</label>
+                    <input type="text" id="blogReadTime" placeholder="e.g., 5 min read" value="5 min read">
+                </div>
+
+                <div class="form-group">
+                    <label for="blogTags">Tags (comma-separated)</label>
+                    <input type="text" id="blogTags" placeholder="e.g., javascript, webdev, tutorial">
+                </div>
+
+                <div class="form-group">
+                    <label for="blogContent">Content *</label>
+                    <textarea id="blogContent" required placeholder="Full blog content (HTML supported)" rows="10"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-plus-circle"></i> Add Blog Post
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Modals -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Edit Item</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Check authentication
+        function checkAuth() {
+            const auth = localStorage.getItem('adminAuth');
+            if (!auth) {
+                window.location.href = 'admin-login';
+                return false;
+            }
+            
+            const authData = JSON.parse(auth);
+            if (!authData.authenticated || authData.expiration < Date.now()) {
+                localStorage.removeItem('adminAuth');
+                window.location.href = 'admin-login';
+                return false;
+            }
+            
+            return true;
+        }
+
+        if (!checkAuth()) {
+            document.body.style.display = 'none';
+        }
+
+        function logout() {
+            localStorage.removeItem('adminAuth');
+            window.location.href = 'admin-login';
+        }
+
+        let projectTechTags = [];
+        let certTags = [];
+
+        // Tab switching
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            event.target.closest('.tab').classList.add('active');
+
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(tabName + '-section').classList.add('active');
+        }
+
+        // Alert functions
+        function showAlert(message, type = 'success') {
+            const alertBox = document.getElementById('alertBox');
+            alertBox.textContent = message;
+            alertBox.className = `alert ${type} show`;
+            
+            setTimeout(() => {
+                alertBox.classList.remove('show');
+            }, 5000);
+        }
+
+        // Tags input functionality
+        function setupTagsInput(inputId, containerId, tagsArray) {
+            const input = document.getElementById(inputId);
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const value = input.value.trim();
+                    if (value && !tagsArray.includes(value)) {
+                        tagsArray.push(value);
+                        renderTags(containerId, tagsArray, inputId);
+                        input.value = '';
+                    }
+                }
+            });
+        }
+
+        function renderTags(containerId, tagsArray, inputId) {
+            const container = document.getElementById(containerId);
+            const input = document.getElementById(inputId);
+            
+            container.innerHTML = '';
+            
+            tagsArray.forEach((tag, index) => {
+                const tagElement = document.createElement('span');
+                tagElement.className = 'tag';
+                tagElement.innerHTML = `
+                    ${tag}
+                    <span class="tag-remove" onclick="removeTag(${index}, '${containerId}', '${inputId}')">&times;</span>
+                `;
+                container.appendChild(tagElement);
+            });
+            
+            container.appendChild(input);
+        }
+
+        function removeTag(index, containerId, inputId) {
+            if (containerId === 'techTagsContainer') {
+                projectTechTags.splice(index, 1);
+                renderTags(containerId, projectTechTags, inputId);
+            } else if (containerId === 'certTagsContainer') {
+                certTags.splice(index, 1);
+                renderTags(containerId, certTags, inputId);
+            }
+        }
+
+        setupTagsInput('techTagInput', 'techTagsContainer', projectTechTags);
+        setupTagsInput('certTagInput', 'certTagsContainer', certTags);
+
+        // File preview
+        function previewFile(input, previewId) {
+            const preview = document.getElementById(previewId);
+            const file = input.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    preview.innerHTML = `
+                        <p><strong>Selected:</strong> ${file.name}</p>
+                        <img src="${e.target.result}" alt="Preview">
+                    `;
+                    preview.classList.add('active');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Load dashboard data
+        async function loadDashboard() {
+            try {
+                const [projects, certificates, skills, education, blogs] = await Promise.all([
+                    fetch('/api/projects').then(r => r.json()),
+                    fetch('/api/certificates').then(r => r.json()),
+                    fetch('/api/skills').then(r => r.json()),
+                    fetch('/api/education').then(r => r.json()),
+                    fetch('/api/blogs').then(r => r.json())
+                ]);
+
+                document.getElementById('totalProjects').textContent = projects.projects?.length || 0;
+                document.getElementById('totalCertificates').textContent = certificates.certificates?.length || 0;
+                document.getElementById('totalSkills').textContent = skills.skills?.length || 0;
+                document.getElementById('totalEducation').textContent = education.education?.length || 0;
+                document.getElementById('totalBlogs').textContent = blogs?.length || 0;
+
+                loadProjectsTable(projects.projects || []);
+                loadCertificatesTable(certificates.certificates || []);
+                loadSkillsTable(skills.skills || []);
+                loadEducationTable(education.education || []);
+                loadBlogsTable(blogs || []);
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+                showAlert('Failed to load dashboard data', 'error');
+            }
+        }
+
+        function loadProjectsTable(projects) {
+            const tbody = document.querySelector('#projectsTable tbody');
+            if (projects.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="loading">No projects found</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = projects.map(p => `
+                <tr>
+                    <td>${p.id}</td>
+                    <td>${p.title}</td>
+                    <td>${p.category}</td>
+                    <td>${p.description.substring(0, 50)}...</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-small" onclick="editProject(${p.id})">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn btn-small btn-danger" onclick="deleteProject(${p.id})">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function loadCertificatesTable(certificates) {
+            const tbody = document.querySelector('#certificatesTable tbody');
+            if (certificates.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="loading">No certificates found</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = certificates.map(c => `
+                <tr>
+                    <td>${c.id}</td>
+                    <td>${c.title}</td>
+                    <td>${c.issuer}</td>
+                    <td>${c.date}</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-small" onclick="editCertificate(${c.id})">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn btn-small btn-danger" onclick="deleteCertificate(${c.id})">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function loadSkillsTable(skills) {
+            const tbody = document.querySelector('#skillsTable tbody');
+            if (skills.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="loading">No skills found</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = skills.map(s => `
+                <tr>
+                    <td>${s.id}</td>
+                    <td>${s.name}</td>
+                    <td>${s.category}</td>
+                    <td><i class="${s.icon}"></i> ${s.icon}</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-small" onclick="editSkill(${s.id})">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn btn-small btn-danger" onclick="deleteSkill(${s.id})">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function loadEducationTable(education) {
+            const tbody = document.querySelector('#educationTable tbody');
+            if (education.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="loading">No education entries found</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = education.map(e => `
+                <tr>
+                    <td>${e.id}</td>
+                    <td>${e.institution}</td>
+                    <td>${e.degree}</td>
+                    <td>${e.startDate} - ${e.endDate}</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-small" onclick="editEducation(${e.id})">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn btn-small btn-danger" onclick="deleteEducation(${e.id})">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function loadBlogsTable(blogs) {
+            const tbody = document.querySelector('#blogsTable tbody');
+            if (blogs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="loading">No blog posts found</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = blogs.map(b => `
+                <tr>
+                    <td>${b.id}</td>
+                    <td>${b.title}</td>
+                    <td>${b.category}</td>
+                    <td>${b.date}</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-small" onclick="editBlog('${b.id}')">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn btn-small btn-danger" onclick="deleteBlog('${b.id}')">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Submit functions
+        async function submitProject(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+
+            try {
+                const formData = new FormData();
+                formData.append('title', document.getElementById('projectTitle').value);
+                formData.append('description', document.getElementById('projectDescription').value);
+                formData.append('category', document.getElementById('projectCategory').value);
+                formData.append('link', document.getElementById('projectLink').value || '#');
+                formData.append('github', document.getElementById('projectGithub').value || '');
+                formData.append('technologies', JSON.stringify(projectTechTags));
+
+                const imageFile = document.getElementById('projectImageInput').files[0];
+                if (imageFile) {
+                    formData.append('image', imageFile);
+                }
+
+                const response = await fetch('/api/upload/project', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Project added successfully!', 'success');
+                    document.getElementById('projectForm').reset();
+                    document.getElementById('projectImagePreview').classList.remove('active');
+                    projectTechTags = [];
+                    renderTags('techTagsContainer', projectTechTags, 'techTagInput');
+                    loadDashboard();
+                } else {
+                    showAlert(data.error || 'Failed to add project', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while uploading', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-plus-circle"></i> Add Project';
+            }
+        }
+
+        async function submitCertificate(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+
+            try {
+                const certificateData = {
+                    title: document.getElementById('certTitle').value,
+                    issuer: document.getElementById('certIssuer').value,
+                    date: document.getElementById('certDate').value,
+                    tags: certTags,
+                    link: document.getElementById('certLink').value || '#',
+                    description: document.getElementById('certDescription').value
+                };
+
+                const response = await fetch('/api/upload/certificate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(certificateData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Certificate added successfully!', 'success');
+                    document.getElementById('certificateForm').reset();
+                    certTags = [];
+                    renderTags('certTagsContainer', certTags, 'certTagInput');
+                    loadDashboard();
+                } else {
+                    showAlert(data.error || 'Failed to add certificate', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while uploading', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-plus-circle"></i> Add Certificate';
+            }
+        }
+
+        async function submitSkill(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+
+            try {
+                const skillData = {
+                    name: document.getElementById('skillName').value,
+                    category: document.getElementById('skillCategory').value,
+                    icon: document.getElementById('skillIcon').value || '',
+                    iconType: document.getElementById('skillIconType').value
+                };
+
+                const response = await fetch('/api/upload/skill', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(skillData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Skill added successfully!', 'success');
+                    document.getElementById('skillForm').reset();
+                    loadDashboard();
+                } else {
+                    showAlert(data.error || 'Failed to add skill', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while uploading', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-plus-circle"></i> Add Skill';
+            }
+        }
+
+        async function submitEducation(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+
+            try {
+                const educationData = {
+                    institution: document.getElementById('eduInstitution').value,
+                    degree: document.getElementById('eduDegree').value,
+                    startDate: document.getElementById('eduStartDate').value,
+                    endDate: document.getElementById('eduEndDate').value || 'Present',
+                    description: document.getElementById('eduDescription').value || ''
+                };
+
+                const response = await fetch('/api/upload/education', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(educationData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Education entry added successfully!', 'success');
+                    document.getElementById('educationForm').reset();
+                    loadDashboard();
+                } else {
+                    showAlert(data.error || 'Failed to add education entry', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while uploading', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-plus-circle"></i> Add Education';
+            }
+        }
+
+        // Submit blog
+        async function submitBlog(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+
+            try {
+                const blogData = {
+                    title: document.getElementById('blogTitle').value,
+                    excerpt: document.getElementById('blogExcerpt').value,
+                    category: document.getElementById('blogCategory').value,
+                    readTime: document.getElementById('blogReadTime').value || '5 min read',
+                    tags: document.getElementById('blogTags').value,
+                    content: document.getElementById('blogContent').value
+                };
+
+                const response = await fetch('/api/upload/blog', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(blogData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Blog post added successfully!', 'success');
+                    document.getElementById('blogForm').reset();
+                    loadDashboard();
+                } else {
+                    showAlert(data.error || 'Failed to add blog post', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while uploading', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-plus-circle"></i> Add Blog Post';
+            }
+        }
+
+        // Delete functions
+        async function deleteProject(id) {
+            if (!confirm('Are you sure you want to delete this project?')) return;
+
+            try {
+                const response = await fetch(`/api/projects/${id}`, {
+                    method: 'DELETE'
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Project deleted successfully!', 'success');
+                    loadDashboard();
+                } else {
+                    showAlert(data.error || 'Failed to delete project', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while deleting', 'error');
+            }
+        }
+
+        async function deleteCertificate(id) {
+            if (!confirm('Are you sure you want to delete this certificate?')) return;
+
+            try {
+                const response = await fetch(`/api/certificates/${id}`, {
+                    method: 'DELETE'
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Certificate deleted successfully!', 'success');
+                    loadDashboard();
+                } else {
+                    showAlert(data.error || 'Failed to delete certificate', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while deleting', 'error');
+            }
+        }
+
+        async function deleteSkill(id) {
+            if (!confirm('Are you sure you want to delete this skill?')) return;
+
+            try {
+                const response = await fetch(`/api/skills/${id}`, {
+                    method: 'DELETE'
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Skill deleted successfully!', 'success');
+                    loadDashboard();
+                } else {
+                    showAlert(data.error || 'Failed to delete skill', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while deleting', 'error');
+            }
+        }
+
+        async function deleteEducation(id) {
+            if (!confirm('Are you sure you want to delete this education entry?')) return;
+
+            try {
+                const response = await fetch(`/api/education/${id}`, {
+                    method: 'DELETE'
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Education deleted successfully!', 'success');
+                    loadDashboard();
+                } else {
+                    showAlert(data.error || 'Failed to delete education', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while deleting', 'error');
+            }
+        }
+
+        async function deleteBlog(id) {
+            if (!confirm('Are you sure you want to delete this blog post?')) return;
+
+            try {
+                const response = await fetch(`/api/blogs/${id}`, {
+                    method: 'DELETE'
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Blog deleted successfully!', 'success');
+                    loadDashboard();
+                } else {
+                    showAlert(data.error || 'Failed to delete blog', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while deleting', 'error');
+            }
+        }
+
+        // Edit functions
+        let currentEditData = null;
+
+        async function editProject(id) {
+            try {
+                const response = await fetch('/api/projects');
+                const data = await response.json();
+                const project = data.projects.find(p => p.id === id);
+                
+                if (!project) {
+                    showAlert('Project not found', 'error');
+                    return;
+                }
+
+                currentEditData = { type: 'project', id, data: project };
+                
+                document.getElementById('modalTitle').textContent = 'EDIT PROJECT';
+                document.getElementById('modalBody').innerHTML = `
+                    <form id="editProjectForm" onsubmit="updateProject(event)">
+                        <div class="form-group">
+                            <label>Project Title *</label>
+                            <input type="text" id="editProjectTitle" value="${project.title}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Category *</label>
+                            <select id="editProjectCategory" required>
+                                <option value="web" ${project.category === 'web' ? 'selected' : ''}>Web</option>
+                                <option value="design" ${project.category === 'design' ? 'selected' : ''}>Design</option>
+                                <option value="video/film" ${project.category === 'video/film' ? 'selected' : ''}>Video/Film</option>
+                                <option value="programming" ${project.category === 'programming' ? 'selected' : ''}>Programming</option>
+                                <option value="graphic design" ${project.category === 'graphic design' ? 'selected' : ''}>Graphic Design</option>
+                                <option value="overlays" ${project.category === 'overlays' ? 'selected' : ''}>Overlays</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Description *</label>
+                            <textarea id="editProjectDescription" required>${project.description}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Project Link</label>
+                            <input type="url" id="editProjectLink" value="${project.link || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label>GitHub Repository</label>
+                            <input type="url" id="editProjectGithub" value="${project.github || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label>Technologies (comma-separated)</label>
+                            <input type="text" id="editProjectTech" value="${project.technologies ? project.technologies.join(', ') : ''}">
+                        </div>
+                        <div class="form-group">
+                            <label>Update Image (optional)</label>
+                            <input type="file" id="editProjectImage" accept="image/*">
+                        </div>
+                        <div style="display: flex; gap: 10px; margin-top: 20px;">
+                            <button type="submit" class="btn btn-primary" style="flex: 1;">
+                                <i class="fas fa-save"></i> Update Project
+                            </button>
+                            <button type="button" class="btn" onclick="closeModal()" style="flex: 1;">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        </div>
+                    </form>
+                `;
+                
+                document.getElementById('editModal').classList.add('active');
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('Failed to load project data', 'error');
+            }
+        }
+
+        async function updateProject(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+
+            try {
+                const formData = new FormData();
+                formData.append('title', document.getElementById('editProjectTitle').value);
+                formData.append('description', document.getElementById('editProjectDescription').value);
+                formData.append('category', document.getElementById('editProjectCategory').value);
+                formData.append('link', document.getElementById('editProjectLink').value || '#');
+                formData.append('github', document.getElementById('editProjectGithub').value || '');
+                
+                const techValue = document.getElementById('editProjectTech').value;
+                const technologies = techValue ? techValue.split(',').map(t => t.trim()).filter(t => t) : [];
+                formData.append('technologies', JSON.stringify(technologies));
+
+                const imageFile = document.getElementById('editProjectImage').files[0];
+                if (imageFile) {
+                    formData.append('image', imageFile);
+                }
+
+                const response = await fetch(`/api/projects/${currentEditData.id}`, {
+                    method: 'PUT',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Project updated successfully!', 'success');
+                    closeModal();
+                    loadDashboard();
+                } else {
+                    showAlert(data.error || 'Failed to update project', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while updating', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-save"></i> Update Project';
+            }
+        }
+
+        async function editCertificate(id) {
+            try {
+                const response = await fetch('/api/certificates');
+                const data = await response.json();
+                const cert = data.certificates.find(c => c.id === id);
+                
+                if (!cert) {
+                    showAlert('Certificate not found', 'error');
+                    return;
+                }
+
+                currentEditData = { type: 'certificate', id, data: cert };
+                
+                document.getElementById('modalTitle').textContent = 'EDIT CERTIFICATE';
+                document.getElementById('modalBody').innerHTML = `
+                    <form id="editCertForm" onsubmit="updateCertificate(event)">
+                        <div class="form-group">
+                            <label>Certificate Title *</label>
+                            <input type="text" id="editCertTitle" value="${cert.title}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Issuer *</label>
+                            <input type="text" id="editCertIssuer" value="${cert.issuer}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Date *</label>
+                            <input type="text" id="editCertDate" value="${cert.date}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Certificate Link</label>
+                            <input type="url" id="editCertLink" value="${cert.link || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label>Description *</label>
+                            <textarea id="editCertDescription" required>${cert.description}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Tags (comma-separated)</label>
+                            <input type="text" id="editCertTags" value="${cert.tags ? cert.tags.join(', ') : ''}">
+                        </div>
+                        <div style="display: flex; gap: 10px; margin-top: 20px;">
+                            <button type="submit" class="btn btn-primary" style="flex: 1;">
+                                <i class="fas fa-save"></i> Update Certificate
+                            </button>
+                            <button type="button" class="btn" onclick="closeModal()" style="flex: 1;">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        </div>
+                    </form>
+                `;
+                
+                document.getElementById('editModal').classList.add('active');
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('Failed to load certificate data', 'error');
+            }
+        }
+
+        async function updateCertificate(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+
+            try {
+                const tagsValue = document.getElementById('editCertTags').value;
+                const tags = tagsValue ? tagsValue.split(',').map(t => t.trim()).filter(t => t) : [];
+
+                const certificateData = {
+                    title: document.getElementById('editCertTitle').value,
+                    issuer: document.getElementById('editCertIssuer').value,
+                    date: document.getElementById('editCertDate').value,
+                    link: document.getElementById('editCertLink').value || '#',
+                    description: document.getElementById('editCertDescription').value,
+                    tags: tags
+                };
+
+                const response = await fetch(`/api/certificates/${currentEditData.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(certificateData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Certificate updated successfully!', 'success');
+                    closeModal();
+                    loadDashboard();
+                } else {
+                    showAlert(data.error || 'Failed to update certificate', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while updating', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-save"></i> Update Certificate';
+            }
+        }
+
+        async function editSkill(id) {
+            try {
+                const response = await fetch('/api/skills');
+                const data = await response.json();
+                const skill = data.skills.find(s => s.id === id);
+                
+                if (!skill) {
+                    showAlert('Skill not found', 'error');
+                    return;
+                }
+
+                currentEditData = { type: 'skill', id, data: skill };
+                
+                document.getElementById('modalTitle').textContent = 'EDIT SKILL';
+                document.getElementById('modalBody').innerHTML = `
+                    <form id="editSkillForm" onsubmit="updateSkill(event)">
+                        <div class="form-group">
+                            <label>Skill Name *</label>
+                            <input type="text" id="editSkillName" value="${skill.name}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Category *</label>
+                            <select id="editSkillCategory" required>
+                                <option value="programming" ${skill.category === 'programming' ? 'selected' : ''}>Programming</option>
+                                <option value="design" ${skill.category === 'design' ? 'selected' : ''}>Graphic Design</option>
+                                <option value="video" ${skill.category === 'video' ? 'selected' : ''}>Video Editing</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Icon Class</label>
+                            <input type="text" id="editSkillIcon" value="${skill.icon || ''}" placeholder="e.g., fab fa-react">
+                        </div>
+                        <div class="form-group">
+                            <label>Icon Type</label>
+                            <select id="editSkillIconType">
+                                <option value="fontawesome" ${skill.iconType === 'fontawesome' ? 'selected' : ''}>FontAwesome</option>
+                                <option value="svg" ${skill.iconType === 'svg' ? 'selected' : ''}>SVG</option>
+                                <option value="image" ${skill.iconType === 'image' ? 'selected' : ''}>Image</option>
+                            </select>
+                        </div>
+                        <div style="display: flex; gap: 10px; margin-top: 20px;">
+                            <button type="submit" class="btn btn-primary" style="flex: 1;">
+                                <i class="fas fa-save"></i> Update Skill
+                            </button>
+                            <button type="button" class="btn" onclick="closeModal()" style="flex: 1;">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        </div>
+                    </form>
+                `;
+                
+                document.getElementById('editModal').classList.add('active');
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('Failed to load skill data', 'error');
+            }
+        }
+
+        async function updateSkill(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+
+            try {
+                const skillData = {
+                    name: document.getElementById('editSkillName').value,
+                    category: document.getElementById('editSkillCategory').value,
+                    icon: document.getElementById('editSkillIcon').value || '',
+                    iconType: document.getElementById('editSkillIconType').value
+                };
+
+                const response = await fetch(`/api/skills/${currentEditData.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(skillData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Skill updated successfully!', 'success');
+                    closeModal();
+                    loadDashboard();
+                } else {
+                    showAlert(data.error || 'Failed to update skill', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while updating', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-save"></i> Update Skill';
+            }
+        }
+
+        async function editEducation(id) {
+            try {
+                const response = await fetch('/api/education');
+                const data = await response.json();
+                const edu = data.education.find(e => e.id === id);
+                
+                if (!edu) {
+                    showAlert('Education entry not found', 'error');
+                    return;
+                }
+
+                currentEditData = { type: 'education', id, data: edu };
+                
+                document.getElementById('modalTitle').textContent = 'EDIT EDUCATION';
+                document.getElementById('modalBody').innerHTML = `
+                    <form id="editEduForm" onsubmit="updateEducation(event)">
+                        <div class="form-group">
+                            <label>Institution *</label>
+                            <input type="text" id="editEduInstitution" value="${edu.institution}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Degree/Program *</label>
+                            <input type="text" id="editEduDegree" value="${edu.degree}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Start Date *</label>
+                            <input type="text" id="editEduStartDate" value="${edu.startDate}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>End Date</label>
+                            <input type="text" id="editEduEndDate" value="${edu.endDate || ''}" placeholder="e.g., 2024 or Present">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea id="editEduDescription">${edu.description || ''}</textarea>
+                        </div>
+                        <div style="display: flex; gap: 10px; margin-top: 20px;">
+                            <button type="submit" class="btn btn-primary" style="flex: 1;">
+                                <i class="fas fa-save"></i> Update Education
+                            </button>
+                            <button type="button" class="btn" onclick="closeModal()" style="flex: 1;">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        </div>
+                    </form>
+                `;
+                
+                document.getElementById('editModal').classList.add('active');
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('Failed to load education data', 'error');
+            }
+        }
+
+        async function updateEducation(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+
+            try {
+                const educationData = {
+                    institution: document.getElementById('editEduInstitution').value,
+                    degree: document.getElementById('editEduDegree').value,
+                    startDate: document.getElementById('editEduStartDate').value,
+                    endDate: document.getElementById('editEduEndDate').value || 'Present',
+                    description: document.getElementById('editEduDescription').value || ''
+                };
+
+                const response = await fetch(`/api/education/${currentEditData.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(educationData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Education updated successfully!', 'success');
+                    closeModal();
+                    loadDashboard();
+                } else {
+                    showAlert(data.error || 'Failed to update education', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while updating', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-save"></i> Update Education';
+            }
+        }
+
+        async function editBlog(id) {
+            try {
+                const response = await fetch('/api/blogs');
+                const blogs = await response.json();
+                const blog = blogs.find(b => b.id === id);
+                
+                if (!blog) {
+                    showAlert('Blog not found', 'error');
+                    return;
+                }
+                
+                currentEditData = blog;
+                
+                document.getElementById('modalTitle').textContent = 'Edit Blog Post';
+                document.getElementById('modalBody').innerHTML = `
+                    <form onsubmit="updateBlog(event)" id="editBlogForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="editBlogTitle">Title *</label>
+                                <input type="text" id="editBlogTitle" value="${blog.title}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editBlogCategory">Category *</label>
+                                <select id="editBlogCategory" required>
+                                    <option value="Tech" ${blog.category === 'Tech' ? 'selected' : ''}>Tech</option>
+                                    <option value="Personal" ${blog.category === 'Personal' ? 'selected' : ''}>Personal</option>
+                                    <option value="Tutorial" ${blog.category === 'Tutorial' ? 'selected' : ''}>Tutorial</option>
+                                    <option value="News" ${blog.category === 'News' ? 'selected' : ''}>News</option>
+                                    <option value="General" ${blog.category === 'General' ? 'selected' : ''}>General</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="editBlogExcerpt">Excerpt *</label>
+                            <textarea id="editBlogExcerpt" required rows="3">${blog.excerpt}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="editBlogReadTime">Read Time</label>
+                            <input type="text" id="editBlogReadTime" value="${blog.readTime || '5 min read'}">
+                        </div>
+                        <div class="form-group">
+                            <label for="editBlogTags">Tags (comma-separated)</label>
+                            <input type="text" id="editBlogTags" value="${Array.isArray(blog.tags) ? blog.tags.join(', ') : ''}">
+                        </div>
+                        <div class="form-group">
+                            <label for="editBlogContent">Content *</label>
+                            <textarea id="editBlogContent" required rows="10">${blog.content || ''}</textarea>
+                        </div>
+                        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                            <button type="button" class="btn" onclick="closeModal()">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Update Blog
+                            </button>
+                        </div>
+                    </form>
+                `;
+                
+                document.getElementById('editModal').classList.add('active');
+            } catch (error) {
+                console.error('Error loading blog:', error);
+                showAlert('Failed to load blog', 'error');
+            }
+        }
+
+        async function updateBlog(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+
+            try {
+                const blogData = {
+                    title: document.getElementById('editBlogTitle').value,
+                    excerpt: document.getElementById('editBlogExcerpt').value,
+                    category: document.getElementById('editBlogCategory').value,
+                    readTime: document.getElementById('editBlogReadTime').value || '5 min read',
+                    tags: document.getElementById('editBlogTags').value,
+                    content: document.getElementById('editBlogContent').value
+                };
+
+                const response = await fetch(`/api/blogs/${currentEditData.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(blogData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Blog updated successfully!', 'success');
+                    closeModal();
+                    loadDashboard();
+                } else {
+                    showAlert(data.error || 'Failed to update blog', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('An error occurred while updating', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-save"></i> Update Blog';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('editModal').classList.remove('active');
+            currentEditData = null;
+        }
+
+        // Load dashboard on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadDashboard();
+        });
+    </script>
+</body>
+</html>
